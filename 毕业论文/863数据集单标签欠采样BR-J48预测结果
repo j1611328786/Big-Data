@@ -1,0 +1,28 @@
+ test num: 12040
+dataset num: 28094
+old dataset statistic: 
+Hamming Loss: 0.0991
+Subset Accuracy: 0.4158
+Example-Based Precision: 0.8297
+Example-Based Recall: 0.7815
+Example-Based F Measure: 0.7728
+Example-Based Accuracy: 0.6901
+Example-Based Specificity: 0.9503
+Micro-averaged Precision: 0.8143
+Micro-averaged Recall: 0.7492
+Micro-averaged F-Measure: 0.7804
+Micro-averaged Specificity: 0.9475
+Macro-averaged Precision: 0.7231
+cerebral_apoplexy: 0.5966 hf_ICD: 0.7143 cardiac_infarction: 1.0000 nephropathy: 0.6765 ischemia_myocardial: 0.5556 cardiac_function_lesion: 0.5172 coronary_heart_disease: 0.7547 gaoxueya: 0.8810 tangniao: 0.8118 
+Macro-averaged Recall: 0.3401
+cerebral_apoplexy: 0.2643 hf_ICD: 0.0702 cardiac_infarction: 0.0076 nephropathy: 0.1518 ischemia_myocardial: 0.0365 cardiac_function_lesion: 0.0408 coronary_heart_disease: 0.8182 gaoxueya: 0.9397 tangniao: 0.7316 
+Macro-averaged F-Measure: 0.3739
+cerebral_apoplexy: 0.3663 hf_ICD: 0.1278 cardiac_infarction: 0.0151 nephropathy: 0.2480 ischemia_myocardial: 0.0685 cardiac_function_lesion: 0.0757 coronary_heart_disease: 0.7851 gaoxueya: 0.9094 tangniao: 0.7696 
+Macro-averaged Specificity: 0.8883
+cerebral_apoplexy: 0.9672 hf_ICD: 0.9993 cardiac_infarction: 1.0000 nephropathy: 0.9981 ischemia_myocardial: 0.9993 cardiac_function_lesion: 0.9975 coronary_heart_disease: 0.6366 gaoxueya: 0.5299 tangniao: 0.8666 
+Average Precision: 0.8757
+Coverage: 2.1537
+OneError: 0.1303
+IsError: 0.3789
+ErrorSetSize: 1.2172
+Ranking Loss: 0.0858

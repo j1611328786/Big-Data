@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="mulan/lib/test/junit-4.10.jar"/>
+	<classpathentry kind="lib" path="mulan/lib/Clus.jar"/>
+	<classpathentry kind="lib" path="mulan/lib/test/emma_ant.jar"/>
+	<classpathentry kind="lib" path="mulan/lib/test/emma.jar"/>
+	<classpathentry kind="lib" path="mulan/lib/weka-3.7.12.jar"/>
+	<classpathentry kind="src" path="mulan/src"/>
+	<classpathentry kind="src" path="mulan/test"/>
+	<classpathentry kind="output" path="out/production/mulan"/>
+</classpath>

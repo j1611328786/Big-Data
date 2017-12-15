@@ -1,0 +1,31 @@
+6
+ test num: 12040
+dataset num: 28094
+old dataset statistic: 
+Hamming Loss: 0.1251
+Subset Accuracy: 0.2813
+Example-Based Precision: 0.7379
+Example-Based Recall: 0.7776
+Example-Based F Measure: 0.7227
+Example-Based Accuracy: 0.6173
+Example-Based Specificity: 0.9239
+Micro-averaged Precision: 0.7330
+Micro-averaged Recall: 0.7356
+Micro-averaged F-Measure: 0.7343
+Micro-averaged Specificity: 0.9177
+Macro-averaged Precision: 0.2551
+cerebral_apoplexy: 0.0000 hf_ICD: 0.0000 cardiac_infarction: 0.0000 nephropathy: 0.0000 ischemia_myocardial: 0.0000 cardiac_function_lesion: 0.0000 coronary_heart_disease: 0.6240 gaoxueya: 0.7875 tangniao: 0.8843 
+Macro-averaged Recall: 0.2728
+cerebral_apoplexy: 0.0000 hf_ICD: 0.0000 cardiac_infarction: 0.0000 nephropathy: 0.0000 ischemia_myocardial: 0.0000 cardiac_function_lesion: 0.0000 coronary_heart_disease: 0.9311 gaoxueya: 1.0000 tangniao: 0.5237 
+Macro-averaged F-Measure: 0.2540
+cerebral_apoplexy: 0.0000 hf_ICD: 0.0000 cardiac_infarction: 0.0000 nephropathy: 0.0000 ischemia_myocardial: 0.0000 cardiac_function_lesion: 0.0000 coronary_heart_disease: 0.7472 gaoxueya: 0.8811 tangniao: 0.6578 
+Macro-averaged Specificity: 0.7977
+cerebral_apoplexy: 1.0000 hf_ICD: 1.0000 cardiac_infarction: 1.0000 nephropathy: 1.0000 ischemia_myocardial: 1.0000 cardiac_function_lesion: 1.0000 coronary_heart_disease: 0.2333 gaoxueya: 0.0000 tangniao: 0.9462 
+Average Precision: 0.8659
+Coverage: 2.5550
+OneError: 0.1122
+IsError: 0.4024
+ErrorSetSize: 1.5801
+Ranking Loss: 0.1111
+
+数据不均衡性在svm中体现尤其明显，从macro-averaged对各个标签的各项指标中体现出了

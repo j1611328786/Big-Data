@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<labels xmlns="http://mulan.sourceforge.net/labels">
+  <label name="cerebral_apoplexy"></label>
+  <label name="hf_ICD"></label>
+  <label name="cardiac_infarction"></label>
+  <label name="nephropathy"></label>
+  <label name="ischemia_myocardial"></label>
+  <label name="cardiac_function_lesion"></label>
+  <label name="coronary_heart_disease"></label>
+  <label name="gaoxueya"></label>
+  <label name="tangniao"></label>
+</labels>
+

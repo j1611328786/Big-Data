@@ -1,0 +1,33 @@
+公开数据集
+BR-randomForest:
+
+test num: 6591
+dataset num: 6591
+old dataset statistic: 
+Hamming Loss: 0.1672
+Subset Accuracy: 0.1601
+Example-Based Precision: 0.6509
+Example-Based Recall: 0.5129
+Example-Based F Measure: 0.5355
+Example-Based Accuracy: 0.4408
+Example-Based Specificity: 0.9379
+Micro-averaged Precision: 0.7088
+Micro-averaged Recall: 0.5022
+Micro-averaged F-Measure: 0.5879
+Micro-averaged Specificity: 0.9357
+Macro-averaged Precision: 0.5202
+copd: 0.7769 diabetes: 0.7857 fluid: 0.6208 hypertension: 0.6888 hypotension: 0.0000 kidney: 0.7812 lipoid: 0.6651 liver: 0.8837 thrombosis: 0.0000 thyroid: 0.0000 
+Macro-averaged Recall: 0.3174
+copd: 0.1431 diabetes: 0.5128 fluid: 0.4012 hypertension: 0.9127 hypotension: 0.0000 kidney: 0.7110 lipoid: 0.2921 liver: 0.2016 thrombosis: 0.0000 thyroid: 0.0000 
+Macro-averaged F-Measure: 0.3613
+copd: 0.2416 diabetes: 0.6205 fluid: 0.4874 hypertension: 0.7851 hypotension: 0.0000 kidney: 0.7444 lipoid: 0.4059 liver: 0.3283 thrombosis: 0.0000 thyroid: 0.0000 
+Macro-averaged Specificity: 0.8983
+copd: 0.9888 diabetes: 0.9374 fluid: 0.8895 hypertension: 0.3159 hypotension: 1.0000 kidney: 0.9164 lipoid: 0.9369 liver: 0.9984 thrombosis: 1.0000 thyroid: 1.0000 
+Average Precision: 0.7573
+Coverage: 3.1696
+OneError: 0.2802
+IsError: 0.6513
+ErrorSetSize: 2.3649
+Ranking Loss: 0.1464
+
+

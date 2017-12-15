@@ -1,0 +1,609 @@
+ test num: 12040
+dataset num: 28094
+old dataset statistic: 
+statisic traning sample: Examples: 28094
+Predictors: 296
+--Nominal: 0
+--Numeric: 296
+Labels: 9
+
+Cardinality: 2.128497188011675
+Density: 0.23649968755685277
+Distinct Labelsets: 179
+
+Percentage of examples with label 1: 0.15487292660354524
+Percentage of examples with label 2: 0.020929735886666193
+Percentage of examples with label 3: 0.019755107852210435
+Percentage of examples with label 4: 0.02658930732540756
+Percentage of examples with label 5: 0.02278066491065708
+Percentage of examples with label 6: 0.06399943048337724
+Percentage of examples with label 7: 0.5819392041005197
+Percentage of examples with label 8: 0.7947248522816259
+Percentage of examples with label 9: 0.4429059585676657
+
+Examples of cardinality 0: 0.0
+Examples of cardinality 1: 7580.0
+Examples of cardinality 2: 11667.0
+Examples of cardinality 3: 6897.0
+Examples of cardinality 4: 1617.0
+Examples of cardinality 5: 278.0
+Examples of cardinality 6: 50.0
+Examples of cardinality 7: 5.0
+Examples of cardinality 8: 0.0
+Examples of cardinality 9: 0.0
+
+Examples of combination 000100100: 8
+Examples of combination 000100101: 3
+Examples of combination 001010110: 4
+Examples of combination 001010111: 10
+Examples of combination 011010111: 1
+Examples of combination 010011110: 3
+Examples of combination 100100000: 9
+Examples of combination 110100001: 1
+Examples of combination 000111111: 1
+Examples of combination 000111110: 2
+Examples of combination 110000001: 2
+Examples of combination 100000000: 345
+Examples of combination 110000000: 1
+Examples of combination 100000001: 178
+Examples of combination 001001000: 4
+Examples of combination 000011110: 12
+Examples of combination 000011111: 11
+Examples of combination 100011010: 1
+Examples of combination 000100111: 93
+Examples of combination 001010000: 1
+Examples of combination 100100011: 19
+Examples of combination 110100111: 7
+Examples of combination 000000101: 714
+Examples of combination 000000100: 1284
+Examples of combination 001001010: 3
+Examples of combination 110000010: 11
+Examples of combination 010001010: 5
+Examples of combination 100000110: 706
+Examples of combination 110000011: 5
+Examples of combination 100000111: 680
+Examples of combination 101000101: 2
+Examples of combination 010001011: 2
+Examples of combination 011001111: 1
+Examples of combination 101000100: 7
+Examples of combination 000010011: 23
+Examples of combination 000010010: 88
+Examples of combination 100100010: 14
+Examples of combination 000011100: 1
+Examples of combination 010011001: 2
+Examples of combination 000100110: 78
+Examples of combination 000100001: 23
+Examples of combination 101011001: 2
+Examples of combination 100100101: 1
+Examples of combination 101100111: 6
+Examples of combination 000001001: 70
+Examples of combination 010000111: 110
+Examples of combination 111100111: 1
+Examples of combination 110001110: 2
+Examples of combination 100001110: 50
+Examples of combination 100001111: 46
+Examples of combination 110001111: 1
+Examples of combination 001000010: 26
+Examples of combination 010000110: 85
+Examples of combination 000001000: 146
+Examples of combination 001000011: 22
+Examples of combination 101000110: 15
+Examples of combination 101000111: 21
+Examples of combination 000010000: 44
+Examples of combination 110101110: 1
+Examples of combination 001100010: 1
+Examples of combination 100010101: 1
+Examples of combination 000010001: 12
+Examples of combination 010010000: 2
+Examples of combination 100010100: 4
+Examples of combination 010101010: 2
+Examples of combination 000100000: 57
+Examples of combination 001010100: 2
+Examples of combination 100100111: 20
+Examples of combination 100100110: 14
+Examples of combination 010000101: 11
+Examples of combination 010000100: 6
+Examples of combination 100000010: 1276
+Examples of combination 100000011: 579
+Examples of combination 100001100: 2
+Examples of combination 000001010: 464
+Examples of combination 001001110: 10
+Examples of combination 000001011: 132
+Examples of combination 001001111: 4
+Examples of combination 101000000: 3
+Examples of combination 101000001: 1
+Examples of combination 011101110: 1
+Examples of combination 011101111: 2
+Examples of combination 000010111: 109
+Examples of combination 000010110: 137
+Examples of combination 010010011: 2
+Examples of combination 110010111: 4
+Examples of combination 000100010: 211
+Examples of combination 110010110: 2
+Examples of combination 000100011: 77
+Examples of combination 001011000: 1
+Examples of combination 001100110: 1
+Examples of combination 001100111: 1
+Examples of combination 011100111: 1
+Examples of combination 000000011: 1959
+Examples of combination 000001100: 46
+Examples of combination 000001101: 26
+Examples of combination 110001011: 1
+Examples of combination 010110110: 2
+Examples of combination 100001010: 19
+Examples of combination 110001010: 1
+Examples of combination 001000111: 122
+Examples of combination 100001011: 12
+Examples of combination 010110111: 3
+Examples of combination 010000011: 29
+Examples of combination 011000111: 15
+Examples of combination 001000110: 131
+Examples of combination 010000010: 64
+Examples of combination 011000110: 9
+Examples of combination 000000010: 3169
+Examples of combination 101000011: 5
+Examples of combination 101001101: 1
+Examples of combination 101000010: 5
+Examples of combination 011100110: 2
+Examples of combination 000010100: 20
+Examples of combination 000010101: 11
+Examples of combination 010101111: 4
+Examples of combination 100010000: 3
+Examples of combination 000101111: 8
+Examples of combination 000101110: 6
+Examples of combination 000001111: 228
+Examples of combination 010000001: 9
+Examples of combination 000110110: 2
+Examples of combination 000110111: 3
+Examples of combination 001000001: 6
+Examples of combination 100001000: 7
+Examples of combination 100110001: 1
+Examples of combination 100001001: 2
+Examples of combination 010000000: 27
+Examples of combination 000001110: 383
+Examples of combination 001000000: 39
+Examples of combination 101001111: 5
+Examples of combination 101001110: 1
+Examples of combination 010010111: 10
+Examples of combination 010010110: 3
+Examples of combination 010100010: 11
+Examples of combination 100010110: 28
+Examples of combination 100010111: 34
+Examples of combination 010100011: 7
+Examples of combination 001010011: 2
+Examples of combination 000011010: 4
+Examples of combination 100101111: 2
+Examples of combination 101010110: 3
+Examples of combination 000000111: 4314
+Examples of combination 000000110: 6360
+Examples of combination 100110111: 2
+Examples of combination 100000100: 73
+Examples of combination 100000101: 34
+Examples of combination 011000011: 1
+Examples of combination 110000101: 3
+Examples of combination 111000111: 6
+Examples of combination 110110111: 1
+Examples of combination 111000110: 6
+Examples of combination 000011011: 1
+Examples of combination 000101010: 3
+Examples of combination 100011111: 2
+Examples of combination 000101011: 4
+Examples of combination 010100000: 2
+Examples of combination 100011110: 2
+Examples of combination 001011110: 3
+Examples of combination 001011111: 1
+Examples of combination 000000001: 2469
+Examples of combination 101101111: 1
+Examples of combination 000110011: 1
+Examples of combination 110000111: 28
+Examples of combination 001000100: 21
+Examples of combination 110000110: 12
+Examples of combination 001000101: 12
+Examples of combination 010001111: 14
+Examples of combination 010001110: 21
+Examples of combination 001110110: 2
+Examples of combination 101001011: 1
+Examples of combination 001110111: 1
+Examples of combination 100101000: 1
+Examples of combination 000011000: 1
+Examples of combination 000011001: 3
+Examples of combination 100010011: 7
+Examples of combination 010100111: 18
+Examples of combination 100010010: 2
+Examples of combination 010100110: 5
+
+statisic test sample: Examples: 12040
+Predictors: 296
+--Nominal: 0
+--Numeric: 296
+Labels: 9
+
+Cardinality: 2.114700996677741
+Density: 0.23496677740863786
+Distinct Labelsets: 140
+
+Percentage of examples with label 1: 0.15523255813953488
+Percentage of examples with label 2: 0.02367109634551495
+Percentage of examples with label 3: 0.021843853820598006
+Percentage of examples with label 4: 0.02516611295681063
+Percentage of examples with label 5: 0.022757475083056478
+Percentage of examples with label 6: 0.061046511627906974
+Percentage of examples with label 7: 0.5774086378737542
+Percentage of examples with label 8: 0.7874584717607973
+Percentage of examples with label 9: 0.44011627906976747
+
+Examples of cardinality 0: 0.0
+Examples of cardinality 1: 3352.0
+Examples of cardinality 2: 4953.0
+Examples of cardinality 3: 2916.0
+Examples of cardinality 4: 671.0
+Examples of cardinality 5: 118.0
+Examples of cardinality 6: 29.0
+Examples of cardinality 7: 1.0
+Examples of cardinality 8: 0.0
+Examples of cardinality 9: 0.0
+
+Examples of combination 000100100: 3
+Examples of combination 000100101: 4
+Examples of combination 001010110: 5
+Examples of combination 001010111: 6
+Examples of combination 011010111: 3
+Examples of combination 100100000: 3
+Examples of combination 000111110: 1
+Examples of combination 100000000: 139
+Examples of combination 110000000: 3
+Examples of combination 100000001: 68
+Examples of combination 000011110: 4
+Examples of combination 000011111: 4
+Examples of combination 000100111: 36
+Examples of combination 001010000: 1
+Examples of combination 011010101: 1
+Examples of combination 100100011: 8
+Examples of combination 110100111: 2
+Examples of combination 000000101: 314
+Examples of combination 000000100: 542
+Examples of combination 001001010: 3
+Examples of combination 110000010: 5
+Examples of combination 010001010: 4
+Examples of combination 100000110: 296
+Examples of combination 100000111: 258
+Examples of combination 011001111: 4
+Examples of combination 010001011: 1
+Examples of combination 101000100: 6
+Examples of combination 000010011: 16
+Examples of combination 000010010: 22
+Examples of combination 100100010: 9
+Examples of combination 010011001: 1
+Examples of combination 000100110: 29
+Examples of combination 000100001: 7
+Examples of combination 101100111: 3
+Examples of combination 000001001: 31
+Examples of combination 010000111: 54
+Examples of combination 110001110: 1
+Examples of combination 100001110: 29
+Examples of combination 100001111: 20
+Examples of combination 110001111: 1
+Examples of combination 010000110: 48
+Examples of combination 001000010: 8
+Examples of combination 000001000: 63
+Examples of combination 001000011: 6
+Examples of combination 001001100: 1
+Examples of combination 101000110: 14
+Examples of combination 101000111: 15
+Examples of combination 000010000: 18
+Examples of combination 110101110: 1
+Examples of combination 110101111: 1
+Examples of combination 001100010: 1
+Examples of combination 000010001: 3
+Examples of combination 000100000: 36
+Examples of combination 100100111: 6
+Examples of combination 100100110: 7
+Examples of combination 010000101: 3
+Examples of combination 010000100: 3
+Examples of combination 100000010: 542
+Examples of combination 100000011: 279
+Examples of combination 100001100: 1
+Examples of combination 000001010: 183
+Examples of combination 001001110: 5
+Examples of combination 000001011: 50
+Examples of combination 001001111: 2
+Examples of combination 101000000: 2
+Examples of combination 101000001: 2
+Examples of combination 011101110: 1
+Examples of combination 000010111: 54
+Examples of combination 110100011: 2
+Examples of combination 000010110: 69
+Examples of combination 110010111: 4
+Examples of combination 000100010: 75
+Examples of combination 000100011: 37
+Examples of combination 001100110: 3
+Examples of combination 001100111: 2
+Examples of combination 000000011: 808
+Examples of combination 000001100: 20
+Examples of combination 000001101: 20
+Examples of combination 110001011: 1
+Examples of combination 100001010: 9
+Examples of combination 001000111: 41
+Examples of combination 100001011: 5
+Examples of combination 010110111: 1
+Examples of combination 011000111: 9
+Examples of combination 010000011: 15
+Examples of combination 010000010: 31
+Examples of combination 001000110: 56
+Examples of combination 011000110: 6
+Examples of combination 000000010: 1405
+Examples of combination 101001101: 1
+Examples of combination 101001100: 2
+Examples of combination 101000010: 2
+Examples of combination 000010100: 8
+Examples of combination 000010101: 5
+Examples of combination 010101111: 3
+Examples of combination 100010000: 2
+Examples of combination 000101110: 3
+Examples of combination 000001111: 96
+Examples of combination 010000001: 1
+Examples of combination 000110111: 1
+Examples of combination 001000001: 10
+Examples of combination 100001000: 3
+Examples of combination 010000000: 15
+Examples of combination 001000000: 14
+Examples of combination 000001110: 135
+Examples of combination 101001111: 2
+Examples of combination 010010111: 3
+Examples of combination 010010110: 4
+Examples of combination 100010110: 13
+Examples of combination 010100010: 3
+Examples of combination 100010111: 11
+Examples of combination 010100011: 2
+Examples of combination 101010111: 1
+Examples of combination 000011010: 1
+Examples of combination 000000111: 1769
+Examples of combination 000000110: 2748
+Examples of combination 100000100: 39
+Examples of combination 100000101: 21
+Examples of combination 010001000: 1
+Examples of combination 111000111: 2
+Examples of combination 111000110: 2
+Examples of combination 000011011: 3
+Examples of combination 010100000: 1
+Examples of combination 000101011: 2
+Examples of combination 100011110: 1
+Examples of combination 001011110: 1
+Examples of combination 001011111: 1
+Examples of combination 000000001: 1120
+Examples of combination 000110011: 1
+Examples of combination 110000111: 14
+Examples of combination 001000100: 12
+Examples of combination 001000101: 7
+Examples of combination 110000110: 8
+Examples of combination 010001111: 8
+Examples of combination 010001110: 3
+Examples of combination 000011000: 1
+Examples of combination 000011001: 1
+Examples of combination 010100111: 6
+Examples of combination 010100110: 3
+Examples of combination 100010010: 3
+
+单标签分类结果random-forest：
+BR-RandomForest
+ test num: 12040
+dataset num: 28094
+old dataset statistic: 
+the label is : cerebral_apoplexy
+gobalinfo: 
+Class for constructing a forest of random trees.
+
+For more information see: 
+
+Leo Breiman (2001). Random Forests. Machine Learning. 45(1):5-32.
+classifier : 
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Correctly Classified Instances       11023               91.5532 %
+Incorrectly Classified Instances      1017                8.4468 %
+Kappa statistic                          0.6063
+Mean absolute error                      0.1586
+Root mean squared error                  0.2714
+Relative absolute error                 60.4699 %
+Root relative squared error             74.9451 %
+Total Number of Instances            12040     
+
+F-measure: 0.9519716646989373,0.6499139414802064
+the label is : hf_ICD
+gobalinfo: 
+Class for constructing a forest of random trees.
+
+For more information see: 
+
+Leo Breiman (2001). Random Forests. Machine Learning. 45(1):5-32.
+classifier : 
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Correctly Classified Instances       11878               98.6545 %
+Incorrectly Classified Instances       162                1.3455 %
+Kappa statistic                          0.6101
+Mean absolute error                      0.027 
+Root mean squared error                  0.116 
+Relative absolute error                 58.2441 %
+Root relative squared error             76.3318 %
+Total Number of Instances            12040     
+
+F-measure: 0.9931524220136952,0.6161137440758293
+the label is : cardiac_infarction
+gobalinfo: 
+Class for constructing a forest of random trees.
+
+For more information see: 
+
+Leo Breiman (2001). Random Forests. Machine Learning. 45(1):5-32.
+classifier : 
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Correctly Classified Instances       11883               98.696  %
+Incorrectly Classified Instances       157                1.304  %
+Kappa statistic                          0.5906
+Mean absolute error                      0.027 
+Root mean squared error                  0.1157
+Relative absolute error                 63.0919 %
+Root relative squared error             79.1235 %
+Total Number of Instances            12040     
+
+F-measure: 0.9933730108480013,0.5964010282776349
+the label is : nephropathy
+gobalinfo: 
+Class for constructing a forest of random trees.
+
+For more information see: 
+
+Leo Breiman (2001). Random Forests. Machine Learning. 45(1):5-32.
+classifier : 
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Correctly Classified Instances       11879               98.6628 %
+Incorrectly Classified Instances       161                1.3372 %
+Kappa statistic                          0.6461
+Mean absolute error                      0.0297
+Root mean squared error                  0.1159
+Relative absolute error                 60.4781 %
+Root relative squared error             73.9856 %
+Total Number of Instances            12040     
+
+F-measure: 0.9931828767413303,0.652267818574514
+the label is : ischemia_myocardial
+gobalinfo: 
+Class for constructing a forest of random trees.
+
+For more information see: 
+
+Leo Breiman (2001). Random Forests. Machine Learning. 45(1):5-32.
+classifier : 
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Correctly Classified Instances       11897               98.8123 %
+Incorrectly Classified Instances       143                1.1877 %
+Kappa statistic                          0.6532
+Mean absolute error                      0.0279
+Root mean squared error                  0.1127
+Relative absolute error                 62.5347 %
+Root relative squared error             75.6011 %
+Total Number of Instances            12040     
+
+F-measure: 0.9939562993956298,0.6587112171837709
+the label is : cardiac_function_lesion
+gobalinfo: 
+Class for constructing a forest of random trees.
+
+For more information see: 
+
+Leo Breiman (2001). Random Forests. Machine Learning. 45(1):5-32.
+classifier : 
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Correctly Classified Instances       11642               96.6944 %
+Incorrectly Classified Instances       398                3.3056 %
+Kappa statistic                          0.6235
+Mean absolute error                      0.076 
+Root mean squared error                  0.1853
+Relative absolute error                 66.2148 %
+Root relative squared error             77.4058 %
+Total Number of Instances            12040     
+
+F-measure: 0.982679084341544,0.6388384754990925
+the label is : coronary_heart_disease
+gobalinfo: 
+Class for constructing a forest of random trees.
+
+For more information see: 
+
+Leo Breiman (2001). Random Forests. Machine Learning. 45(1):5-32.
+classifier : 
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Correctly Classified Instances        9912               82.3256 %
+Incorrectly Classified Instances      2128               17.6744 %
+Kappa statistic                          0.6318
+Mean absolute error                      0.2724
+Root mean squared error                  0.3529
+Relative absolute error                 55.8274 %
+Root relative squared error             71.4385 %
+Total Number of Instances            12040     
+
+F-measure: 0.7773126831310173,0.8534838887358854
+the label is : gaoxueya
+gobalinfo: 
+Class for constructing a forest of random trees.
+
+For more information see: 
+
+Leo Breiman (2001). Random Forests. Machine Learning. 45(1):5-32.
+classifier : 
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Correctly Classified Instances       10940               90.8638 %
+Incorrectly Classified Instances      1100                9.1362 %
+Kappa statistic                          0.6988
+Mean absolute error                      0.1623
+Root mean squared error                  0.2724
+Relative absolute error                 48.4712 %
+Root relative squared error             66.5959 %
+Total Number of Instances            12040     
+
+F-measure: 0.7533632286995515,0.9439347604485219
+the label is : tangniao
+gobalinfo: 
+Class for constructing a forest of random trees.
+
+For more information see: 
+
+Leo Breiman (2001). Random Forests. Machine Learning. 45(1):5-32.
+classifier : 
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Correctly Classified Instances       10561               87.7159 %
+Incorrectly Classified Instances      1479               12.2841 %
+Kappa statistic                          0.7482
+Mean absolute error                      0.2142
+Root mean squared error                  0.311 
+Relative absolute error                 43.4691 %
+Root relative squared error             62.6534 %
+Total Number of Instances            12040     
+
+F-measure: 0.8941681574239714,0.8536368134586838
+
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels xmlns="http://mulan.sourceforge.net/labels">
+    <label name="copd"></label>
+    <label name="diabetes"></label>
+    <label name="fluid"></label>
+    <label name="hypertension"></label>
+    <label name="hypotension"></label>
+    <label name="kidney"></label>
+    <label name="lipoid"></label>
+    <label name="liver"></label>
+    <label name="thrombosis"></label>
+    <label name="thyroid"></label>
+</labels>
