@@ -22,7 +22,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import com.data.UnbalancedSamples;
+import com.data.*;
 
 import mulan.classifier.InvalidDataException;
 import mulan.classifier.ModelInitializationException;
@@ -281,7 +281,20 @@ public class Multi_Classifier {
 		dataset=UnbalancedSamples.Undersampling(dataset,labelset2 , 0.5);
 		
 		/*
-		 * LRBS算法
+		 *ML-RUS
+		 */
+		
+		/*
+		 *ML-ROS 
+		 */
+		
+		/*
+		 *MLSMOTE
+		 */
+		
+		
+		/*
+		 * 提出的算法
 		 */
 		
 	}
@@ -292,13 +305,14 @@ public class Multi_Classifier {
 	public static void main(String[] args) throws InvalidDataException, ModelInitializationException, Exception{
 		Multi_Classifier br=new Multi_Classifier(args);
 		System.out.println("old dataset statistic: ");
+		br.statics();
+		System.out.println(FindSmallLabels.inner_labels(dataset));
 		//br.resample();
-		
 		//br.split_arff(0.7); //按照70%比例划分训练集测试集
 		//br.save_arff("training.arff", "testing.arff");
 		//br.statics();
 		//br.run_single();
-		br.run_br();
+		//br.run_br();
 		//br.run_Ada();
 		//br.prediction();
 	}

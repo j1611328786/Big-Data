@@ -12,13 +12,14 @@ import weka.core.Instances;
 public class UnbalancedSamples {
 
 	
-	/**/
+	/*简单欠采样数据集*/
 	public static MultiLabelInstances Undersampling(MultiLabelInstances dataset,LabelSet under_labels,double threshold){
 		MultiLabelInstances new_dataset=dataset.clone();
 		
 		Statistics stat=new Statistics();
 		stat.calculateStats(new_dataset);
 		HashMap<LabelSet, Integer> multi_fre=stat.labelCombCount();
+
 		System.out.println(multi_fre.size());
 		Integer count=multi_fre.get(under_labels);//
 		System.out.println(count);
