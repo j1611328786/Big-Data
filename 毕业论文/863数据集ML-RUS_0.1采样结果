@@ -1,0 +1,371 @@
+4
+dataset num: 122748
+---------------------p= 0.1------------------------------
+--------------IMR--------------- 
+cerebral_apoplexy IRBL : 16.2294498381877
+hf_ICD IRBL : 117.17056074766356
+cardiac_infarction IRBL : 129.0836550836551
+nephropathy IRBL : 88.36828193832599
+ischemia_myocardial IRBL : 109.25708061002179
+cardiac_function_lesion IRBL : 39.5808997632202
+coronary_heart_disease IRBL : 4.293027436544964
+gaoxueya IRBL : 1.0
+tangniao IRBL : 2.337458342072759
+meanIR: 56.368934862188
+
+选出的小类标签集： 297  298  299  300  
+
+选出的大类标签集： 296  301  302  303  304  
+statisic traning sample: Examples: 12275
+Predictors: 296
+--Nominal: 0
+--Numeric: 296
+Labels: 9
+
+Cardinality: 1.9041140529531568
+Density: 0.2115682281059063
+Distinct Labelsets: 212
+
+Percentage of examples with label 1: 0.07617107942973524
+Percentage of examples with label 2: 0.06973523421588594
+Percentage of examples with label 3: 0.06329938900203666
+Percentage of examples with label 4: 0.09246435845213849
+Percentage of examples with label 5: 0.07478615071283096
+Percentage of examples with label 6: 0.03494908350305499
+Percentage of examples with label 7: 0.2980040733197556
+Percentage of examples with label 8: 0.8235437881873727
+Percentage of examples with label 9: 0.37116089613034625
+
+Examples of cardinality 0: 0.0
+Examples of cardinality 1: 6355.0
+Examples of cardinality 2: 2764.0
+Examples of cardinality 3: 1663.0
+Examples of cardinality 4: 1065.0
+Examples of cardinality 5: 335.0
+Examples of cardinality 6: 85.0
+Examples of cardinality 7: 8.0
+Examples of cardinality 8: 0.0
+Examples of cardinality 9: 0.0
+
+Examples of combination 000100100: 11
+Examples of combination 000100101: 9
+Examples of combination 011010111: 3
+Examples of combination 010011110: 3
+Examples of combination 110100001: 1
+Examples of combination 000111111: 1
+Examples of combination 000111110: 1
+Examples of combination 100000000: 48
+Examples of combination 001001000: 4
+Examples of combination 100000001: 10
+Examples of combination 010011111: 1
+Examples of combination 100011010: 1
+Examples of combination 000100111: 159
+Examples of combination 011010101: 1
+Examples of combination 110100111: 8
+Examples of combination 001001010: 4
+Examples of combination 100000110: 79
+Examples of combination 101000101: 1
+Examples of combination 100000111: 79
+Examples of combination 101000100: 7
+Examples of combination 010011001: 1
+Examples of combination 000100110: 102
+Examples of combination 000100001: 32
+Examples of combination 101011001: 1
+Examples of combination 000001001: 6
+Examples of combination 010000111: 160
+Examples of combination 111100111: 1
+Examples of combination 100001110: 7
+Examples of combination 100001111: 5
+Examples of combination 010000110: 138
+Examples of combination 001000010: 39
+Examples of combination 001000011: 29
+Examples of combination 001001100: 1
+Examples of combination 000001000: 16
+Examples of combination 101000110: 37
+Examples of combination 101000111: 34
+Examples of combination 110101110: 1
+Examples of combination 110101111: 1
+Examples of combination 010010000: 1
+Examples of combination 010101010: 1
+Examples of combination 000100000: 98
+Examples of combination 010000101: 8
+Examples of combination 010000100: 16
+Examples of combination 100000010: 132
+Examples of combination 100000011: 63
+Examples of combination 001001110: 15
+Examples of combination 000001010: 47
+Examples of combination 001001111: 12
+Examples of combination 000001011: 16
+Examples of combination 101000000: 5
+Examples of combination 101000001: 2
+Examples of combination 011101110: 1
+Examples of combination 011101111: 1
+Examples of combination 111001110: 2
+Examples of combination 110100011: 3
+Examples of combination 010010011: 1
+Examples of combination 010101001: 1
+Examples of combination 110010111: 7
+Examples of combination 000100010: 326
+Examples of combination 000101100: 1
+Examples of combination 110010110: 2
+Examples of combination 000100011: 116
+Examples of combination 001011000: 2
+Examples of combination 001100110: 3
+Examples of combination 001100111: 4
+Examples of combination 000000011: 1034
+Examples of combination 000001100: 8
+Examples of combination 000001101: 2
+Examples of combination 100001010: 6
+Examples of combination 001000111: 149
+Examples of combination 100001011: 1
+Examples of combination 001000110: 172
+Examples of combination 101000011: 5
+Examples of combination 101001101: 1
+Examples of combination 000000010: 4622
+Examples of combination 101001100: 1
+Examples of combination 101000010: 7
+Examples of combination 100101011: 2
+Examples of combination 000001111: 25
+Examples of combination 000110110: 3
+Examples of combination 000110111: 5
+Examples of combination 001000001: 15
+Examples of combination 100001000: 1
+Examples of combination 001000000: 45
+Examples of combination 000001110: 33
+Examples of combination 101001111: 8
+Examples of combination 101001110: 1
+Examples of combination 010010111: 9
+Examples of combination 010010110: 7
+Examples of combination 110010010: 1
+Examples of combination 001010010: 2
+Examples of combination 110011111: 1
+Examples of combination 001010011: 2
+Examples of combination 000011010: 3
+Examples of combination 100101111: 7
+Examples of combination 000000111: 460
+Examples of combination 000000110: 656
+Examples of combination 110000101: 2
+Examples of combination 110110110: 1
+Examples of combination 111000111: 10
+Examples of combination 110110111: 1
+Examples of combination 111000110: 5
+Examples of combination 000011011: 5
+Examples of combination 001011110: 2
+Examples of combination 001011111: 2
+Examples of combination 101101111: 1
+Examples of combination 000000001: 1289
+Examples of combination 000110011: 1
+Examples of combination 110000111: 38
+Examples of combination 001000100: 27
+Examples of combination 110000110: 27
+Examples of combination 001000101: 16
+Examples of combination 000110010: 1
+Examples of combination 001110110: 1
+Examples of combination 101001011: 2
+Examples of combination 001110111: 1
+Examples of combination 000011000: 3
+Examples of combination 100101000: 1
+Examples of combination 000011001: 3
+Examples of combination 010100101: 1
+Examples of combination 001010110: 11
+Examples of combination 001010111: 16
+Examples of combination 100100000: 8
+Examples of combination 110000001: 1
+Examples of combination 110000000: 6
+Examples of combination 000011110: 16
+Examples of combination 000011111: 21
+Examples of combination 010100100: 1
+Examples of combination 110011010: 1
+Examples of combination 001010000: 2
+Examples of combination 001010001: 1
+Examples of combination 100100011: 21
+Examples of combination 001101111: 1
+Examples of combination 000000101: 96
+Examples of combination 000000100: 148
+Examples of combination 110000010: 10
+Examples of combination 010001010: 9
+Examples of combination 110000011: 4
+Examples of combination 010001011: 4
+Examples of combination 011001111: 2
+Examples of combination 000010011: 37
+Examples of combination 000010010: 104
+Examples of combination 100100010: 23
+Examples of combination 000011100: 2
+Examples of combination 001100011: 1
+Examples of combination 111010111: 1
+Examples of combination 100100101: 1
+Examples of combination 111010110: 1
+Examples of combination 101100111: 4
+Examples of combination 110001110: 4
+Examples of combination 110001111: 2
+Examples of combination 000010000: 56
+Examples of combination 001100010: 2
+Examples of combination 100010101: 1
+Examples of combination 000010001: 19
+Examples of combination 100010100: 3
+Examples of combination 001010100: 1
+Examples of combination 100100111: 28
+Examples of combination 100100110: 18
+Examples of combination 110001000: 1
+Examples of combination 100111111: 1
+Examples of combination 100111110: 1
+Examples of combination 000010111: 174
+Examples of combination 000010110: 192
+Examples of combination 011100111: 6
+Examples of combination 110001011: 1
+Examples of combination 110001010: 1
+Examples of combination 010110110: 3
+Examples of combination 010110111: 3
+Examples of combination 011000111: 18
+Examples of combination 010000011: 45
+Examples of combination 010001100: 1
+Examples of combination 010000010: 94
+Examples of combination 011000110: 13
+Examples of combination 011100110: 5
+Examples of combination 000010100: 36
+Examples of combination 000010101: 19
+Examples of combination 010101111: 4
+Examples of combination 100010000: 2
+Examples of combination 000101111: 11
+Examples of combination 000101110: 9
+Examples of combination 010101110: 1
+Examples of combination 010000001: 9
+Examples of combination 100110001: 1
+Examples of combination 010000000: 33
+Examples of combination 100010110: 40
+Examples of combination 010100010: 12
+Examples of combination 100010111: 45
+Examples of combination 010100011: 13
+Examples of combination 000101000: 1
+Examples of combination 101010111: 1
+Examples of combination 101010110: 1
+Examples of combination 011000010: 1
+Examples of combination 100110111: 3
+Examples of combination 100000100: 7
+Examples of combination 010001000: 2
+Examples of combination 011000011: 2
+Examples of combination 100000101: 3
+Examples of combination 100011111: 4
+Examples of combination 000101010: 5
+Examples of combination 010100001: 1
+Examples of combination 100011110: 5
+Examples of combination 010100000: 3
+Examples of combination 000101011: 7
+Examples of combination 010001111: 21
+Examples of combination 011000001: 1
+Examples of combination 011000000: 2
+Examples of combination 010001110: 19
+Examples of combination 100010011: 5
+Examples of combination 010100111: 22
+Examples of combination 100010010: 9
+Examples of combination 010100110: 7
+
+training: 8593, testing: 3682
+-----------------------------------BR-RandomForest-------------------------------
+Hamming Loss: 0.0556
+Subset Accuracy: 0.7194
+Example-Based Precision: 0.9275
+Example-Based Recall: 0.8646
+Example-Based F Measure: 0.8745
+Example-Based Accuracy: 0.8349
+Example-Based Specificity: 0.9796
+Micro-averaged Precision: 0.9118
+Micro-averaged Recall: 0.8121
+Micro-averaged F-Measure: 0.8591
+Micro-averaged Specificity: 0.9793
+Macro-averaged Precision: 0.9157
+cerebral_apoplexy: 0.9333 hf_ICD: 0.8874 cardiac_infarction: 0.9669 nephropathy: 0.9321 ischemia_myocardial: 0.9308 cardiac_function_lesion: 0.9385 coronary_heart_disease: 0.8296 gaoxueya: 0.9444 tangniao: 0.8779 
+Macro-averaged Recall: 0.6301
+cerebral_apoplexy: 0.5224 hf_ICD: 0.5360 cardiac_infarction: 0.5043 nephropathy: 0.6023 ischemia_myocardial: 0.4840 cardiac_function_lesion: 0.5126 coronary_heart_disease: 0.7042 gaoxueya: 0.9774 tangniao: 0.8275 
+Macro-averaged F-Measure: 0.7341
+cerebral_apoplexy: 0.6699 hf_ICD: 0.6683 cardiac_infarction: 0.6629 nephropathy: 0.7318 ischemia_myocardial: 0.6368 cardiac_function_lesion: 0.6630 coronary_heart_disease: 0.7618 gaoxueya: 0.9606 tangniao: 0.8520 
+Macro-averaged Specificity: 0.9530
+cerebral_apoplexy: 0.9971 hf_ICD: 0.9950 cardiac_infarction: 0.9988 nephropathy: 0.9955 ischemia_myocardial: 0.9974 cardiac_function_lesion: 0.9989 coronary_heart_disease: 0.9390 gaoxueya: 0.7184 tangniao: 0.9369 
+Average Precision: 0.9415
+Coverage: 1.4307
+OneError: 0.0475
+IsError: 0.1961
+ErrorSetSize: 0.6608
+Ranking Loss: 0.0440
+
+-----------------------------------BR-Logistic-------------------------------
+Hamming Loss: 0.1076
+Subset Accuracy: 0.4536
+Example-Based Precision: 0.8770
+Example-Based Recall: 0.7144
+Example-Based F Measure: 0.7495
+Example-Based Accuracy: 0.6728
+Example-Based Specificity: 0.9678
+Micro-averaged Precision: 0.8322
+Micro-averaged Recall: 0.6067
+Micro-averaged F-Measure: 0.7018
+Micro-averaged Specificity: 0.9677
+Macro-averaged Precision: 0.6219
+cerebral_apoplexy: 0.5106 hf_ICD: 0.6471 cardiac_infarction: 0.5000 nephropathy: 0.8065 ischemia_myocardial: 0.3548 cardiac_function_lesion: 0.4545 coronary_heart_disease: 0.6240 gaoxueya: 0.9091 tangniao: 0.7904 
+Macro-averaged Recall: 0.2791
+cerebral_apoplexy: 0.0896 hf_ICD: 0.1760 cardiac_infarction: 0.0560 nephropathy: 0.2193 ischemia_myocardial: 0.0440 cardiac_function_lesion: 0.0420 coronary_heart_disease: 0.4103 gaoxueya: 0.9424 tangniao: 0.5322 
+Macro-averaged F-Measure: 0.3429
+cerebral_apoplexy: 0.1524 hf_ICD: 0.2767 cardiac_infarction: 0.1008 nephropathy: 0.3448 ischemia_myocardial: 0.0783 cardiac_function_lesion: 0.0769 coronary_heart_disease: 0.4950 gaoxueya: 0.9255 tangniao: 0.6361 
+Macro-averaged Specificity: 0.9252
+cerebral_apoplexy: 0.9933 hf_ICD: 0.9930 cardiac_infarction: 0.9962 nephropathy: 0.9946 ischemia_myocardial: 0.9942 cardiac_function_lesion: 0.9983 coronary_heart_disease: 0.8958 gaoxueya: 0.5392 tangniao: 0.9226 
+Average Precision: 0.8905
+Coverage: 1.8705
+OneError: 0.0872
+IsError: 0.3783
+ErrorSetSize: 1.1812
+Ranking Loss: 0.0801
+
+-----------------------------------BR-j48-------------------------------
+Hamming Loss: 0.0932
+Subset Accuracy: 0.4997
+Example-Based Precision: 0.8675
+Example-Based Recall: 0.7811
+Example-Based F Measure: 0.7899
+Example-Based Accuracy: 0.7194
+Example-Based Specificity: 0.9616
+Micro-averaged Precision: 0.8282
+Micro-averaged Recall: 0.6984
+Micro-averaged F-Measure: 0.7578
+Micro-averaged Specificity: 0.9618
+Macro-averaged Precision: 0.6668
+cerebral_apoplexy: 0.4911 hf_ICD: 0.5882 cardiac_infarction: 0.6026 nephropathy: 0.7521 ischemia_myocardial: 0.5500 cardiac_function_lesion: 0.6250 coronary_heart_disease: 0.6754 gaoxueya: 0.9222 tangniao: 0.7951 
+Macro-averaged Recall: 0.3757
+cerebral_apoplexy: 0.2052 hf_ICD: 0.2400 cardiac_infarction: 0.2026 nephropathy: 0.2661 ischemia_myocardial: 0.1320 cardiac_function_lesion: 0.0420 coronary_heart_disease: 0.6154 gaoxueya: 0.9575 tangniao: 0.7201 
+Macro-averaged F-Measure: 0.4397
+cerebral_apoplexy: 0.2895 hf_ICD: 0.3409 cardiac_infarction: 0.3032 nephropathy: 0.3931 ischemia_myocardial: 0.2129 cardiac_function_lesion: 0.0787 coronary_heart_disease: 0.6440 gaoxueya: 0.9395 tangniao: 0.7557 
+Macro-averaged Specificity: 0.9247
+cerebral_apoplexy: 0.9833 hf_ICD: 0.9878 cardiac_infarction: 0.9910 nephropathy: 0.9910 ischemia_myocardial: 0.9921 cardiac_function_lesion: 0.9992 coronary_heart_disease: 0.8753 gaoxueya: 0.6048 tangniao: 0.8982 
+Average Precision: 0.8769
+Coverage: 2.0272
+OneError: 0.1157
+IsError: 0.3740
+ErrorSetSize: 1.4329
+Ranking Loss: 0.0965
+
+-----------------------------------BR-libsvm-------------------------------
+Hamming Loss: 0.1181
+Subset Accuracy: 0.3973
+Example-Based Precision: 0.8664
+Example-Based Recall: 0.6889
+Example-Based F Measure: 0.7176
+Example-Based Accuracy: 0.6306
+Example-Based Specificity: 0.9699
+Micro-averaged Precision: 0.8206
+Micro-averaged Recall: 0.5555
+Micro-averaged F-Measure: 0.6625
+Micro-averaged Specificity: 0.9680
+Macro-averaged Precision: 0.2564
+cerebral_apoplexy: 0.0000 hf_ICD: 0.0000 cardiac_infarction: 0.0000 nephropathy: 0.0000 ischemia_myocardial: 0.0000 cardiac_function_lesion: 0.0000 coronary_heart_disease: 0.6454 gaoxueya: 0.8303 tangniao: 0.8316 
+Macro-averaged Recall: 0.1806
+cerebral_apoplexy: 0.0000 hf_ICD: 0.0000 cardiac_infarction: 0.0000 nephropathy: 0.0000 ischemia_myocardial: 0.0000 cardiac_function_lesion: 0.0000 coronary_heart_disease: 0.1484 gaoxueya: 1.0000 tangniao: 0.4770 
+Macro-averaged F-Measure: 0.1950
+cerebral_apoplexy: 0.0000 hf_ICD: 0.0000 cardiac_infarction: 0.0000 nephropathy: 0.0000 ischemia_myocardial: 0.0000 cardiac_function_lesion: 0.0000 coronary_heart_disease: 0.2413 gaoxueya: 0.9073 tangniao: 0.6062 
+Macro-averaged Specificity: 0.8792
+cerebral_apoplexy: 1.0000 hf_ICD: 1.0000 cardiac_infarction: 1.0000 nephropathy: 1.0000 ischemia_myocardial: 1.0000 cardiac_function_lesion: 1.0000 coronary_heart_disease: 0.9656 gaoxueya: 0.0000 tangniao: 0.9470 
+Average Precision: 0.8688
+Coverage: 2.2450
+OneError: 0.0904
+IsError: 0.4207
+ErrorSetSize: 1.6602
+Ranking Loss: 0.1106
+

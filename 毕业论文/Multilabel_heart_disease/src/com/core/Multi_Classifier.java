@@ -2,6 +2,7 @@ package com.core;
 
 
 import weka.classifiers.Classifier;
+import weka.classifiers.trees.J48;
 import weka.classifiers.trees.RandomForest;
 import weka.core.Instance;
 import weka.core.Instances;
@@ -163,21 +164,33 @@ public class Multi_Classifier {
     return measures;              
 	}
 	
-	public void run_br() throws Exception{
-		//randomforest
-		Classifier baseClassifier=new RandomForest();
-		//logistic
-		//Classifier baseClassifier = new Logistic();
-		//j48
-		//Classifier baseClassifier = new J48();
-        //br = new BinaryRelevance(baseClassifier);
-		//svm
-		//Classifier baseClassifier =new LibSVM();
+	public void run_br(Classifier baseClassifier) throws Exception{
 		br = new BinaryRelevance(baseClassifier);
         Evaluator eval = new Evaluator();
         
         br.build(dataset);
         System.out.println(eval.evaluate(br, new MultiLabelInstances(test,xmlFilename),setMeasures(numlabels)));
+	}
+	
+	public void br() throws Exception {
+		Classifier baseClassifier;
+		//randomforest
+		System.out.println("-----------------------------------BR-RandomForest-------------------------------");
+		baseClassifier=new RandomForest();
+		run_br(baseClassifier);
+		//logistic
+		System.out.println("-----------------------------------BR-Logistic-------------------------------");
+		baseClassifier = new Logistic();
+		run_br(baseClassifier);
+		//j48
+		System.out.println("-----------------------------------BR-j48-------------------------------");
+		baseClassifier = new J48();
+		run_br(baseClassifier);
+	    //svm
+		System.out.println("-----------------------------------BR-libsvm-------------------------------");
+	    baseClassifier =new LibSVM();
+	    run_br(baseClassifier);
+		
 	}
 	
 	
@@ -249,6 +262,8 @@ public class Multi_Classifier {
     	System.out.println("training: "+dataset.getNumInstances()+", testing: "+test.numInstances());
 	}
 	
+
+    
 	/*
 	 * 保存训练集，测试集到指定的参数路径中
 	 */
@@ -267,54 +282,57 @@ public class Multi_Classifier {
 		 saver.writeBatch();
 	}
 	
-	public void resample() {
+	public void resample_simple() throws Exception {
 		/*
-		 *仅仅欠采样大类别的数据量 
+		 *仅仅欠采样大类别的数据量 ，可记作原始数据集
 		 * 
 		 */
 		System.out.println("underSamples dataset statistic: ");
 		LabelSet labelset=new LabelSet(new double[]{0,0,0,0,0,0,0,1,0}); //大类别样本欠采样
-		dataset=UnbalancedSamples.Undersampling(dataset,labelset , 0.5);//训练集大类样本欠采样，采样后的比重为50%
+		UnbalancedSamples.Undersampling(dataset,labelset , 0.1);//训练集大类样本欠采样，采样后的比重为80%
 		LabelSet labelset1=new LabelSet(new double[]{0,0,0,0,0,0,0,0,1}); 
-		dataset=UnbalancedSamples.Undersampling(dataset,labelset1 , 0.5);
+		UnbalancedSamples.Undersampling(dataset,labelset1 , 0.1);
 		LabelSet labelset2=new LabelSet(new double[]{0,0,0,0,0,0,1,1,1}); 
-		dataset=UnbalancedSamples.Undersampling(dataset,labelset2 , 0.5);
-		
-		/*
-		 *ML-RUS
-		 */
-		
-		/*
-		 *ML-ROS 
-		 */
-		
-		/*
-		 *MLSMOTE
-		 */
-		
-		
-		/*
-		 * 提出的算法
-		 */
+		UnbalancedSamples.Undersampling(dataset,labelset2 , 0.1);
+		statics();
 		
 	}
 	
-	//-arff dataset_2.arff  -xml output_2.xml  -unlabeled dataset_2.arff
+	public void resample_RUS() throws Exception {
+		double p=0.05;
+		while(p>=0.05) {
+			System.out.println("---------------------p= "+p+"------------------------------");
+			UnbalancedSamples.calML_RUS(dataset,p);//0.9 0.85  0.8 0.75 0.7 0.65 0.6 0.55 0.5
+			statics();
+			//split_arff(0.7); //按照70%比例划分训练集测试集
+			//save_arff("training_simple"+p+".arff", "testing_simple"+p+".arff");
+			p-=0.1;
+			//br();
+		}
+	}
+	
+	public void resample_MLSMOTE() {
+		
+	}
+	
+
+	
+	//-arff dataset_2.arff  -xml output_2.xml
 	//-arff ../mimic2/holdout-1/training_part1.arff  -xml ../mimic2/labels.xml  -unlabeled ../mimic2/holdout-1/testval_part2.arff
 	
 	public static void main(String[] args) throws InvalidDataException, ModelInitializationException, Exception{
 		Multi_Classifier br=new Multi_Classifier(args);
-		System.out.println("old dataset statistic: ");
-		br.statics();
-		System.out.println(FindSmallLabels.inner_labels(dataset));
-		//br.resample();
+		/*FindSmallLabels fl=new FindSmallLabels(dataset);
+		System.out.println(fl.inner_labels(dataset));//测试标签内的不均衡性,返回小类别标签
+		System.out.println(fl.between_labels(dataset));//测试标签间的不均衡性，返回小类别标签
+		*/
+		//br.resample_simple();
+		br.resample_RUS();
 		//br.split_arff(0.7); //按照70%比例划分训练集测试集
-		//br.save_arff("training.arff", "testing.arff");
+		//br.save_arff("training_simple.arff", "testing_simple.arff");
 		//br.statics();
-		//br.run_single();
-		//br.run_br();
+		//br.br();
 		//br.run_Ada();
-		//br.prediction();
 	}
 
 }
