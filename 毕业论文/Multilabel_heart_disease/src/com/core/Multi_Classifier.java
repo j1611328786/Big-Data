@@ -12,7 +12,7 @@ import weka.classifiers.functions.Logistic;
 import weka.classifiers.evaluation.Evaluation;
 import weka.classifiers.functions.LibSVM;
 import weka.filters.supervised.instance.SMOTE;
-
+import weka.classifiers.evaluation.ThresholdCurve;
 
 import java.io.File;
 import java.io.FileReader;
@@ -163,7 +163,8 @@ public class Multi_Classifier {
          measures.add(new IsError());
          measures.add(new ErrorSetSize());
          measures.add(new RankingLoss());
-    return measures;              
+         
+       return measures;              
 	}
 	
 	public void run_br(Classifier baseClassifier) throws Exception{
@@ -177,9 +178,9 @@ public class Multi_Classifier {
 	public void br() throws Exception {
 		Classifier baseClassifier;
 		//randomforest
-		System.out.println("-----------------------------------BR-RandomForest-------------------------------");
-		baseClassifier=new RandomForest();
-		run_br(baseClassifier);
+		//System.out.println("-----------------------------------BR-RandomForest-------------------------------");
+		//baseClassifier=new RandomForest();
+		//run_br(baseClassifier);
 		//logistic
 		System.out.println("-----------------------------------BR-Logistic-------------------------------");
 		baseClassifier = new Logistic();
@@ -269,19 +270,19 @@ public class Multi_Classifier {
 	/*
 	 * 保存训练集，测试集到指定的参数路径中
 	 */
-	public void save_arff(String output_training,String output_test) throws IOException{
+	public void save_arff(String ...output) throws IOException{
 		 ArffSaver saver = new ArffSaver();
-		 saver.setInstances(dataset.getDataSet());
-		 if(output_training!=null){
-			 saver.setFile(new File(output_training));
+		 if(output.length>=1){
+		     saver.setInstances(dataset.getDataSet());
+			 saver.setFile(new File(output[0]));
+			 saver.writeBatch();
 		 }
-		 saver.writeBatch();
 		
-		 saver.setInstances(test);
-		 if(output_test!=null){
-			 saver.setFile(new File(output_test));
+		 if(output.length==2){
+		     saver.setInstances(test);
+			 saver.setFile(new File(output[1]));
+			 saver.writeBatch();
 		 }
-		 saver.writeBatch();
 	}
 	
 	public void resample_simple() throws Exception {
@@ -313,10 +314,12 @@ public class Multi_Classifier {
 		}
 	}
 	
-	public void resample_MLSMOTE() {
-		SMOTE smote=new SMOTE();
-		
-		
+	public void resample_MLSMOTE() throws Exception {
+		MLSMOTE smote=new MLSMOTE(dataset);
+		smote.doMLSMOTE();
+		statics();
+		save_arff("training_simple0.2_mlsmote.arff");
+		br();
 	}
 	
 
@@ -326,6 +329,7 @@ public class Multi_Classifier {
 	
 	public static void main(String[] args) throws InvalidDataException, ModelInitializationException, Exception{
 		Multi_Classifier br=new Multi_Classifier(args);
+		
 		/*FindSmallLabels fl=new FindSmallLabels(dataset);
 		System.out.println(fl.inner_labels(dataset));//测试标签内的不均衡性,返回小类别标签
 		System.out.println(fl.between_labels(dataset));//测试标签间的不均衡性，返回小类别标签
@@ -333,7 +337,9 @@ public class Multi_Classifier {
 		//br.run_single();
 		//br.resample_simple();
 		//br.resample_RUS();
-		br.br();
+		br.statics();
+		br.resample_MLSMOTE();
+		//br.br();
 		//br.split_arff(0.7); //按照70%比例划分训练集测试集
 		//br.save_arff("training_simple.arff", "testing_simple.arff");
 		//br.statics();

@@ -68,11 +68,9 @@ public class MLSMOTE extends Filter implements SupervisedFilter, OptionHandler, 
 	/** the percentage of SMOTE instances to create. */
 	protected double m_Percentage = 100.0;
 
-	/** the index of the class value. */
-	protected String m_ClassValueIndex = "0";
 
 	/** whether to detect the minority class automatically. */
-	protected boolean m_DetectMinorityClass = true;
+	protected boolean m_DetectMinorityClass = false;
 
 	/** multi-label samples */
 	public MultiLabelInstances dataset;
@@ -121,141 +119,7 @@ public class MLSMOTE extends Filter implements SupervisedFilter, OptionHandler, 
 		return RevisionUtils.extract("$Revision: 8108 $");
 	}
 
-	/**
-	 * Returns the Capabilities of this filter.
-	 *
-	 * @return the capabilities of this object
-	 * @see Capabilities
-	 */
-	public Capabilities getCapabilities() {
-		Capabilities result = super.getCapabilities();
-		result.disableAll();
-
-		// attributes
-		result.enableAllAttributes();
-		result.enable(Capability.MISSING_VALUES);
-
-		// class
-		result.enable(Capability.NOMINAL_CLASS);
-		result.enable(Capability.MISSING_CLASS_VALUES);
-
-		return result;
-	}
-
-	/**
-	 * Returns an enumeration describing the available options.
-	 *
-	 * @return an enumeration of all the available options.
-	 */
-	public Enumeration listOptions() {
-		Vector newVector = new Vector();
-
-		newVector.addElement(new Option("\tSpecifies the random number seed\n" + "\t(default 1)", "S", 1, "-S <num>"));
-
-		newVector
-				.addElement(new Option("\tSpecifies percentage of SMOTE instances to create.\n" + "\t(default 100.0)\n",
-						"P", 1, "-P <percentage>"));
-
-		newVector.addElement(new Option("\tSpecifies the number of nearest neighbors to use.\n" + "\t(default 5)\n",
-				"K", 1, "-K <nearest-neighbors>"));
-
-		newVector.addElement(new Option("\tSpecifies the index of the nominal class value to SMOTE\n"
-				+ "\t(default 0: auto-detect non-empty minority class))\n", "C", 1, "-C <value-index>"));
-
-		return newVector.elements();
-	}
-
-	/**
-	 * Parses a given list of options.
-	 * 
-	 * <!-- options-start --> Valid options are:
-	 * <p/>
-	 * 
-	 * <pre>
-	 *  -S &lt;num&gt;
-	 *  Specifies the random number seed
-	 *  (default 1)
-	 * </pre>
-	 * 
-	 * <pre>
-	 *  -P &lt;percentage&gt;
-	 *  Specifies percentage of SMOTE instances to create.
-	 *  (default 100.0)
-	 * </pre>
-	 * 
-	 * <pre>
-	 *  -K &lt;nearest-neighbors&gt;
-	 *  Specifies the number of nearest neighbors to use.
-	 *  (default 5)
-	 * </pre>
-	 * 
-	 * <pre>
-	 *  -C &lt;value-index&gt;
-	 *  Specifies the index of the nominal class value to SMOTE
-	 *  (default 0: auto-detect non-empty minority class))
-	 * </pre>
-	 * 
-	 * <!-- options-end -->
-	 *
-	 * @param options
-	 *            the list of options as an array of strings
-	 * @throws Exception
-	 *             if an option is not supported
-	 */
-	public void setOptions(String[] options) throws Exception {
-		String seedStr = Utils.getOption('S', options);
-		if (seedStr.length() != 0) {
-			setRandomSeed(Integer.parseInt(seedStr));
-		} else {
-			setRandomSeed(1);
-		}
-
-		String percentageStr = Utils.getOption('P', options);
-		if (percentageStr.length() != 0) {
-			setPercentage(new Double(percentageStr).doubleValue());
-		} else {
-			setPercentage(100.0);
-		}
-
-		String nnStr = Utils.getOption('K', options);
-		if (nnStr.length() != 0) {
-			setNearestNeighbors(Integer.parseInt(nnStr));
-		} else {
-			setNearestNeighbors(5);
-		}
-
-		String classValueIndexStr = Utils.getOption('C', options);
-		if (classValueIndexStr.length() != 0) {
-			setClassValue(classValueIndexStr);
-		} else {
-			m_DetectMinorityClass = true;
-		}
-	}
-
-	/**
-	 * Gets the current settings of the filter.
-	 *
-	 * @return an array of strings suitable for passing to setOptions
-	 */
-	public String[] getOptions() {
-		Vector<String> result;
-
-		result = new Vector<String>();
-
-		result.add("-C");
-		result.add(getClassValue());
-
-		result.add("-K");
-		result.add("" + getNearestNeighbors());
-
-		result.add("-P");
-		result.add("" + getPercentage());
-
-		result.add("-S");
-		result.add("" + getRandomSeed());
-
-		return result.toArray(new String[result.size()]);
-	}
+	
 
 	/**
 	 * Returns the tip text for this property.
@@ -361,29 +225,6 @@ public class MLSMOTE extends Filter implements SupervisedFilter, OptionHandler, 
 				+ "Use a value of 0 to auto-detect the non-empty minority class.";
 	}
 
-	/**
-	 * Sets the index of the class value to which SMOTE should be applied.
-	 * 
-	 * @param value
-	 *            the class value index
-	 */
-	public void setClassValue(String value) {
-		m_ClassValueIndex = value;
-		if (m_ClassValueIndex.equals("0")) {
-			m_DetectMinorityClass = true;
-		} else {
-			m_DetectMinorityClass = false;
-		}
-	}
-
-	/**
-	 * Gets the index of the class value to which SMOTE should be applied.
-	 * 
-	 * @return the index of the clas value to which SMOTE should be applied
-	 */
-	public String getClassValue() {
-		return m_ClassValueIndex;
-	}
 	
 	/*
 	 * compose minority class dataset also push all dataset instances 原始数据集中
@@ -394,7 +235,8 @@ public class MLSMOTE extends Filter implements SupervisedFilter, OptionHandler, 
 		Iterator<Instance> it = sample.iterator();
 		while (it.hasNext()) {
 			Instance instance = it.next();
-			if (instance.index(label) != 1) {
+			int v=(int) instance.value(label);
+			if (v!= 1) {
 				it.remove();
 			}
 		}
@@ -411,7 +253,7 @@ public class MLSMOTE extends Filter implements SupervisedFilter, OptionHandler, 
 	 * @throws Exception
 	 *             if provided options cannot be executed on input instances
 	 */
-	protected void doMLSMOTE() throws Exception {
+	public void doMLSMOTE() throws Exception {
 
 		FindSmallLabels fsl = new FindSmallLabels(dataset);
 		double meanIR = fsl.getMEANIR();// 标签间的不均衡度
@@ -421,7 +263,7 @@ public class MLSMOTE extends Filter implements SupervisedFilter, OptionHandler, 
 
 		for (int label : smalllabels) {
 			Instances sample = getLabel(label);
-
+            System.out.println("sample: "+sample.size());
 			// compute Value Distance Metric matrices for nominal features
 			Map vdmMap = new HashMap();
 			Set<Attribute> attrEnum = dataset.getFeatureAttributes();
@@ -559,19 +401,20 @@ public class MLSMOTE extends Filter implements SupervisedFilter, OptionHandler, 
 					int[] indices=dataset.getLabelIndices();
 					int[] labelcounts=new int[indices.length];
 					for(int t=0;t<indices.length;t++)
-						labelcounts[t]=instanceI.index(indices[t]);
+						labelcounts[t]=(int) instanceI.value(indices[t]);
 					for(int r=0;r<labelcounts.length;r++) {
 					    for(int t=0;t<nnArray.length;t++) 
 						{
-							labelcounts[r]+=nnArray[t].index(indices[r]);	
+							labelcounts[r]+=nnArray[t].value(indices[r]);	
 						}	
 					    
 					    if(labelcounts[r]>(nearestNeighbors+1)/2)
 					    	values[indices[r]] = 1;
+					    else values[indices[r]]=0;
 					}
 				// 生成新样本
 					Instance synthetic = new DenseInstance(1.0, values);
-					push(synthetic);
+					dataset.getDataSet().add(synthetic);
 					n--;
 				}
 			}
