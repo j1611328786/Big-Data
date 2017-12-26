@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="/home/cj/wekafiles/packages/LibSVM/LibSVM.jar"/>
 	<classpathentry kind="lib" path="/home/cj/weka-3-8-1/weka.jar"/>
 	<classpathentry kind="lib" path="/home/cj/weka-3-8-1/libsvm.jar"/>
+	<classpathentry kind="lib" path="/home/cj/wekafiles/packages/SMOTE/SMOTE.jar"/>
 	<classpathentry kind="output" path="out/production/Multilabel_heart_disease"/>
 </classpath>

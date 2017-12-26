@@ -11,6 +11,7 @@ import weka.core.converters.ArffSaver;
 import weka.classifiers.functions.Logistic;
 import weka.classifiers.evaluation.Evaluation;
 import weka.classifiers.functions.LibSVM;
+import weka.filters.supervised.instance.SMOTE;
 
 
 import java.io.File;
@@ -97,7 +98,7 @@ public class Multi_Classifier {
 		//System.out.println(dataset.getLabelAttributes());
 		Statistics stat=new Statistics();
 		stat.calculateStats(dataset);
-		System.out.println("statisic traning sample: "+stat);
+		System.out.println("traning sample: "+stat);
 		if(test!=null)
 		{
 			stat.calculateStats(new MultiLabelInstances(test,xmlFilename));
@@ -112,12 +113,13 @@ public class Multi_Classifier {
 		BinaryRelevanceTransformation brt=new BinaryRelevanceTransformation(dataset);
 		BinaryRelevanceTransformation brt1=new BinaryRelevanceTransformation(new MultiLabelInstances(test,xmlFilename));//test
 		String[] labelNames=dataset.getLabelNames();
-		for(int i=0;i<numlabels;i++) {
+		for(int i=0;i<labelNames.length;i++) {
 			
 		    //随机森林模型
 			RandomForest classifier=new RandomForest();
 			System.out.println("the label is : "+ labelNames[i]);
 			Instances instrain=brt.transformInstances(i);
+			System.out.println(instrain.numAttributes());
 			classifier.buildClassifier(instrain);
 			System.out.println("gobalinfo: \n"+classifier.globalInfo());
 			System.out.println("classifier : \n"+classifier);
@@ -312,6 +314,8 @@ public class Multi_Classifier {
 	}
 	
 	public void resample_MLSMOTE() {
+		SMOTE smote=new SMOTE();
+		
 		
 	}
 	
@@ -326,8 +330,10 @@ public class Multi_Classifier {
 		System.out.println(fl.inner_labels(dataset));//测试标签内的不均衡性,返回小类别标签
 		System.out.println(fl.between_labels(dataset));//测试标签间的不均衡性，返回小类别标签
 		*/
+		//br.run_single();
 		//br.resample_simple();
-		br.resample_RUS();
+		//br.resample_RUS();
+		br.br();
 		//br.split_arff(0.7); //按照70%比例划分训练集测试集
 		//br.save_arff("training_simple.arff", "testing_simple.arff");
 		//br.statics();

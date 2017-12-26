@@ -65,8 +65,8 @@ public class UnbalancedSamples {
 	public static void calML_RUS(MultiLabelInstances dataset,double percentage) throws Exception {
 		FindSmallLabels fs=new FindSmallLabels(dataset);
 		System.out.println("--------------IMR--------------- ");
-		//fs.between_labels();
-		fs.inner_labels();
+		fs.between_labels();
+		//fs.inner_labels();
 		ArrayList<Integer>  smalllabels=fs.getsmalllabels();
 		ArrayList<Integer>  maxlabels=fs.getmaxlabels();
 		double meanIR=fs.getMEANIR();

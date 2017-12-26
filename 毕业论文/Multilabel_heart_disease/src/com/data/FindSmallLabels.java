@@ -29,6 +29,7 @@ public class FindSmallLabels {
 	
 	public FindSmallLabels(MultiLabelInstances dataset) {
 		this.dataset=dataset;
+		between_labels();
 	}
 	
 	public void inner_labels() {
