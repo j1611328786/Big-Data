@@ -322,6 +322,14 @@ public class Multi_Classifier {
 		br();
 	}
 	
+	public void resample_MLBBS() throws Exception {
+		ML_BBS.dobbs(dataset, 0);
+		statics();
+		split_arff(0.7); //按照70%比例划分训练集测试集
+		save_arff("training_simpleBBS_5.arff","testing_simpleBBS_5.arff");
+		//br();
+	}
+	
 
 	
 	//-arff dataset_2.arff  -xml output_2.xml
@@ -338,7 +346,8 @@ public class Multi_Classifier {
 		//br.resample_simple();
 		//br.resample_RUS();
 		br.statics();
-		br.resample_MLSMOTE();
+		//br.resample_MLSMOTE();
+		br.resample_MLBBS();
 		//br.br();
 		//br.split_arff(0.7); //按照70%比例划分训练集测试集
 		//br.save_arff("training_simple.arff", "testing_simple.arff");

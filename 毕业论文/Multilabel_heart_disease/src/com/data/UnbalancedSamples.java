@@ -62,16 +62,12 @@ public class UnbalancedSamples {
 	 *        重新计算 非小类标签集maxlabels中 标签的不均衡度，且将大于 原始meanIR的标签 删除 并归入 小类标签集smalllabels
 	 *        
 	 *        
-	 *        
-	 *考虑到大样本标签集中的不均衡度，最大样本标签集和最小样本标签集（即将接近meanIRR）的差距，对每个大类标签的欠采样比例进行重新划分
-	 *而不是使用原始算法中的单一值percentage
-	 * 
 	 * */
 	public static void calML_RUS(MultiLabelInstances dataset,double percentage) throws Exception {
 		FindSmallLabels fs=new FindSmallLabels(dataset);
 		System.out.println("--------------IMR--------------- ");
-		fs.between_labels();
-		//fs.inner_labels();
+		//fs.between_labels();
+		fs.inner_labels();
 		ArrayList<Integer>  smalllabels=fs.getsmalllabels();
 		ArrayList<Integer>  maxlabels=fs.getmaxlabels();
 		double meanIR=fs.getMEANIR();

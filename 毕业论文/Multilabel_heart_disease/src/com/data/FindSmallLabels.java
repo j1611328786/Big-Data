@@ -29,7 +29,6 @@ public class FindSmallLabels {
 	
 	public FindSmallLabels(MultiLabelInstances dataset) {
 		this.dataset=dataset;
-		between_labels();
 	}
 	
 	public void inner_labels() {
@@ -86,7 +85,7 @@ public class FindSmallLabels {
         labelsFrequency=new int[len];
 		irlb=new double[len];
 		labelsFrequency[0]=(int)(multi_fre[0]*number);
-		double max=irlb[0];
+		int max=labelsFrequency[0];
 		for(int i=1;i<len;i++) {
 			labelsFrequency[i]=(int)(multi_fre[i]*number);//标签i出现的样本数
 			if(max<labelsFrequency[i])
@@ -94,15 +93,15 @@ public class FindSmallLabels {
 		}
 		for(int i=0;i<len;i++) 
 		{
-			irlb[i]=max/labelsFrequency[i]; //IRLBlj=（出现在样本集次数最多的标签）/（标签j出现的次数）,衡量标签间出现次数的差异性
-			System.out.println(labelnames[i]+" IRBL : "+irlb[i]);
+			irlb[i]=max*1.0/labelsFrequency[i]; //IRLBlj=（出现在样本集次数最多的标签）/（标签j出现的次数）,衡量标签间出现次数的差异性
+			//System.out.println(labelnames[i]+" IRBL : "+irlb[i]);
 		}
 		
 		meanIR=0;
 		for(int i=0;i<len;i++)
 			meanIR+=irlb[i];
 		meanIR=meanIR/len;//平均，meanIR
-		System.out.println("meanIR: "+meanIR);
+		//System.out.println("meanIR: "+meanIR);
 		
 		//小类别标签在样本中的位置，即选出的小类别标签集
 		for(int i=0;i<len;i++) {
@@ -186,5 +185,18 @@ public class FindSmallLabels {
     
     public int[] getFrequency() {
     	return labelsFrequency;
+    }
+    /*
+     * 满足IRL(y)=meanIR,对应的样本集大小，
+     * 
+     * meanIR=max/meanInstances;
+     * 
+     */
+    public int getMeanInstances() {
+    	int meanInstances=labelsFrequency[0];
+    	for(int i=1;i<labelsFrequency.length;i++)
+    		if(meanInstances<labelsFrequency[i])
+    			meanInstances=labelsFrequency[i];
+        return (int) (meanInstances/meanIR);
     }
 }

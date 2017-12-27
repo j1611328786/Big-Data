@@ -243,7 +243,149 @@ public class MLSMOTE extends Filter implements SupervisedFilter, OptionHandler, 
 		return sample;
 	}
 	
+	public Map getVdmp(Instances sample) {
+		// compute Value Distance Metric matrices for nominal features
+		Map vdmMap = new HashMap();
+		Set<Attribute> attrEnum = dataset.getFeatureAttributes();
+		int[] labeldices = dataset.getLabelIndices();
+		for (Attribute attr : attrEnum) {
+			if (attr.isNominal() || attr.isString()) {
+				double[][] vdm = new double[attr.numValues()][attr.numValues()];
+				vdmMap.put(attr, vdm);
+				int[] featureValueCounts = new int[attr.numValues()];
+				int[][] featureValueCountsByClass = new int[dataset.getNumLabels()][attr.numValues()];
+				Iterator<Instance> it1 = sample.iterator();
+				while (it1.hasNext()) {
+					Instance instance = it1.next();
+					int value = (int) instance.value(attr);
+					featureValueCounts[value]++;// 统计特征中每个值出现的次数
+					for (int i = 0; i < labeldices.length; i++)
+						if (instance.value(labeldices[i]) == 1)
+							featureValueCountsByClass[i][value]++;// 统计特征值对应出现的类标号出现的次数
+				}
+				for (int valueIndex1 = 0; valueIndex1 < attr.numValues(); valueIndex1++) {
+					for (int valueIndex2 = 0; valueIndex2 < attr.numValues(); valueIndex2++) {
+						double sum = 0;
+						for (int classValueIndex = 0; classValueIndex < labeldices.length; classValueIndex++) {
+							double c1i = (double) featureValueCountsByClass[classValueIndex][valueIndex1];
+							double c2i = (double) featureValueCountsByClass[classValueIndex][valueIndex2];
+							double c1 = (double) featureValueCounts[valueIndex1];
+							double c2 = (double) featureValueCounts[valueIndex2];
+							double term1 = c1i / c1;
+							double term2 = c2i / c2;
+							sum += Math.abs(term1 - term2);
+						}
+						vdm[valueIndex1][valueIndex2] = sum;
+					}
+				}
+			}
+		}
+		return vdmMap;
+	}
 	
+	
+	public Instance[] getKNN(Instances sample, Map vdmMap, Instance instanceI) {
+
+		// the main loop to handle computing nearest neighbors and generating SMOTE
+		// examples from each instance in the original minority class data
+		Instance[] nnArray = new Instance[getNearestNeighbors()];
+
+		// find k nearest neighbors for each instance
+		List distanceToInstance = new LinkedList();
+		for (int j = 0; j < sample.numInstances(); j++) {
+			Instance instanceJ = sample.instance(j);
+			if (!instanceI.equals(instanceJ)) {
+				double distance = 0;
+				Iterator<Attribute> it2 = dataset.getFeatureAttributes().iterator();
+				while (it2.hasNext()) {
+					Attribute attr = it2.next();
+					double iVal = instanceI.value(attr);
+					double jVal = instanceJ.value(attr);
+					if (attr.isNumeric()) {
+						distance += Math.pow(iVal - jVal, 2);
+					} else {
+						distance += ((double[][]) vdmMap.get(attr))[(int) iVal][(int) jVal];
+					}
+				}
+				distance = Math.pow(distance, .5);
+				distanceToInstance.add(new Object[] { distance, instanceJ });
+			}
+		}
+
+		// sort the neighbors according to distance
+		Collections.sort(distanceToInstance, new Comparator() {
+			public int compare(Object o1, Object o2) {
+				double distance1 = (Double) ((Object[]) o1)[0];
+				double distance2 = (Double) ((Object[]) o2)[0];
+				return Double.compare(distance1, distance2);
+			}
+		});
+
+		// populate the actual nearest neighbor instance array
+		Iterator entryIterator = distanceToInstance.iterator();
+		int j = 0;
+		while (entryIterator.hasNext() && j < getNearestNeighbors()) {
+			nnArray[j] = (Instance) ((Object[]) entryIterator.next())[1];
+			j++;
+		}
+
+		return nnArray;
+
+	}
+	
+	public Instance getSyntheticExample(Instance instanceI, Instance[] nnArray) {
+		Set<Attribute> attrEnum = dataset.getFeatureAttributes();
+		double[] values = new double[attrEnum.size() + dataset.getNumLabels()];// 要插入的新样本
+		Random rand = new Random();
+		int nn = rand.nextInt(getNearestNeighbors());
+		Iterator<Attribute> it3 = attrEnum.iterator();
+		while (it3.hasNext()) {
+			Attribute attr = it3.next();
+			if (attr.isNumeric()) {
+				double dif = nnArray[nn].value(attr) - instanceI.value(attr);
+				double gap = rand.nextDouble();
+				values[attr.index()] = (double) (instanceI.value(attr) + gap * dif);
+			} else if (attr.isDate()) {
+				double dif = nnArray[nn].value(attr) - instanceI.value(attr);
+				double gap = rand.nextDouble();
+				values[attr.index()] = (long) (instanceI.value(attr) + gap * dif);
+			} else {
+				int[] valueCounts = new int[attr.numValues()];
+				int iVal = (int) instanceI.value(attr);
+				valueCounts[iVal]++;
+				for (int nnEx = 0; nnEx < getNearestNeighbors(); nnEx++) {
+					int val = (int) nnArray[nnEx].value(attr);
+					valueCounts[val]++;
+				}
+				int maxIndex = 0;
+				int max = Integer.MIN_VALUE;
+				for (int index = 0; index < attr.numValues(); index++) {
+					if (valueCounts[index] > max) {
+						max = valueCounts[index];
+						maxIndex = index;
+					}
+				}
+				values[attr.index()] = maxIndex;// nominal属性使用出现频度最大值填充
+			}
+		}
+		// 标签集生成方法，基于邻居投票
+		int[] indices = dataset.getLabelIndices();
+		int[] labelcounts = new int[indices.length];
+		for (int t = 0; t < indices.length; t++)
+			labelcounts[t] = (int) instanceI.value(indices[t]);
+		for (int r = 0; r < labelcounts.length; r++) {
+			for (int t = 0; t < nnArray.length; t++) {
+				labelcounts[r] += nnArray[t].value(indices[r]);
+			}
+
+			if (labelcounts[r] > ((getNearestNeighbors() + 1) / 2))
+				values[indices[r]] = 1;
+			else
+				values[indices[r]] = 0;
+		}
+		// 返回生成新样本
+		return new DenseInstance(1.0, values);
+	}
 	
 
 	/**
