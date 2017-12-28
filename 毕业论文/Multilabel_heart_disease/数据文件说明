@@ -1,0 +1,6 @@
+从原始数据文件dataset_2.arff导出
+dataset_2.arff文件中总样本数: 122748，对此文件按照0.95比例划分训练集、测试集，
+训练集样本数目training: 116611, 所在文件 training_simple.arff
+测试集样本数目testing: 6137 ， 所在文件 testing_simple.arff
+
+

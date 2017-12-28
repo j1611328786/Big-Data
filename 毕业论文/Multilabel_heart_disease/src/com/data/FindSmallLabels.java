@@ -199,4 +199,29 @@ public class FindSmallLabels {
     			meanInstances=labelsFrequency[i];
         return (int) (meanInstances/meanIR);
     }
+    
+        
+	public static void printDistribution(MultiLabelInstances dataset) {
+		System.out.println("----------------------标签集的均衡性分布--------------------------------------");
+		FindSmallLabels fs=new FindSmallLabels(dataset);
+		fs.between_labels();
+		ArrayList<Integer>  smalllabels=fs.getsmalllabels();
+		ArrayList<Integer>  maxlabels=fs.getmaxlabels();
+		double[] IRBL=fs.getIRLB();
+		double meanIR=fs.getMEANIR();
+		int avginstances=fs.getMeanInstances();
+		
+	
+		for(int i=0;i<IRBL.length;i++)
+			System.out.println("IRBL : "+IRBL[i]);
+		System.out.println("meanIR: "+meanIR);
+		System.out.println(smalllabels);
+		System.out.println(maxlabels);
+		System.out.println("平均样本数： "+avginstances);
+	}
+	
+	public void printDistribution(){
+		printDistribution(this.dataset);
+	}
+	
 }

@@ -52,7 +52,7 @@ public class UnbalancedSamples {
         
 	}
 	
-	
+
 	/*
 	 * 
 	 * ML-RUS
@@ -63,19 +63,22 @@ public class UnbalancedSamples {
 	 *        
 	 *        
 	 * */
-	public static void calML_RUS(MultiLabelInstances dataset,double percentage) throws Exception {
-		FindSmallLabels fs=new FindSmallLabels(dataset);
-		System.out.println("--------------IMR--------------- ");
-		//fs.between_labels();
-		fs.inner_labels();
+	public static MultiLabelInstances calML_RUS(MultiLabelInstances dataset,double percentage) throws Exception {
+		MultiLabelInstances new_dataset=dataset.clone();
+		System.out.println("----------------RUS "+percentage+"------------- ");
+		FindSmallLabels fs=new FindSmallLabels(new_dataset);
+		fs.between_labels();
 		ArrayList<Integer>  smalllabels=fs.getsmalllabels();
 		ArrayList<Integer>  maxlabels=fs.getmaxlabels();
 		double meanIR=fs.getMEANIR();
-		Instances datasetInstances=dataset.getDataSet();
+		int avginstances=fs.getMeanInstances();
+		fs.printDistribution();
+		
+		Instances datasetInstances=new_dataset.getDataSet();
 		Iterator<Instance> it=datasetInstances.iterator();
-		int remove_number=(int)(dataset.getNumInstances()*(1-percentage));
+		int remove_number=(int)(new_dataset.getNumInstances()*(1-percentage));
 		int[] labelsFrequency=fs.getFrequency();//每个标签出现的次数
-		int numFeatures=dataset.getFeatureIndices().length;
+		int numFeatures=new_dataset.getFeatureIndices().length;
 		
 		while(remove_number>0 && it.hasNext()) {
 			Instance instance=it.next();
@@ -98,30 +101,23 @@ public class UnbalancedSamples {
 						   labelsFrequency[value-numFeatures]--;
 				  }
 			   it.remove();//删除该样本
-			   
-			   int max=labelsFrequency[0];
-			   for(int i=1;i<labelsFrequency.length;i++)
-				   if(max<labelsFrequency[i])
-					   max=labelsFrequency[i];
-			   
+		
 			   Iterator<Integer> it2=maxlabels.iterator();
 			   while(it2.hasNext()) 
 			   {
 				   int value=it2.next();
-			       if((max*1.0/labelsFrequency[value-numFeatures])>=meanIR)
+			       if((labelsFrequency[value-numFeatures])<=avginstances)
 			       {
 				      it2.remove();
-				      System.out.println("--------------------");
 				      smalllabels.add(value);
 			       }
 			   }
 			   remove_number--;
 			}
 		}
-		Iterator<Integer> its=smalllabels.iterator();
-		while(its.hasNext()) 
-		{
-		  System.out.println(its.next());	
-		}
+		
+		fs.printDistribution(new_dataset);
+		
+		return new_dataset;
 	}
 }

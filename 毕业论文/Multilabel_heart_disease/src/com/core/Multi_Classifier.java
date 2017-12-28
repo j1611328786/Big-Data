@@ -55,16 +55,12 @@ public class Multi_Classifier {
 			xmlFilename = Utils.getOption("xml", arg);	
 			dataset = new MultiLabelInstances(arffFilename, xmlFilename);
 			numlabels=dataset.getNumLabels();
-			System.out.println(arg.length);
 			if(arg.length==6){
 				String testFilename = Utils.getOption("unlabeled", arg);
 				test=new Instances(new FileReader(testFilename));
 			}
 			else
 				test=null;
-			if(test!=null)
-				System.out.println(" test num: "+test.numInstances());
-			System.out.println("dataset num: "+dataset.getDataSet().numInstances());
 		}catch(Exception e){
 			System.out.println("");
 		}        
@@ -105,6 +101,13 @@ public class Multi_Classifier {
 		    System.out.println("statisic test sample: "+stat);
 		}
 		return stat;
+	}
+	
+	public void printStatics(MultiLabelInstances d) throws InvalidDataFormatException{
+		//System.out.println(dataset.getLabelAttributes());
+		Statistics stat=new Statistics();
+		stat.calculateStats(d);
+		System.out.println("traning sample: "+stat);
 	}
 	
 	 
@@ -178,9 +181,9 @@ public class Multi_Classifier {
 	public void br() throws Exception {
 		Classifier baseClassifier;
 		//randomforest
-		//System.out.println("-----------------------------------BR-RandomForest-------------------------------");
-		//baseClassifier=new RandomForest();
-		//run_br(baseClassifier);
+		System.out.println("-----------------------------------BR-RandomForest-------------------------------");
+		baseClassifier=new RandomForest();
+		run_br(baseClassifier);
 		//logistic
 		System.out.println("-----------------------------------BR-Logistic-------------------------------");
 		baseClassifier = new Logistic();
@@ -302,15 +305,14 @@ public class Multi_Classifier {
 	}
 	
 	public void resample_RUS() throws Exception {
-		double p=0.05;
+		double p=0.25;
 		while(p>=0.05) {
-			System.out.println("---------------------p= "+p+"------------------------------");
-			UnbalancedSamples.calML_RUS(dataset,p);//0.9 0.85  0.8 0.75 0.7 0.65 0.6 0.55 0.5
-			statics();
-			//split_arff(0.7); //按照70%比例划分训练集测试集
-			//save_arff("training_simple"+p+".arff", "testing_simple"+p+".arff");
+			MultiLabelInstances new_dataset=UnbalancedSamples.calML_RUS(dataset,p);
+			System.out.println("-----------------------采样后数据集统计-------------------------------");
+			printStatics(new_dataset);
+			save_arff("training_simple"+p+".arff");
 			p-=0.1;
-			//br();
+			br();
 		}
 	}
 	
@@ -325,9 +327,8 @@ public class Multi_Classifier {
 	public void resample_MLBBS() throws Exception {
 		ML_BBS.dobbs(dataset, 0);
 		statics();
-		split_arff(0.7); //按照70%比例划分训练集测试集
 		save_arff("training_simpleBBS_5.arff","testing_simpleBBS_5.arff");
-		//br();
+		br();
 	}
 	
 
@@ -337,19 +338,15 @@ public class Multi_Classifier {
 	
 	public static void main(String[] args) throws InvalidDataException, ModelInitializationException, Exception{
 		Multi_Classifier br=new Multi_Classifier(args);
-		
-		/*FindSmallLabels fl=new FindSmallLabels(dataset);
-		System.out.println(fl.inner_labels(dataset));//测试标签内的不均衡性,返回小类别标签
-		System.out.println(fl.between_labels(dataset));//测试标签间的不均衡性，返回小类别标签
-		*/
 		//br.run_single();
 		//br.resample_simple();
-		//br.resample_RUS();
+		System.out.println("-----------------------采样前数据集统计-------------------------------");
 		br.statics();
+		br.resample_RUS();
 		//br.resample_MLSMOTE();
-		br.resample_MLBBS();
+		//br.resample_MLBBS();
 		//br.br();
-		//br.split_arff(0.7); //按照70%比例划分训练集测试集
+		//br.split_arff(0.95); //按照70%比例划分训练集测试集
 		//br.save_arff("training_simple.arff", "testing_simple.arff");
 		//br.statics();
 		//br.br();

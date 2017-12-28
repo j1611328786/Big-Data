@@ -23,10 +23,9 @@ public class ML_BBS {
 		int[] labeldices=dataset.getLabelIndices();
 		int undersample=0,oversample=0;//欠采样、过采样的数量
 		int[] labelsFrequency=fsl.getFrequency();//每个标签出现的次数
-		int meanInstances=fsl.getMeanInstances();//平均样本数
 		for(int i=0;i<IRBL.length;i++)
 			System.out.println(" IRBL : "+IRBL[i]);
-		System.out.println("meanIR: "+meanIR+"  meanInstances: "+meanInstances);
+		System.out.println("meanIR: "+meanIR);
 		System.out.println(smalllabels);
 		System.out.println(maxlabels);
 		for(int j=0;j<labelsFrequency.length;j++)
@@ -55,7 +54,9 @@ public class ML_BBS {
 		 *当threshold从递减状态变为递增时，采样结束
 		 */
 		double threshold=getThreshold(IRBL,meanIR);
-		while(threshold>10&&i<len) {
+		double old_threshold;
+		int count=3;
+		while(count>0&&i<len) {
 			Instance instance=instances.get(i);
 			boolean flag=false;
 			for(int j=0;j<smalllabels.size();j++) {
@@ -95,10 +96,13 @@ public class ML_BBS {
 			     IRBL=fs.getIRLB();
 			     meanIR=fs.getMEANIR();
 			     labelsFrequency=fs.getFrequency();
-			     meanInstances=fs.getMeanInstances();
+			     old_threshold=threshold;
 			     threshold=getThreshold(IRBL,meanIR);
-			     System.out.println("threshold: "+threshold);
+			     //System.out.println("threshold: "+threshold+" meanIR: "+meanIR);
 		    	 
+			     if(old_threshold==threshold)
+			    	 count--;
+			     else count=3;
 			     for(int j=0;j<maxlabels.size();j++)
 			    	 if(IRBL[maxlabels.get(j)-numFeatures]>=meanIR-5) {
 			    		 //该标签的样本集特点是不均衡度接近meanIR,当大类标签变成小类标签时,对该标签的采样过程结束
