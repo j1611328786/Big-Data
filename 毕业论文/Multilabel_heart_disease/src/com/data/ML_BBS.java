@@ -13,7 +13,7 @@ public class ML_BBS {
     *双重均衡采样机制 
     * 	
     */
-	public static void dobbs(MultiLabelInstances dataset,double percentage) {
+	public static void dobbs(MultiLabelInstances dataset) {
 		FindSmallLabels fsl = new FindSmallLabels(dataset);
 		fsl.between_labels();
 		double meanIR = fsl.getMEANIR();// 标签间的不均衡度

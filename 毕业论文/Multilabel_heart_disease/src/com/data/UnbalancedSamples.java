@@ -63,10 +63,9 @@ public class UnbalancedSamples {
 	 *        
 	 *        
 	 * */
-	public static MultiLabelInstances calML_RUS(MultiLabelInstances dataset,double percentage) throws Exception {
-		MultiLabelInstances new_dataset=dataset.clone();
+	public static void calML_RUS(MultiLabelInstances dataset,double percentage) throws Exception {
 		System.out.println("----------------RUS "+percentage+"------------- ");
-		FindSmallLabels fs=new FindSmallLabels(new_dataset);
+		FindSmallLabels fs=new FindSmallLabels(dataset);
 		fs.between_labels();
 		ArrayList<Integer>  smalllabels=fs.getsmalllabels();
 		ArrayList<Integer>  maxlabels=fs.getmaxlabels();
@@ -74,11 +73,11 @@ public class UnbalancedSamples {
 		int avginstances=fs.getMeanInstances();
 		fs.printDistribution();
 		
-		Instances datasetInstances=new_dataset.getDataSet();
+		Instances datasetInstances=dataset.getDataSet();
 		Iterator<Instance> it=datasetInstances.iterator();
-		int remove_number=(int)(new_dataset.getNumInstances()*(1-percentage));
+		int remove_number=(int)(dataset.getNumInstances()*(1-percentage));
 		int[] labelsFrequency=fs.getFrequency();//每个标签出现的次数
-		int numFeatures=new_dataset.getFeatureIndices().length;
+		int numFeatures=dataset.getFeatureIndices().length;
 		
 		while(remove_number>0 && it.hasNext()) {
 			Instance instance=it.next();
@@ -116,8 +115,7 @@ public class UnbalancedSamples {
 			}
 		}
 		
-		fs.printDistribution(new_dataset);
-		
-		return new_dataset;
+		fs.printDistribution(dataset);
+
 	}
 }

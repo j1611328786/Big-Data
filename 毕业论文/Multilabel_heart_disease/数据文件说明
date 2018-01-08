@@ -1,6 +1,27 @@
 从原始数据文件dataset_2.arff导出
-dataset_2.arff文件中总样本数: 122748，对此文件按照0.95比例划分训练集、测试集，
-训练集样本数目training: 116611, 所在文件 training_simple.arff
-测试集样本数目testing: 6137 ， 所在文件 testing_simple.arff
+dataset_2.arff文件中总样本数: 122748，对此文件按照0.97比例划分训练集、测试集，
+训练集样本数目training: 119066, 所在文件 training_simple.arff
+测试集样本数目testing: 3682 ， 所在文件 testing_simple.arff
+
+从原始训练数据文件training_simple.arff导出
+training_simple.arff文件中总样本数: 119066，对此文件按照0.05的保留比例使用MLRUS算法欠采样训练集，测试集保持原始测试数据testing 3682
+训练集样本数目training: 6056, 所在文件 training_simple0.05.arff
+测试集样本数目testing: 3682 ， 所在文件 testing_simple.arff
+
+从原始训练数据文件training_simple.arff导出
+training_simple.arff文件中总样本数: 119066，对此文件按照0.1的保留比例使用MLRUS>算法欠采样训练集，测试集保持原始测试数据testing 3682
+训练集样本数目training: 11907, 所在文件 training_simple0.1.arff
+测试集样本数目testing: 3682 ， 所在文件 testing_simple.arff
+
+从原始训练数据文件training_simple.arff导出
+training_simple.arff文件中总样本数: 119066，对此文件按照0.2的保留比例使用MLRUS>>算法欠采样训练集，测试集保持原始测试数据testing 3682
+训练集样本数目training: 23814, 所在文件 training_simple0.2.arff
+测试集样本数目testing: 3682 ， 所在文件 testing_simple.arff
+
+
+从RUS处理过的训练数据文件training_simple0.2.arff导出
+training_simple.arff文件中总样本数: 119066，对此文件使用MLSMOTE>>算法欠采样训练集，测试集保持原始测试数据testing 3682
+训练集样本数目training约: 27000, 所在文件 training_simple0.2_mlsmote.arff
+测试集样本数目testing: 3682 ， 所在文件 testing_simple.arff
 
 

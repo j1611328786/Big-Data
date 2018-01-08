@@ -39,6 +39,7 @@ import weka.core.TechnicalInformation.Type;
 import weka.filters.Filter;
 import weka.filters.SupervisedFilter;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Enumeration;
@@ -398,9 +399,12 @@ public class MLSMOTE extends Filter implements SupervisedFilter, OptionHandler, 
 	public void doMLSMOTE() throws Exception {
 
 		FindSmallLabels fsl = new FindSmallLabels(dataset);
-		double meanIR = fsl.getMEANIR();// 标签间的不均衡度
+		fsl.between_labels();
 		List<Integer> smalllabels = fsl.getsmalllabels();// 小标签集合
 
+		System.out.println("----------------MLSMOTE------------- ");
+		fsl.printDistribution();
+		
 		int nearestNeighbors = getNearestNeighbors();
 
 		for (int label : smalllabels) {
@@ -561,6 +565,7 @@ public class MLSMOTE extends Filter implements SupervisedFilter, OptionHandler, 
 				}
 			}
 		}
+		fsl.printDistribution(dataset);
 
 	}
 
