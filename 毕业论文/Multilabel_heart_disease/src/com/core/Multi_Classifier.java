@@ -38,6 +38,7 @@ import mulan.evaluation.Evaluator;
 import mulan.evaluation.MultipleEvaluation;
 import mulan.evaluation.measure.*;
 import mulan.classifier.transformation.AdaBoostMH;
+import mulan.classifier.meta.HOMER;
 import mulan.data.Statistics;
 
 public class Multi_Classifier {
@@ -47,7 +48,7 @@ public class Multi_Classifier {
 	private Instances test;
 	private String xmlFilename;
 	private BinaryRelevance br;
-	private AdaBoostMH adb;
+	
 
 	public Multi_Classifier(String[] arg) {
 		try {
@@ -195,11 +196,15 @@ public class Multi_Classifier {
 		run_br(baseClassifier);
 
 	}
+	
+	public void run_HOMER() {
+		
+	}
 
 	public void run_Ada() throws Exception {
 		// J48(c4.5)
-		Classifier baseClassifier = new Logistic();
-		adb = new AdaBoostMH();
+		Classifier baseClassifier = new J48();
+		 AdaBoostMH adb = new AdaBoostMH();
 		System.out.println(adb.getBaseClassifier());
 
 		Evaluator eval = new Evaluator();
@@ -212,8 +217,8 @@ public class Multi_Classifier {
 		 */
 		// System.out.println(dataset.getDataSet().get(0));
 
-		br.build(dataset);
-		System.out.println(eval.evaluate(br, new MultiLabelInstances(test, xmlFilename), dataset));
+		adb.build(dataset);
+		System.out.println(eval.evaluate(adb, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
 
 	}
 
@@ -331,14 +336,14 @@ public class Multi_Classifier {
 		System.out.println("-----------------------采样前数据集统计-------------------------------");
 		br.statics();
 		//br.resample_RUS();
-		br.resample_MLSMOTE();
+		//br.resample_MLSMOTE();
 		//br.resample_MLBBS();
 		 //br.br();
 		// br.split_arff(0.97); //按照70%比例划分训练集测试集
 		// br.save_arff("training_simple.arff", "testing_simple.arff");
 		// br.statics();
 		// br.br();
-		// br.run_Ada();
+		 br.run_Ada();
 	}
 
 }
