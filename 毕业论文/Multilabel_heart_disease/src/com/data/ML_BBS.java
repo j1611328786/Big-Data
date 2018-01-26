@@ -20,6 +20,7 @@ public class ML_BBS {
 		double[] IRBL=fsl.getIRLB();//每个标签的不均衡性
 		List<Integer> smalllabels = fsl.getsmalllabels();// 小标签集合
 		List<Integer> maxlabels=fsl.getmaxlabels();//大标签集合
+		int meanInstances=fsl.getMeanInstances();//平均样本数
 		int[] labeldices=dataset.getLabelIndices();
 		int undersample=0,oversample=0;//欠采样、过采样的数量
 		int[] labelsFrequency=fsl.getFrequency();//每个标签出现的次数
@@ -55,8 +56,8 @@ public class ML_BBS {
 		 */
 		double threshold=getThreshold(IRBL,meanIR);
 		double old_threshold;
-		int count=3;
-		while(count>0&&i<len) {
+		
+		while((!smalllabels.isEmpty()||!maxlabels.isEmpty())&&i<len) {
 			Instance instance=instances.get(i);
 			boolean flag=false;
 			for(int j=0;j<smalllabels.size();j++) {
@@ -67,6 +68,7 @@ public class ML_BBS {
 					Instance[] nndArray=ms.getKNN(smallsample[j], vdmMap[j], instance);
 					instances.add(ms.getSyntheticExample(instance, nndArray));
 					oversample++;
+					
 				}
 			}
 			 if(!flag) {
@@ -100,9 +102,22 @@ public class ML_BBS {
 			     threshold=getThreshold(IRBL,meanIR);
 			     //System.out.println("threshold: "+threshold+" meanIR: "+meanIR);
 		    	 
-			     if(old_threshold==threshold)
-			    	 count--;
-			     else count=3;
+			    
+			     for(int j=0;j<maxlabels.size();j++)
+			    	 if(labelsFrequency[maxlabels.get(j)-numFeatures]<=meanInstances) {
+			    		 //该标签的样本集特点是不均衡度接近meanIR,当大类标签变成小类标签时,对该标签的采样过程结束
+			    		 //重新划分大小类标签集（为了防止大类标签进行过采样，将其从大类标签集中删掉）
+			    		 //为了加大容错性，为meanIR设置阈值
+			    		 maxlabels.remove(j); 
+			    	 }
+			     
+			       //当小样本集标签非空，说明过采样未结束，并将大于meanInstances的标签从小样本集标签中删除
+			       for(int j=0;j<smalllabels.size();j++) {
+				    	 if(labelsFrequency[smalllabels.get(j)-numFeatures]>=meanInstances)
+				    		 smalllabels.remove(j);
+				     }
+			     
+			     
 			     for(int j=0;j<maxlabels.size();j++)
 			    	 if(IRBL[maxlabels.get(j)-numFeatures]>=meanIR-5) {
 			    		 //该标签的样本集特点是不均衡度接近meanIR,当大类标签变成小类标签时,对该标签的采样过程结束
@@ -111,13 +126,14 @@ public class ML_BBS {
 			    		 maxlabels.remove(j); 
 			    	 }
 			     
-			     if(!smalllabels.isEmpty()) {
+			     
 			    	 //当小样本集标签非空，说明过采样未结束，并将大于meanInstances的标签从小样本集标签中删除
 			    	 for(int j=0;j<smalllabels.size();j++) {
 				    	 if(IRBL[smalllabels.get(j)-numFeatures]<=meanIR+5)
 				    		 smalllabels.remove(j);
 				     }
-			     }
+			     
+			     
 			     
 			     //System.out.println("threshold: "+threshold);
 			     
@@ -150,7 +166,7 @@ private static double getThreshold(double[] iRBL, double meanIR) {
 	for(int i=0;i<iRBL.length;i++) {
 		threshold+=(iRBL[i]-meanIR)*(iRBL[i]-meanIR);
 	}
-	return Math.sqrt(threshold);
+	return Math.sqrt(threshold)/iRBL.length;
 }
 
 }
