@@ -1,0 +1,255 @@
+
+-----------------------采样前数据集统计-------------------------------
+traning sample: Examples: 119066
+Predictors: 296
+--Nominal: 0
+--Numeric: 296
+Labels: 9
+
+Cardinality: 1.4594594594594594
+Density: 0.16216216216216217
+Distinct Labelsets: 197
+
+Percentage of examples with label 1: 0.05126568457830111
+Percentage of examples with label 2: 0.007096904237985655
+Percentage of examples with label 3: 0.006727361295415988
+Percentage of examples with label 4: 0.009650110023012446
+Percentage of examples with label 5: 0.0077520030907227925
+Percentage of examples with label 6: 0.020988359397309055
+Percentage of examples with label 7: 0.19002066080997093
+Percentage of examples with label 8: 0.8172946097122604
+Percentage of examples with label 9: 0.34866376631448104
+
+Examples of cardinality 0: 0.0
+Examples of cardinality 1: 79908.0
+Examples of cardinality 2: 27020.0
+Examples of cardinality 3: 9357.0
+Examples of cardinality 4: 2259.0
+Examples of cardinality 5: 421.0
+Examples of cardinality 6: 95.0
+Examples of cardinality 7: 6.0
+Examples of cardinality 8: 0.0
+Examples of cardinality 9: 0.0
+
+Examples of combination 000100100: 12
+Examples of combination 000100101: 14
+Examples of combination 011010111: 4
+Examples of combination 010011110: 2
+Examples of combination 110100001: 1
+Examples of combination 000111111: 1
+Examples of combination 000111110: 3
+Examples of combination 100000000: 493
+Examples of combination 100000001: 225
+Examples of combination 001001000: 3
+Examples of combination 010011111: 2
+Examples of combination 100011010: 1
+Examples of combination 000100111: 156
+Examples of combination 011010101: 4
+Examples of combination 110100111: 7
+Examples of combination 001001010: 3
+Examples of combination 100000110: 1006
+Examples of combination 100000111: 899
+Examples of combination 101000101: 2
+Examples of combination 101000100: 5
+Examples of combination 010011001: 1
+Examples of combination 000100110: 108
+Examples of combination 000100001: 28
+Examples of combination 101011001: 2
+Examples of combination 000001001: 112
+Examples of combination 010000111: 144
+Examples of combination 100001110: 83
+Examples of combination 100001111: 85
+Examples of combination 010000110: 153
+Examples of combination 001000010: 38
+Examples of combination 000001000: 217
+Examples of combination 001000011: 35
+Examples of combination 101000110: 33
+Examples of combination 101000111: 38
+Examples of combination 010010000: 1
+Examples of combination 010101010: 2
+Examples of combination 000100000: 102
+Examples of combination 010000101: 6
+Examples of combination 010000100: 12
+Examples of combination 100000010: 1739
+Examples of combination 100000011: 828
+Examples of combination 100001100: 4
+Examples of combination 000001010: 602
+Examples of combination 001001110: 21
+Examples of combination 000001011: 163
+Examples of combination 001001111: 9
+Examples of combination 101000000: 5
+Examples of combination 101000001: 2
+Examples of combination 011101110: 2
+Examples of combination 111001110: 3
+Examples of combination 110100011: 3
+Examples of combination 010010011: 2
+Examples of combination 010101001: 1
+Examples of combination 110010111: 2
+Examples of combination 000100010: 335
+Examples of combination 110010110: 3
+Examples of combination 000101100: 1
+Examples of combination 000100011: 117
+Examples of combination 001011000: 1
+Examples of combination 001100110: 4
+Examples of combination 001100111: 4
+Examples of combination 000000011: 13507
+Examples of combination 000001100: 63
+Examples of combination 000001101: 38
+Examples of combination 100001010: 30
+Examples of combination 001000111: 146
+Examples of combination 100001011: 18
+Examples of combination 001000110: 182
+Examples of combination 000000010: 60116
+Examples of combination 101000011: 5
+Examples of combination 101001101: 2
+Examples of combination 101000010: 9
+Examples of combination 100101011: 3
+Examples of combination 000001111: 328
+Examples of combination 000110110: 3
+Examples of combination 000110111: 3
+Examples of combination 001000001: 12
+Examples of combination 100001000: 11
+Examples of combination 100001001: 1
+Examples of combination 000001110: 478
+Examples of combination 001000000: 43
+Examples of combination 101001111: 13
+Examples of combination 101001110: 1
+Examples of combination 010010111: 6
+Examples of combination 010010110: 5
+Examples of combination 110010010: 2
+Examples of combination 001010010: 1
+Examples of combination 001010011: 1
+Examples of combination 100101111: 16
+Examples of combination 000011010: 2
+Examples of combination 000000111: 5733
+Examples of combination 000000110: 8831
+Examples of combination 110000101: 2
+Examples of combination 110110110: 2
+Examples of combination 111000111: 12
+Examples of combination 110110111: 1
+Examples of combination 111000110: 5
+Examples of combination 000011011: 3
+Examples of combination 001011110: 3
+Examples of combination 001011111: 1
+Examples of combination 000000001: 17035
+Examples of combination 101101111: 2
+Examples of combination 000110011: 1
+Examples of combination 110000111: 43
+Examples of combination 001000100: 20
+Examples of combination 110000110: 16
+Examples of combination 001000101: 15
+Examples of combination 000110010: 1
+Examples of combination 001110110: 2
+Examples of combination 101001011: 3
+Examples of combination 000011000: 2
+Examples of combination 000011001: 6
+Examples of combination 001010110: 13
+Examples of combination 001010111: 23
+Examples of combination 100100000: 6
+Examples of combination 110000001: 2
+Examples of combination 110000000: 6
+Examples of combination 000011110: 10
+Examples of combination 000011111: 21
+Examples of combination 001010000: 3
+Examples of combination 100100011: 22
+Examples of combination 001101111: 2
+Examples of combination 000000101: 1028
+Examples of combination 000000100: 1815
+Examples of combination 110000010: 15
+Examples of combination 010001010: 6
+Examples of combination 110000011: 3
+Examples of combination 010001011: 5
+Examples of combination 000010011: 27
+Examples of combination 000010010: 126
+Examples of combination 100100010: 18
+Examples of combination 000011100: 3
+Examples of combination 111010111: 1
+Examples of combination 001100011: 2
+Examples of combination 100100101: 2
+Examples of combination 111010110: 1
+Examples of combination 101100111: 5
+Examples of combination 110001110: 3
+Examples of combination 110001111: 3
+Examples of combination 000010000: 53
+Examples of combination 001100010: 2
+Examples of combination 100010101: 2
+Examples of combination 000010001: 23
+Examples of combination 100010100: 4
+Examples of combination 001010100: 1
+Examples of combination 100100111: 24
+Examples of combination 100100110: 17
+Examples of combination 110001000: 4
+Examples of combination 100111111: 2
+Examples of combination 100111110: 2
+Examples of combination 000010111: 170
+Examples of combination 000010110: 193
+Examples of combination 011100111: 7
+Examples of combination 010110110: 4
+Examples of combination 110001010: 1
+Examples of combination 010110111: 3
+Examples of combination 010000011: 40
+Examples of combination 011000111: 17
+Examples of combination 011000110: 14
+Examples of combination 010000010: 92
+Examples of combination 011100110: 5
+Examples of combination 000010100: 40
+Examples of combination 000010101: 10
+Examples of combination 100010000: 3
+Examples of combination 010101111: 1
+Examples of combination 000101111: 8
+Examples of combination 000101110: 8
+Examples of combination 010000001: 12
+Examples of combination 100110001: 2
+Examples of combination 010000000: 34
+Examples of combination 100010110: 49
+Examples of combination 010100010: 5
+Examples of combination 100010111: 39
+Examples of combination 010100011: 16
+Examples of combination 000101000: 2
+Examples of combination 101010111: 1
+Examples of combination 101010110: 1
+Examples of combination 011000010: 1
+Examples of combination 100110111: 2
+Examples of combination 100000100: 109
+Examples of combination 100000101: 72
+Examples of combination 011000011: 3
+Examples of combination 010001000: 5
+Examples of combination 000101010: 4
+Examples of combination 100011111: 3
+Examples of combination 010100001: 1
+Examples of combination 100011110: 5
+Examples of combination 010100000: 5
+Examples of combination 000101011: 6
+Examples of combination 010001111: 24
+Examples of combination 011000001: 1
+Examples of combination 010001110: 23
+Examples of combination 011000000: 2
+Examples of combination 100010011: 3
+Examples of combination 010100111: 23
+Examples of combination 010100110: 8
+Examples of combination 100010010: 6
+
+----------------RUS 0.2------------- 
+
+选出的小类标签集： 297  298  299  300  
+
+选出的大类标签集： 296  301  302  303  304  
+----------------------标签集的均衡性分布--------------------------------------
+
+选出的小类标签集： 297  298  299  300  
+
+选出的大类标签集： 296  301  302  303  304  
+IRBL : 15.942332896461338
+IRBL : 115.1621301775148
+IRBL : 121.48813982521848
+IRBL : 84.69277632724108
+IRBL : 105.43011917659805
+IRBL : 38.94037615046018
+IRBL : 4.301082872928177
+IRBL : 1.0
+IRBL : 2.3440766970178735
+meanIR: 54.36678156927111
+[297, 298, 299, 300]
+[296, 301, 302, 303, 304]
+平均样本数： 1789
+

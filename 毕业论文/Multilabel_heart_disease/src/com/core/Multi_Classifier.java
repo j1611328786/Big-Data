@@ -199,7 +199,12 @@ public class Multi_Classifier {
 
 	}
 	
-	public void run_HOMER() {
+	public void run_HOMER() throws Exception{
+		System.out.println("------------------------run_HOMER-------------------------");
+		HOMER homer=new HOMER();
+		Evaluator eval=new Evaluator();
+		homer.build(dataset);
+		System.out.println(eval.evaluate(homer, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
 		
 	}
 	
@@ -213,11 +218,16 @@ public class Multi_Classifier {
 		
 	}
 	
-	public void run_MLKNN() {
-		
+	public void run_MLKNN() throws InvalidDataFormatException, Exception {
+		System.out.println("------------------------run_MLKNN-------------------------");
+		MLkNN   mlknn=new MLkNN();
+		Evaluator eval=new Evaluator();
+		mlknn.build(dataset);
+		System.out.println(eval.evaluate(mlknn, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
 	}
 
 	public void run_Ada() throws Exception {
+		System.out.println("------------------------run_ada-------------------------");
 		// J48(c4.5)
 		Classifier baseClassifier = new J48();
 		AdaBoostMH adb = new AdaBoostMH();
@@ -313,25 +323,39 @@ public class Multi_Classifier {
 		double p = 0.2;//p取0.05  0.1 0.2
 
 		UnbalancedSamples.calML_RUS(dataset, p);
-		//System.out.println("-----------------------采样后数据集统计-------------------------------");
-		//statics();
+		System.out.println("-----------------------采样后数据集统计-------------------------------");
+		statics();
 		//save_arff("training_simple" + p + ".arff");
-        //br();
+        br();
+        run_Ada();
+        run_RAKEL();
+        run_HOMER();
+        run_MLKNN();
 	}
 
 	public void resample_MLSMOTE() throws Exception {
 		MLSMOTE smote = new MLSMOTE(dataset);
 		smote.doMLSMOTE();
+		System.out.println("-----------------------采样后数据集统计-------------------------------");
 		statics();
-		save_arff("training_simple0.05_mlsmote.arff");
+		//save_arff("training_simple0.05_mlsmote.arff");
         br();
+        run_Ada();
+        run_RAKEL();
+        run_HOMER();
+        run_MLKNN();
 	}
 
 	public void resample_MLBBS() throws Exception {
 		ML_BBS.dobbs(dataset);
+		System.out.println("-----------------------采样后数据集统计-------------------------------");
 		statics();
 		//save_arff("training_simpleBBS_5.arff");
-	    //br();
+	    br();
+	    run_Ada();
+        run_RAKEL();
+        run_HOMER();
+        run_MLKNN();
 	}
 
 	// -arff dataset_2.arff -xml output_2.xml
@@ -341,19 +365,12 @@ public class Multi_Classifier {
 
 	public static void main(String[] args) throws InvalidDataException, ModelInitializationException, Exception {
 		Multi_Classifier br = new Multi_Classifier(args);
-		// br.run_single();
-		// br.resample_simple();
 		System.out.println("-----------------------采样前数据集统计-------------------------------");
+		br.split_arff(0.97); //按照70%比例划分训练集测试集
 		br.statics();
 		br.resample_RUS();
-		//br.resample_MLSMOTE();
-		//br.resample_MLBBS();
-		 //br.br();
-		// br.split_arff(0.97); //按照70%比例划分训练集测试集
-		// br.save_arff("training_simple.arff", "testing_simple.arff");
-		// br.statics();
-		// br.br();
-		// br.run_Ada();
+		br.resample_MLSMOTE();
+		br.resample_MLBBS();
 	}
 
 }

@@ -1,0 +1,74 @@
+-----------------------采样前数据集统计-------------------------------
+traning sample: Examples: 391
+Predictors: 72
+--Nominal: 0
+--Numeric: 72
+Labels: 6
+
+Cardinality: 1.813299232736573
+Density: 0.30221653878942883
+Distinct Labelsets: 26
+
+Percentage of examples with label 1: 0.30434782608695654
+Percentage of examples with label 2: 0.27365728900255754
+Percentage of examples with label 3: 0.4296675191815857
+Percentage of examples with label 4: 0.22762148337595908
+Percentage of examples with label 5: 0.24296675191815856
+Percentage of examples with label 6: 0.3350383631713555
+
+Examples of cardinality 0: 0.0
+Examples of cardinality 1: 131.0
+Examples of cardinality 2: 202.0
+Examples of cardinality 3: 58.0
+Examples of cardinality 4: 0.0
+Examples of cardinality 5: 0.0
+Examples of cardinality 6: 0.0
+
+Examples of combination 000111: 1
+Examples of combination 000011: 6
+Examples of combination 000110: 16
+Examples of combination 001001: 2
+Examples of combination 001100: 21
+Examples of combination 001101: 1
+Examples of combination 110000: 23
+Examples of combination 100000: 22
+Examples of combination 110001: 3
+Examples of combination 010010: 1
+Examples of combination 011000: 46
+Examples of combination 011100: 5
+Examples of combination 111000: 7
+Examples of combination 001010: 19
+Examples of combination 001110: 39
+Examples of combination 001011: 2
+Examples of combination 000100: 5
+Examples of combination 000001: 55
+Examples of combination 100010: 4
+Examples of combination 101000: 2
+Examples of combination 010000: 18
+Examples of combination 010001: 3
+Examples of combination 010100: 1
+Examples of combination 100001: 58
+Examples of combination 001000: 24
+Examples of combination 000010: 7
+
+----------------RUS 0.2------------- 
+
+选出的小类标签集： 73  75  76  
+
+选出的大类标签集： 72  74  77  
+----------------------标签集的均衡性分布--------------------------------------
+
+选出的小类标签集： 73  75  76  
+
+选出的大类标签集： 72  74  77  
+IRBL : 1.411764705882353
+IRBL : 1.5700934579439252
+IRBL : 1.0
+IRBL : 1.8876404494382022
+IRBL : 1.768421052631579
+IRBL : 1.282442748091603
+meanIR: 1.4867270689979437
+[73, 75, 76]
+[72, 74, 77]
+平均样本数： 112
+
