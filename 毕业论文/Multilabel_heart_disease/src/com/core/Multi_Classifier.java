@@ -39,6 +39,8 @@ import mulan.evaluation.MultipleEvaluation;
 import mulan.evaluation.measure.*;
 import mulan.classifier.transformation.AdaBoostMH;
 import mulan.classifier.meta.HOMER;
+import mulan.classifier.meta.RAkEL;
+import mulan.classifier.lazy.MLkNN;
 import mulan.data.Statistics;
 
 public class Multi_Classifier {
@@ -200,22 +202,30 @@ public class Multi_Classifier {
 	public void run_HOMER() {
 		
 	}
+	
+	public void run_RAKEL() throws Exception {
+		System.out.println("------------------------run_RAKEL-------------------------");
+		RAkEL rakel=new RAkEL();
+		Evaluator eval=new Evaluator();
+		rakel.build(dataset);
+		System.out.println(eval.evaluate(rakel, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
+
+		
+	}
+	
+	public void run_MLKNN() {
+		
+	}
 
 	public void run_Ada() throws Exception {
 		// J48(c4.5)
 		Classifier baseClassifier = new J48();
-		 AdaBoostMH adb = new AdaBoostMH();
+		AdaBoostMH adb = new AdaBoostMH();
 		System.out.println(adb.getBaseClassifier());
 
 		Evaluator eval = new Evaluator();
 		MultipleEvaluation results;
-		/*
-		 * ������֤
-		 *
-		 * int numFolds = 3; results = eval.crossValidate(br, dataset, numFolds);
-		 * System.out.println(results);
-		 */
-		// System.out.println(dataset.getDataSet().get(0));
+		
 
 		adb.build(dataset);
 		System.out.println(eval.evaluate(adb, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
@@ -303,10 +313,10 @@ public class Multi_Classifier {
 		double p = 0.2;//p取0.05  0.1 0.2
 
 		UnbalancedSamples.calML_RUS(dataset, p);
-		System.out.println("-----------------------采样后数据集统计-------------------------------");
-		statics();
-		save_arff("training_simple" + p + ".arff");
-        br();
+		//System.out.println("-----------------------采样后数据集统计-------------------------------");
+		//statics();
+		//save_arff("training_simple" + p + ".arff");
+        //br();
 	}
 
 	public void resample_MLSMOTE() throws Exception {
@@ -335,9 +345,9 @@ public class Multi_Classifier {
 		// br.resample_simple();
 		System.out.println("-----------------------采样前数据集统计-------------------------------");
 		br.statics();
-		//br.resample_RUS();
+		br.resample_RUS();
 		//br.resample_MLSMOTE();
-		br.resample_MLBBS();
+		//br.resample_MLBBS();
 		 //br.br();
 		// br.split_arff(0.97); //按照70%比例划分训练集测试集
 		// br.save_arff("training_simple.arff", "testing_simple.arff");
