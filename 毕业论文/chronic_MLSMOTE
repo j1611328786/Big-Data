@@ -1,0 +1,240 @@
+-----------------------采样前数据集统计-------------------------------
+
+选出的小类标签集： 314  317  318  319  
+----------------MLSMOTE------------- 
+----------------------标签集的均衡性分布--------------------------------------
+
+选出的小类标签集： 314  317  318  319  
+
+选出的大类标签集： 310  311  312  313  315  316  
+IRBL : 2.8121584699453552
+IRBL : 2.0151737640724425
+IRBL : 1.9966052376333656
+IRBL : 1.0
+IRBL : 6.608346709470305
+IRBL : 2.1398128898128896
+IRBL : 2.0330864197530865
+IRBL : 11.37292817679558
+IRBL : 13.028481012658228
+IRBL : 5.548517520215634
+meanIR: 4.855511020035689
+[314, 317, 318, 319]
+[310, 311, 312, 313, 315, 316]
+平均样本数： 847
+sample: 623
+sample: 365
+sample: 317
+sample: 743
+----------------------标签集的均衡性分布--------------------------------------
+
+选出的小类标签集： 314  317  318  
+
+选出的大类标签集： 310  311  312  313  315  316  319  
+IRBL : 3.313700384122919
+IRBL : 2.297381269418553
+IRBL : 2.0410094637223977
+IRBL : 1.0
+IRBL : 4.124302788844622
+IRBL : 2.1539741989180192
+IRBL : 2.3242029636281996
+IRBL : 7.013550135501355
+IRBL : 8.16403785488959
+IRBL : 3.483176312247645
+meanIR: 3.5915335371293304
+[314, 317, 318]
+[310, 311, 312, 313, 315, 316, 319]
+平均样本数： 1441
+traning sample: Examples: 8639
+Predictors: 310
+--Nominal: 0
+--Numeric: 310
+Labels: 10
+
+Cardinality: 2.3463363815256395
+Density: 0.23463363815256394
+Distinct Labelsets: 396
+
+statisic test sample: Examples: 6591
+Predictors: 310
+--Nominal: 0
+--Numeric: 310
+Labels: 10
+
+Cardinality: 2.3747534516765287
+Density: 0.23747534516765287
+Distinct Labelsets: 381
+
+
+
+-----------------------------------BR-Logistic-------------------------------
+Hamming Loss: 0.1758
+Subset Accuracy: 0.1469
+Example-Based Precision: 0.6025
+Example-Based Recall: 0.4898
+Example-Based F Measure: 0.5021
+Example-Based Accuracy: 0.4110
+Example-Based Specificity: 0.9321
+Micro-averaged Precision: 0.6844
+Micro-averaged Recall: 0.4819
+Micro-averaged F-Measure: 0.5655
+Micro-averaged Specificity: 0.9308
+Macro-averaged Precision: 0.5360
+copd: 0.6237 diabetes: 0.7647 fluid: 0.5983 hypertension: 0.7309 hypotension: 0.2183 kidney: 0.7701 lipoid: 0.6193 liver: 0.6250 thrombosis: 0.1802 thyroid: 0.2298 
+Macro-averaged Recall: 0.3502
+copd: 0.2054 diabetes: 0.4912 fluid: 0.3890 hypertension: 0.8052 hypotension: 0.0466 kidney: 0.6499 lipoid: 0.2976 liver: 0.4775 thrombosis: 0.0656 thyroid: 0.0743 
+Macro-averaged F-Measure: 0.4078
+copd: 0.3090 diabetes: 0.5981 fluid: 0.4715 hypertension: 0.7663 hypotension: 0.0768 kidney: 0.7049 lipoid: 0.4020 liver: 0.5414 thrombosis: 0.0962 thyroid: 0.1123 
+Macro-averaged Specificity: 0.9046
+copd: 0.9662 diabetes: 0.9324 fluid: 0.8822 hypertension: 0.5083 hypotension: 0.9813 kidney: 0.9186 lipoid: 0.9215 liver: 0.9826 thrombosis: 0.9855 thyroid: 0.9672 
+Average Precision: 0.7472
+Coverage: 3.2927
+OneError: 0.2825
+IsError: 0.6685
+ErrorSetSize: 2.5926
+Ranking Loss: 0.1576
+
+-----------------------------------BR-j48-------------------------------
+Hamming Loss: 0.2400
+Subset Accuracy: 0.0639
+Example-Based Precision: 0.4744
+Example-Based Recall: 0.4838
+Example-Based F Measure: 0.4380
+Example-Based Accuracy: 0.3360
+Example-Based Specificity: 0.8479
+Micro-averaged Precision: 0.4945
+Micro-averaged Recall: 0.4808
+Micro-averaged F-Measure: 0.4876
+Micro-averaged Specificity: 0.8469
+Macro-averaged Precision: 0.3881
+copd: 0.3151 diabetes: 0.5623 fluid: 0.4617 hypertension: 0.6892 hypotension: 0.1359 kidney: 0.6717 lipoid: 0.4304 liver: 0.3580 thrombosis: 0.0995 thyroid: 0.1577 
+Macro-averaged Recall: 0.3788
+copd: 0.3017 diabetes: 0.5137 fluid: 0.4470 hypertension: 0.6654 hypotension: 0.1639 kidney: 0.6134 lipoid: 0.3921 liver: 0.3846 thrombosis: 0.1279 thyroid: 0.1786 
+Macro-averaged F-Measure: 0.3827
+copd: 0.3082 diabetes: 0.5369 fluid: 0.4543 hypertension: 0.6771 hypotension: 0.1486 kidney: 0.6413 lipoid: 0.4104 liver: 0.3708 thrombosis: 0.1119 thyroid: 0.1675 
+Macro-averaged Specificity: 0.8220
+copd: 0.8212 diabetes: 0.8210 fluid: 0.7649 hypertension: 0.5022 hypotension: 0.8831 kidney: 0.8742 lipoid: 0.7773 liver: 0.9582 thrombosis: 0.9438 thyroid: 0.8743 
+Average Precision: 0.5602
+Coverage: 5.4887
+OneError: 0.5321
+IsError: 0.8509
+ErrorSetSize: 6.0678
+Ranking Loss: 0.3660
+
+-----------------------------------BR-SVM(SMO）-------------------------------
+Hamming Loss: 0.1729
+Subset Accuracy: 0.1447
+Example-Based Precision: 0.6160
+Example-Based Recall: 0.4463
+Example-Based F Measure: 0.4818
+Example-Based Accuracy: 0.3940
+Example-Based Specificity: 0.9503
+Micro-averaged Precision: 0.7262
+Micro-averaged Recall: 0.4368
+Micro-averaged F-Measure: 0.5455
+Micro-averaged Specificity: 0.9487
+Macro-averaged Precision: 0.4295
+copd: 0.0000 diabetes: 0.7952 fluid: 0.6077 hypertension: 0.7280 hypotension: 0.0000 kidney: 0.7714 lipoid: 0.6900 liver: 0.7025 thrombosis: 0.0000 thyroid: 0.0000 
+Macro-averaged Recall: 0.2902
+copd: 0.0000 diabetes: 0.4382 fluid: 0.3333 hypertension: 0.8378 hypotension: 0.0000 kidney: 0.6427 lipoid: 0.1991 liver: 0.4509 thrombosis: 0.0000 thyroid: 0.0000 
+Macro-averaged F-Measure: 0.3334
+copd: 0.0000 diabetes: 0.5650 fluid: 0.4305 hypertension: 0.7791 hypotension: 0.0000 kidney: 0.7012 lipoid: 0.3090 liver: 0.5493 thrombosis: 0.0000 thyroid: 0.0000 
+Macro-averaged Specificity: 0.9203
+copd: 1.0000 diabetes: 0.9495 fluid: 0.9029 hypertension: 0.4808 hypotension: 1.0000 kidney: 0.9201 lipoid: 0.9616 liver: 0.9884 thrombosis: 1.0000 thyroid: 1.0000 
+Average Precision: 0.5980
+Coverage: 5.5451
+OneError: 0.3669
+IsError: 0.8078
+ErrorSetSize: 6.1522
+Ranking Loss: 0.3692
+
+
+------------------------run_ada-------------------------
+AdaBoostM1: No model built yet.
+
+Hamming Loss: 0.2127
+Subset Accuracy: 0.0994
+Example-Based Precision: 0.6239
+Example-Based Recall: 0.2912
+Example-Based F Measure: 0.3748
+Example-Based Accuracy: 0.2912
+Example-Based Specificity: 0.9535
+Micro-averaged Precision: 0.6239
+Micro-averaged Recall: 0.2627
+Micro-averaged F-Measure: 0.3697
+Micro-averaged Specificity: 0.9507
+Macro-averaged Precision: 0.0624
+copd: 0.0000 diabetes: 0.0000 fluid: 0.0000 hypertension: 0.6239 hypotension: 0.0000 kidney: 0.0000 lipoid: 0.0000 liver: 0.0000 thrombosis: 0.0000 thyroid: 0.0000 
+Macro-averaged Recall: 0.1000
+copd: 0.0000 diabetes: 0.0000 fluid: 0.0000 hypertension: 1.0000 hypotension: 0.0000 kidney: 0.0000 lipoid: 0.0000 liver: 0.0000 thrombosis: 0.0000 thyroid: 0.0000 
+Macro-averaged F-Measure: 0.0768
+copd: 0.0000 diabetes: 0.0000 fluid: 0.0000 hypertension: 0.7684 hypotension: 0.0000 kidney: 0.0000 lipoid: 0.0000 liver: 0.0000 thrombosis: 0.0000 thyroid: 0.0000 
+Macro-averaged Specificity: 0.9000
+copd: 1.0000 diabetes: 1.0000 fluid: 1.0000 hypertension: 0.0000 hypotension: 1.0000 kidney: 1.0000 lipoid: 1.0000 liver: 1.0000 thrombosis: 1.0000 thyroid: 1.0000 
+Average Precision: 0.5781
+Coverage: 4.8933
+OneError: 0.3761
+IsError: 0.8821
+ErrorSetSize: 5.3867
+Ranking Loss: 0.3266
+
+------------------------run_HOMER-------------------------
+Sun Jan 28 20:32:17 CST 2018 constructing instances
+balanced clustering
+Sun Jan 28 20:32:17 CST 2018 constructing instances
+balanced clustering
+Sun Jan 28 20:32:17 CST 2018 constructing instances
+balanced clustering
+Hamming Loss: 0.2403
+Subset Accuracy: 0.0627
+Example-Based Precision: 0.4705
+Example-Based Recall: 0.4783
+Example-Based F Measure: 0.4305
+Example-Based Accuracy: 0.3302
+Example-Based Specificity: 0.8491
+Micro-averaged Precision: 0.4938
+Micro-averaged Recall: 0.4749
+Micro-averaged F-Measure: 0.4842
+Micro-averaged Specificity: 0.8484
+Macro-averaged Precision: 0.3871
+copd: 0.2986 diabetes: 0.5741 fluid: 0.4550 hypertension: 0.6850 hypotension: 0.1225 kidney: 0.6861 lipoid: 0.4269 liver: 0.3764 thrombosis: 0.0905 thyroid: 0.1559 
+Macro-averaged Recall: 0.3698
+copd: 0.2805 diabetes: 0.5093 fluid: 0.4661 hypertension: 0.6532 hypotension: 0.1383 kidney: 0.6330 lipoid: 0.3674 liver: 0.3475 thrombosis: 0.1246 thyroid: 0.1786 
+Macro-averaged F-Measure: 0.3774
+copd: 0.2893 diabetes: 0.5398 fluid: 0.4605 hypertension: 0.6687 hypotension: 0.1299 kidney: 0.6585 lipoid: 0.3949 liver: 0.3614 thrombosis: 0.1048 thyroid: 0.1665 
+Macro-averaged Specificity: 0.8234
+copd: 0.8204 diabetes: 0.8309 fluid: 0.7481 hypertension: 0.5018 hypotension: 0.8888 kidney: 0.8785 lipoid: 0.7884 liver: 0.9651 thrombosis: 0.9392 thyroid: 0.8726 
+Average Precision: 0.5399
+Coverage: 5.6246
+OneError: 0.5335
+IsError: 0.8718
+ErrorSetSize: 6.4292
+Ranking Loss: 0.3851
+
+
+------------------------run_MLKNN-------------------------
+Hamming Loss: 0.2034
+Subset Accuracy: 0.0948
+Example-Based Precision: 0.5519
+Example-Based Recall: 0.4001
+Example-Based F Measure: 0.4263
+Example-Based Accuracy: 0.3353
+Example-Based Specificity: 0.9256
+Micro-averaged Precision: 0.6135
+Micro-averaged Recall: 0.3873
+Micro-averaged F-Measure: 0.4748
+Micro-averaged Specificity: 0.9240
+Macro-averaged Precision: 0.4818
+copd: 0.6374 diabetes: 0.5911 fluid: 0.5243 hypertension: 0.6629 hypotension: 0.1757 kidney: 0.7552 lipoid: 0.5726 liver: 0.5108 thrombosis: 0.1696 thyroid: 0.2184 
+Macro-averaged Recall: 0.2687
+copd: 0.0772 diabetes: 0.1560 fluid: 0.1947 hypertension: 0.8465 hypotension: 0.0586 kidney: 0.5195 lipoid: 0.2173 liver: 0.4377 thrombosis: 0.0623 thyroid: 0.1173 
+Macro-averaged F-Measure: 0.3146
+copd: 0.1377 diabetes: 0.2469 fluid: 0.2840 hypertension: 0.7436 hypotension: 0.0879 kidney: 0.6156 lipoid: 0.3150 liver: 0.4714 thrombosis: 0.0911 thyroid: 0.1527 
+Macro-averaged Specificity: 0.8879
+copd: 0.9880 diabetes: 0.9517 fluid: 0.9203 hypertension: 0.2860 hypotension: 0.9691 kidney: 0.9294 lipoid: 0.9304 liver: 0.9746 thrombosis: 0.9852 thyroid: 0.9447 
+Average Precision: 0.6862
+Coverage: 3.7808
+OneError: 0.3490
+IsError: 0.7538
+ErrorSetSize: 3.3543
+Ranking Loss: 0.2062
+

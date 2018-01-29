@@ -1,0 +1,164 @@
+
+-----------------------------------BR-Logistic-------------------------------
+Hamming Loss: 0.1189
+Subset Accuracy: 0.0100
+Example-Based Precision: 0.6247
+Example-Based Recall: 0.5818
+Example-Based F Measure: 0.5946
+Example-Based Accuracy: 0.4622
+Example-Based Specificity: 0.9313
+Micro-averaged Precision: 0.5949
+Micro-averaged Recall: 0.5900
+Micro-averaged F-Measure: 0.5925
+Micro-averaged Specificity: 0.9310
+Macro-averaged Precision: 0.5430
+Macro-averaged Recall: 0.6103
+Macro-averaged F-Measure: 0.5493
+Macro-averaged Specificity: 0.9112
+Average Precision: 0.6511
+Coverage: 85.0800
+OneError: 0.3500
+IsError: 0.9800
+ErrorSetSize: 410.6700
+Ranking Loss: 0.1132
+-----------------------------------BR-j48-------------------------------
+Hamming Loss: 0.1095
+Subset Accuracy: 0.1500
+Example-Based Precision: 0.6474
+Example-Based Recall: 0.6292
+Example-Based F Measure: 0.6354
+Example-Based Accuracy: 0.5459
+Example-Based Specificity: 0.9377
+Micro-averaged Precision: 0.6435
+Micro-averaged Recall: 0.6277
+Micro-averaged F-Measure: 0.6355
+Micro-averaged Specificity: 0.9376
+Macro-averaged Precision: 0.5583
+Macro-averaged Recall: 0.5125
+Macro-averaged F-Measure: 0.5148
+Macro-averaged Specificity: 0.9177
+Average Precision: 0.6214
+Coverage: 109.9200
+OneError: 0.3700
+IsError: 0.8400
+ErrorSetSize: 833.7700
+Ranking Loss: 0.2140
+
+-----------------------------------BR-SVM(SMO）-------------------------------
+Hamming Loss: 0.1278
+Subset Accuracy: 0.0000
+Example-Based Precision: 0.6718
+Example-Based Recall: 0.2955
+Example-Based F Measure: 0.4050
+Example-Based Accuracy: 0.2656
+Example-Based Specificity: 0.9763
+Micro-averaged Precision: 0.6881
+Micro-averaged Recall: 0.2918
+Micro-averaged F-Measure: 0.4098
+Micro-averaged Specificity: 0.9763
+Macro-averaged Precision: 0.2743
+Macro-averaged Recall: 0.1718
+Macro-averaged F-Measure: 0.1864
+Macro-averaged Specificity: 0.9527
+Average Precision: 0.3551
+Coverage: 169.0200
+OneError: 0.3700
+IsError: 1.0000
+ErrorSetSize: 1764.6700
+Ranking Loss: 0.4519
+
+------------------------run_ada-------------------------
+AdaBoostM1: No model built yet.
+
+Hamming Loss: 0.1478
+Subset Accuracy: 0.0000
+Example-Based Precision: 0.8700
+Example-Based Recall: 0.0342
+Example-Based F Measure: 0.0658
+Example-Based Accuracy: 0.0342
+Example-Based Specificity: 0.9991
+Micro-averaged Precision: 0.8700
+Micro-averaged Recall: 0.0329
+Micro-averaged F-Measure: 0.0634
+Micro-averaged Specificity: 0.9991
+Macro-averaged Precision: 0.0797
+Macro-averaged Recall: 0.0805
+Macro-averaged F-Measure: 0.0801
+Macro-averaged Specificity: 0.9943
+Average Precision: 0.2083
+Coverage: 171.1600
+OneError: 0.1300
+IsError: 1.0000
+ErrorSetSize: 2297.8900
+Ranking Loss: 0.5898
+
+
+------------------------run_RAKEL-------------------------
+Hamming Loss: 0.1122
+Subset Accuracy: 0.1200
+Example-Based Precision: 0.6608
+Example-Based Recall: 0.6229
+Example-Based F Measure: 0.6359
+Example-Based Accuracy: 0.5448
+Example-Based Specificity: 0.9388
+Micro-averaged Precision: 0.6393
+Micro-averaged Recall: 0.6009
+Micro-averaged F-Measure: 0.6195
+Micro-averaged Specificity: 0.9392
+Macro-averaged Precision: 0.4828
+Macro-averaged Recall: 0.4429
+Macro-averaged F-Measure: 0.4444
+Macro-averaged Specificity: 0.9227
+Average Precision: 0.5774
+Coverage: 136.2400
+OneError: 0.4400
+IsError: 0.8800
+ErrorSetSize: 1065.5500
+Ranking Loss: 0.2643
+
+------------------------run_HOMER-------------------------
+Hamming Loss: 0.1156
+Subset Accuracy: 0.1600
+Example-Based Precision: 0.6415
+Example-Based Recall: 0.6474
+Example-Based F Measure: 0.6384
+Example-Based Accuracy: 0.5438
+Example-Based Specificity: 0.9304
+Micro-averaged Precision: 0.6186
+Micro-averaged Recall: 0.6259
+Micro-averaged F-Measure: 0.6222
+Micro-averaged Specificity: 0.9308
+Macro-averaged Precision: 0.4982
+Macro-averaged Recall: 0.5350
+Macro-averaged F-Measure: 0.4929
+Macro-averaged Specificity: 0.9155
+Average Precision: 0.5965
+Coverage: 113.9400
+OneError: 0.5100
+IsError: 0.8400
+ErrorSetSize: 897.3000
+Ranking Loss: 0.2217
+
+------------------------run_MLKNN-------------------------
+Hamming Loss: 0.1417
+Subset Accuracy: 0.0000
+Example-Based Precision: 0.5802
+Example-Based Recall: 0.2656
+Example-Based F Measure: 0.3564
+Example-Based Accuracy: 0.2236
+Example-Based Specificity: 0.9663
+Micro-averaged Precision: 0.5764
+Micro-averaged Recall: 0.2566
+Micro-averaged F-Measure: 0.3551
+Micro-averaged Specificity: 0.9662
+Macro-averaged Precision: 0.2123
+Macro-averaged Recall: 0.1260
+Macro-averaged F-Measure: 0.1339
+Macro-averaged Specificity: 0.9400 
+Average Precision: 0.5166
+Coverage: 115.0800
+OneError: 0.1700
+IsError: 1.0000
+ErrorSetSize: 642.7700
+Ranking Loss: 0.1637
+

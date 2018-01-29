@@ -181,9 +181,9 @@ public class Multi_Classifier {
 	public void br() throws Exception {
 		Classifier baseClassifier;
 		// randomforest
-		System.out.println("-----------------------------------BR-RandomForest-------------------------------");
-		baseClassifier = new RandomForest();
-		run_br(baseClassifier);
+		//System.out.println("-----------------------------------BR-RandomForest-------------------------------");
+		//baseClassifier = new RandomForest();
+		//run_br(baseClassifier);
 		// logistic
 		System.out.println("-----------------------------------BR-Logistic-------------------------------");
 		baseClassifier = new Logistic();
@@ -320,11 +320,11 @@ public class Multi_Classifier {
 	}
 
 	public void resample_RUS() throws Exception {
-		double p = 0.2;//p取0.05  0.1 0.2
+		double p = 0.1;//p取0.05  0.1 0.2
 
 		UnbalancedSamples.calML_RUS(dataset, p);
 		System.out.println("-----------------------采样后数据集统计-------------------------------");
-		statics();
+		//statics();
 		//save_arff("training_simple" + p + ".arff");
         br();
         run_Ada();
@@ -336,7 +336,7 @@ public class Multi_Classifier {
 	public void resample_MLSMOTE() throws Exception {
 		MLSMOTE smote = new MLSMOTE(dataset);
 		smote.doMLSMOTE();
-		System.out.println("-----------------------采样后数据集统计-------------------------------");
+		//System.out.println("-----------------------采样后数据集统计-------------------------------");
 		statics();
 		//save_arff("training_simple0.05_mlsmote.arff");
         br();
@@ -360,16 +360,15 @@ public class Multi_Classifier {
 
 	// -arff dataset_2.arff -xml output_2.xml
 	// -arff training_simple.arff -xml output_2.xml -unlabeled testing_sample.arff
-	// -arff ../mimic2/holdout-1/training_part1.arff -xml ../mimic2/labels.xml
-	// -unlabeled ../mimic2/holdout-1/testval_part2.arff
+	// -arff ../mimic2/holdout-1/training_part1.arff -xml ../mimic2/labels.xml   -unlabeled ../mimic2/holdout-1/testval_part2.arff
 
 	public static void main(String[] args) throws InvalidDataException, ModelInitializationException, Exception {
 		Multi_Classifier br = new Multi_Classifier(args);
 		System.out.println("-----------------------采样前数据集统计-------------------------------");
-		br.split_arff(0.97); //按照70%比例划分训练集测试集
+		//br.split_arff(0.9); //按照70%比例划分训练集测试集
 		br.statics();
-		br.resample_RUS();
-		br.resample_MLSMOTE();
+		//br.resample_RUS();
+		//br.resample_MLSMOTE();
 		br.resample_MLBBS();
 	}
 

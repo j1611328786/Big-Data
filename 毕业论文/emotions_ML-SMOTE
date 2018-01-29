@@ -1,0 +1,429 @@
+-----------------------采样前数据集统计-------------------------------
+traning sample: Examples: 391
+Predictors: 72
+--Nominal: 0
+--Numeric: 72
+Labels: 6
+
+Cardinality: 1.813299232736573
+Density: 0.30221653878942883
+Distinct Labelsets: 26
+
+Percentage of examples with label 1: 0.30434782608695654
+Percentage of examples with label 2: 0.27365728900255754
+Percentage of examples with label 3: 0.4296675191815857
+Percentage of examples with label 4: 0.22762148337595908
+Percentage of examples with label 5: 0.24296675191815856
+Percentage of examples with label 6: 0.3350383631713555
+
+Examples of cardinality 0: 0.0
+Examples of cardinality 1: 131.0
+Examples of cardinality 2: 202.0
+Examples of cardinality 3: 58.0
+Examples of cardinality 4: 0.0
+Examples of cardinality 5: 0.0
+Examples of cardinality 6: 0.0
+
+Examples of combination 000111: 1
+Examples of combination 000011: 6
+Examples of combination 000110: 16
+Examples of combination 001001: 2
+Examples of combination 001100: 21
+Examples of combination 001101: 1
+Examples of combination 110000: 23
+Examples of combination 100000: 22
+Examples of combination 110001: 3
+Examples of combination 010010: 1
+Examples of combination 011000: 46
+Examples of combination 011100: 5
+Examples of combination 111000: 7
+Examples of combination 001010: 19
+Examples of combination 001110: 39
+Examples of combination 001011: 2
+Examples of combination 000100: 5
+Examples of combination 000001: 55
+Examples of combination 100010: 4
+Examples of combination 101000: 2
+Examples of combination 010000: 18
+Examples of combination 010001: 3
+Examples of combination 010100: 1
+Examples of combination 100001: 58
+Examples of combination 001000: 24
+Examples of combination 000010: 7
+
+statisic test sample: Examples: 202
+Predictors: 72
+--Nominal: 0
+--Numeric: 72
+Labels: 6
+
+Cardinality: 1.9752475247524752
+Density: 0.3292079207920792
+Distinct Labelsets: 21
+
+Percentage of examples with label 1: 0.26732673267326734
+Percentage of examples with label 2: 0.29207920792079206
+Percentage of examples with label 3: 0.4752475247524752
+Percentage of examples with label 4: 0.29207920792079206
+Percentage of examples with label 5: 0.3613861386138614
+Percentage of examples with label 6: 0.2871287128712871
+
+Examples of cardinality 0: 0.0
+Examples of cardinality 1: 47.0
+Examples of cardinality 2: 113.0
+Examples of cardinality 3: 42.0
+Examples of cardinality 4: 0.0
+Examples of cardinality 5: 0.0
+Examples of cardinality 6: 0.0
+
+Examples of combination 000001: 17
+Examples of combination 000011: 6
+Examples of combination 000110: 21
+Examples of combination 001100: 9
+Examples of combination 001001: 1
+Examples of combination 110000: 15
+Examples of combination 100010: 2
+Examples of combination 100011: 4
+Examples of combination 110001: 4
+Examples of combination 100000: 2
+Examples of combination 010000: 5
+Examples of combination 011000: 28
+Examples of combination 011100: 1
+Examples of combination 010001: 2
+Examples of combination 100001: 23
+Examples of combination 111000: 4
+Examples of combination 001010: 6
+Examples of combination 001110: 28
+Examples of combination 001000: 18
+Examples of combination 001011: 1
+Examples of combination 000010: 5
+
+
+选出的小类标签集： 73  75  76  
+----------------MLSMOTE------------- 
+----------------------标签集的均衡性分布--------------------------------------
+
+选出的小类标签集： 73  75  76  
+
+选出的大类标签集： 72  74  77  
+IRBL : 1.411764705882353
+IRBL : 1.5700934579439252
+IRBL : 1.0
+IRBL : 1.8876404494382022
+IRBL : 1.768421052631579
+IRBL : 1.282442748091603
+meanIR: 1.4867270689979437
+[73, 75, 76]
+[72, 74, 77]
+平均样本数： 112
+sample: 107
+sample: 89
+sample: 157
+----------------------标签集的均衡性分布--------------------------------------
+
+选出的小类标签集： 72  77  
+
+选出的大类标签集： 73  74  75  76  
+IRBL : 3.208
+IRBL : 1.8738317757009346
+IRBL : 1.0
+IRBL : 1.3278145695364238
+IRBL : 1.2770700636942676
+IRBL : 3.0610687022900764
+meanIR: 1.9579641852036171
+[72, 77]
+[73, 74, 75, 76]
+平均样本数： 204
+traning sample: Examples: 744
+Predictors: 72
+--Nominal: 0
+--Numeric: 72
+Labels: 6
+
+Cardinality: 2.0
+Density: 0.3333333333333333
+Distinct Labelsets: 26
+
+Percentage of examples with label 1: 0.1693548387096774
+Percentage of examples with label 2: 0.28763440860215056
+Percentage of examples with label 3: 0.5389784946236559
+Percentage of examples with label 4: 0.40591397849462363
+Percentage of examples with label 5: 0.4220430107526882
+Percentage of examples with label 6: 0.1760752688172043
+
+Examples of cardinality 0: 0.0
+Examples of cardinality 1: 179.0
+Examples of cardinality 2: 386.0
+Examples of cardinality 3: 179.0
+Examples of cardinality 4: 0.0
+Examples of cardinality 5: 0.0
+Examples of cardinality 6: 0.0
+
+Examples of combination 000111: 1
+Examples of combination 000011: 6
+Examples of combination 000110: 81
+Examples of combination 001001: 2
+Examples of combination 001100: 45
+Examples of combination 001101: 1
+Examples of combination 110000: 30
+Examples of combination 100000: 22
+Examples of combination 110001: 3
+Examples of combination 010010: 1
+Examples of combination 011000: 108
+Examples of combination 011100: 5
+Examples of combination 111000: 7
+Examples of combination 001010: 45
+Examples of combination 001110: 160
+Examples of combination 001011: 2
+Examples of combination 000100: 8
+Examples of combination 000001: 55
+Examples of combination 100010: 4
+Examples of combination 101000: 2
+Examples of combination 010000: 56
+Examples of combination 010001: 3
+Examples of combination 010100: 1
+Examples of combination 100001: 58
+Examples of combination 001000: 24
+Examples of combination 000010: 14
+
+statisic test sample: Examples: 202
+Predictors: 72
+--Nominal: 0
+--Numeric: 72
+Labels: 6
+
+Cardinality: 1.9752475247524752
+Density: 0.3292079207920792
+Distinct Labelsets: 21
+
+Percentage of examples with label 1: 0.26732673267326734
+Percentage of examples with label 2: 0.29207920792079206
+Percentage of examples with label 3: 0.4752475247524752
+Percentage of examples with label 4: 0.29207920792079206
+Percentage of examples with label 5: 0.3613861386138614
+Percentage of examples with label 6: 0.2871287128712871
+
+Examples of cardinality 0: 0.0
+Examples of cardinality 1: 47.0
+Examples of cardinality 2: 113.0
+Examples of cardinality 3: 42.0
+Examples of cardinality 4: 0.0
+Examples of cardinality 5: 0.0
+Examples of cardinality 6: 0.0
+
+Examples of combination 000001: 17
+Examples of combination 000011: 6
+Examples of combination 000110: 21
+Examples of combination 001100: 9
+Examples of combination 001001: 1
+Examples of combination 110000: 15
+Examples of combination 100010: 2
+Examples of combination 100011: 4
+Examples of combination 110001: 4
+Examples of combination 100000: 2
+Examples of combination 010000: 5
+Examples of combination 011000: 28
+Examples of combination 011100: 1
+Examples of combination 010001: 2
+Examples of combination 100001: 23
+Examples of combination 111000: 4
+Examples of combination 001010: 6
+Examples of combination 001110: 28
+Examples of combination 001000: 18
+Examples of combination 001011: 1
+Examples of combination 000010: 5
+
+-----------------------------------BR-Logistic-------------------------------
+Hamming Loss: 0.2343
+Subset Accuracy: 0.2030
+Example-Based Precision: 0.5986
+Example-Based Recall: 0.6221
+Example-Based F Measure: 0.5777
+Example-Based Accuracy: 0.4901
+Example-Based Specificity: 0.8458
+Micro-averaged Precision: 0.6517
+Micro-averaged Recall: 0.6190
+Micro-averaged F-Measure: 0.6350
+Micro-averaged Specificity: 0.8376
+Macro-averaged Precision: 0.6531
+amazed-suprised: 0.5135 happy-pleased: 0.3971 relaxing-calm: 0.6481 quiet-still: 0.7846 sad-lonely: 0.8136 angry-aggresive: 0.7619 
+Macro-averaged Recall: 0.6021
+amazed-suprised: 0.3519 happy-pleased: 0.4576 relaxing-calm: 0.7292 quiet-still: 0.8644 sad-lonely: 0.6575 angry-aggresive: 0.5517 
+Macro-averaged F-Measure: 0.6198
+amazed-suprised: 0.4176 happy-pleased: 0.4252 relaxing-calm: 0.6863 quiet-still: 0.8226 sad-lonely: 0.7273 angry-aggresive: 0.6400 
+Macro-averaged Specificity: 0.8301
+amazed-suprised: 0.8784 happy-pleased: 0.7133 relaxing-calm: 0.6415 quiet-still: 0.9021 sad-lonely: 0.9147 angry-aggresive: 0.9306 
+Average Precision: 0.7933
+Coverage: 1.8812
+OneError: 0.3020
+IsError: 0.5050
+ErrorSetSize: 1.1832
+Ranking Loss: 0.1655
+
+-----------------------------------BR-j48-------------------------------
+Hamming Loss: 0.2550
+Subset Accuracy: 0.1485
+Example-Based Precision: 0.5573
+Example-Based Recall: 0.5685
+Example-Based F Measure: 0.5306
+Example-Based Accuracy: 0.4375
+Example-Based Specificity: 0.8366
+Micro-averaged Precision: 0.6216
+Micro-averaged Recall: 0.5764
+Micro-averaged F-Measure: 0.5982
+Micro-averaged Specificity: 0.8278
+Macro-averaged Precision: 0.6271
+amazed-suprised: 0.6429 happy-pleased: 0.4138 relaxing-calm: 0.6381 quiet-still: 0.6923 sad-lonely: 0.6190 angry-aggresive: 0.7568 
+Macro-averaged Recall: 0.5641
+amazed-suprised: 0.5000 happy-pleased: 0.4068 relaxing-calm: 0.6979 quiet-still: 0.7627 sad-lonely: 0.5342 angry-aggresive: 0.4828 
+Macro-averaged F-Measure: 0.5880
+amazed-suprised: 0.5625 happy-pleased: 0.4103 relaxing-calm: 0.6667 quiet-still: 0.7258 sad-lonely: 0.5735 angry-aggresive: 0.5895 
+Macro-averaged Specificity: 0.8190
+amazed-suprised: 0.8986 happy-pleased: 0.7622 relaxing-calm: 0.6415 quiet-still: 0.8601 sad-lonely: 0.8140 angry-aggresive: 0.9375 
+Average Precision: 0.6924
+Coverage: 2.7772
+OneError: 0.4010
+IsError: 0.6733
+ErrorSetSize: 2.2921
+Ranking Loss: 0.3078
+
+-----------------------------------BR-SVM(SMO）-------------------------------
+Hamming Loss: 0.2186
+Subset Accuracy: 0.2277
+Example-Based Precision: 0.6196
+Example-Based Recall: 0.5974
+Example-Based F Measure: 0.5776
+Example-Based Accuracy: 0.4963
+Example-Based Specificity: 0.8752
+Micro-averaged Precision: 0.6925
+Micro-averaged Recall: 0.6040
+Micro-averaged F-Measure: 0.6452
+Micro-averaged Specificity: 0.8684
+Macro-averaged Precision: 0.6834
+amazed-suprised: 0.6364 happy-pleased: 0.4419 relaxing-calm: 0.6609 quiet-still: 0.7727 sad-lonely: 0.7937 angry-aggresive: 0.7949 
+Macro-averaged Recall: 0.5761
+amazed-suprised: 0.2593 happy-pleased: 0.3220 relaxing-calm: 0.7917 quiet-still: 0.8644 sad-lonely: 0.6849 angry-aggresive: 0.5345 
+Macro-averaged F-Measure: 0.6086
+amazed-suprised: 0.3684 happy-pleased: 0.3725 relaxing-calm: 0.7204 quiet-still: 0.8160 sad-lonely: 0.7353 angry-aggresive: 0.6392 
+Macro-averaged Specificity: 0.8582
+amazed-suprised: 0.9459 happy-pleased: 0.8322 relaxing-calm: 0.6321 quiet-still: 0.8951 sad-lonely: 0.8992 angry-aggresive: 0.9444 
+Average Precision: 0.7296
+Coverage: 2.6337
+OneError: 0.3267
+IsError: 0.6040
+ErrorSetSize: 2.1634
+Ranking Loss: 0.2865
+
+------------------------run_ada-------------------------
+AdaBoostM1: No model built yet.
+
+Hamming Loss: 0.3375
+Subset Accuracy: 0.0743
+Example-Based Precision: 0.4505
+Example-Based Recall: 0.2343
+Example-Based F Measure: 0.2970
+Example-Based Accuracy: 0.2343
+Example-Based Specificity: 0.8797
+Micro-averaged Precision: 0.4740
+Micro-averaged Recall: 0.2281
+Micro-averaged F-Measure: 0.3080
+Micro-averaged Specificity: 0.8758
+Macro-averaged Precision: 0.0790
+amazed-suprised: 0.0000 happy-pleased: 0.0000 relaxing-calm: 0.4740 quiet-still: 0.0000 sad-lonely: 0.0000 angry-aggresive: 0.0000 
+Macro-averaged Recall: 0.1580
+amazed-suprised: 0.0000 happy-pleased: 0.0000 relaxing-calm: 0.9479 quiet-still: 0.0000 sad-lonely: 0.0000 angry-aggresive: 0.0000 
+Macro-averaged F-Measure: 0.1053
+amazed-suprised: 0.0000 happy-pleased: 0.0000 relaxing-calm: 0.6319 quiet-still: 0.0000 sad-lonely: 0.0000 angry-aggresive: 0.0000 
+Macro-averaged Specificity: 0.8412
+amazed-suprised: 1.0000 happy-pleased: 1.0000 relaxing-calm: 0.0472 quiet-still: 1.0000 sad-lonely: 1.0000 angry-aggresive: 1.0000 
+Average Precision: 0.6107
+Coverage: 3.0050
+OneError: 0.5248
+IsError: 0.7426
+ErrorSetSize: 3.1238
+Ranking Loss: 0.4208
+
+------------------------run_RAKEL-------------------------
+Hamming Loss: 0.2550
+Subset Accuracy: 0.1485
+Example-Based Precision: 0.5573
+Example-Based Recall: 0.5685
+Example-Based F Measure: 0.5306
+Example-Based Accuracy: 0.4375
+Example-Based Specificity: 0.8366
+Micro-averaged Precision: 0.6216
+Micro-averaged Recall: 0.5764
+Micro-averaged F-Measure: 0.5982
+Micro-averaged Specificity: 0.8278
+Macro-averaged Precision: 0.6271
+amazed-suprised: 0.6429 happy-pleased: 0.4138 relaxing-calm: 0.6381 quiet-still: 0.6923 sad-lonely: 0.6190 angry-aggresive: 0.7568 
+Macro-averaged Recall: 0.5641
+amazed-suprised: 0.5000 happy-pleased: 0.4068 relaxing-calm: 0.6979 quiet-still: 0.7627 sad-lonely: 0.5342 angry-aggresive: 0.4828 
+Macro-averaged F-Measure: 0.5880
+amazed-suprised: 0.5625 happy-pleased: 0.4103 relaxing-calm: 0.6667 quiet-still: 0.7258 sad-lonely: 0.5735 angry-aggresive: 0.5895 
+Macro-averaged Specificity: 0.8190
+amazed-suprised: 0.8986 happy-pleased: 0.7622 relaxing-calm: 0.6415 quiet-still: 0.8601 sad-lonely: 0.8140 angry-aggresive: 0.9375 
+Average Precision: 0.6983
+Coverage: 2.6089
+OneError: 0.4010
+IsError: 0.6832
+ErrorSetSize: 2.2277
+Ranking Loss: 0.2951
+
+------------------------run_HOMER-------------------------
+Sun Jan 28 21:01:58 CST 2018 constructing instances
+balanced clustering
+Hamming Loss: 0.2682
+Subset Accuracy: 0.1386
+Example-Based Precision: 0.5482
+Example-Based Recall: 0.5594
+Example-Based F Measure: 0.5124
+Example-Based Accuracy: 0.4195
+Example-Based Specificity: 0.8247
+Micro-averaged Precision: 0.5984
+Micro-averaged Recall: 0.5639
+Micro-averaged F-Measure: 0.5806
+Micro-averaged Specificity: 0.8143
+Macro-averaged Precision: 0.5952
+amazed-suprised: 0.5965 happy-pleased: 0.3710 relaxing-calm: 0.7089 quiet-still: 0.6618 sad-lonely: 0.5333 angry-aggresive: 0.7000 
+Macro-averaged Recall: 0.5679
+amazed-suprised: 0.6296 happy-pleased: 0.3898 relaxing-calm: 0.5833 quiet-still: 0.7627 sad-lonely: 0.4384 angry-aggresive: 0.6034 
+Macro-averaged F-Measure: 0.5785
+amazed-suprised: 0.6126 happy-pleased: 0.3802 relaxing-calm: 0.6400 quiet-still: 0.7087 sad-lonely: 0.4812 angry-aggresive: 0.6481 
+Macro-averaged Specificity: 0.8121
+amazed-suprised: 0.8446 happy-pleased: 0.7273 relaxing-calm: 0.7830 quiet-still: 0.8392 sad-lonely: 0.7829 angry-aggresive: 0.8958 
+Average Precision: 0.6749
+Coverage: 2.8218
+OneError: 0.4158
+IsError: 0.7475
+ErrorSetSize: 2.5000
+Ranking Loss: 0.3299
+
+------------------------run_MLKNN-------------------------
+Hamming Loss: 0.1906
+Subset Accuracy: 0.3119
+Example-Based Precision: 0.6708
+Example-Based Recall: 0.6460
+Example-Based F Measure: 0.6299
+Example-Based Accuracy: 0.5528
+Example-Based Specificity: 0.8929
+Micro-averaged Precision: 0.7386
+Micro-averaged Recall: 0.6516
+Micro-averaged F-Measure: 0.6924
+Micro-averaged Specificity: 0.8868
+Macro-averaged Precision: 0.7368
+amazed-suprised: 0.7111 happy-pleased: 0.6667 relaxing-calm: 0.7129 quiet-still: 0.7937 sad-lonely: 0.7541 angry-aggresive: 0.7826 
+Macro-averaged Recall: 0.6413
+amazed-suprised: 0.5926 happy-pleased: 0.4068 relaxing-calm: 0.7500 quiet-still: 0.8475 sad-lonely: 0.6301 angry-aggresive: 0.6207 
+Macro-averaged F-Measure: 0.6802
+amazed-suprised: 0.6465 happy-pleased: 0.5053 relaxing-calm: 0.7310 quiet-still: 0.8197 sad-lonely: 0.6866 angry-aggresive: 0.6923 
+Macro-averaged Specificity: 0.8797
+amazed-suprised: 0.9122 happy-pleased: 0.9161 relaxing-calm: 0.7264 quiet-still: 0.9091 sad-lonely: 0.8837 angry-aggresive: 0.9306 
+Average Precision: 0.8077
+Coverage: 1.8317
+OneError: 0.2723
+IsError: 0.4901
+ErrorSetSize: 1.1733
+Ranking Loss: 0.1610
+
+
