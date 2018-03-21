@@ -30,6 +30,8 @@ import mulan.classifier.InvalidDataException;
 import mulan.classifier.ModelInitializationException;
 import mulan.classifier.MultiLabelOutput;
 import mulan.transformations.BinaryRelevanceTransformation;
+import mulan.transformations.LabelPowersetTransformation;
+import mulan.classifier.transformation.LabelPowerset;
 import mulan.classifier.transformation.BinaryRelevance;
 import mulan.data.InvalidDataFormatException;
 import mulan.data.LabelSet;
@@ -159,6 +161,7 @@ public class Multi_Classifier {
 		measures.add(new MacroRecall(numOfLabels));
 		measures.add(new MacroFMeasure(numOfLabels));
 		measures.add(new MacroSpecificity(numOfLabels));
+		//measures.add(new MicroAUC(numOfLabels));
 		// add ranking based measures
 		measures.add(new AveragePrecision());
 		measures.add(new Coverage());
@@ -167,14 +170,23 @@ public class Multi_Classifier {
 		measures.add(new ErrorSetSize());
 		measures.add(new RankingLoss());
 
+		ThresholdCurve tc = new ThresholdCurve();
+		//tc.getCurve(null, arg1)
+		
+
 		return measures;
 	}
 
 	public void run_br(Classifier baseClassifier) throws Exception {
-		br = new BinaryRelevance(baseClassifier);
+		/*br = new BinaryRelevance(baseClassifier);
 		Evaluator eval = new Evaluator();
 
 		br.build(dataset);
+		System.out.println(eval.evaluate(br, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
+		*/
+		LabelPowerset lp = new LabelPowerset(baseClassifier);
+		lp.build(dataset);
+		Evaluator eval = new Evaluator();
 		System.out.println(eval.evaluate(br, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
 	}
 
@@ -213,8 +225,8 @@ public class Multi_Classifier {
 		RAkEL rakel=new RAkEL();
 		Evaluator eval=new Evaluator();
 		rakel.build(dataset);
-		System.out.println(eval.evaluate(rakel, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
-
+		//System.out.println(eval.evaluate(rakel, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
+		System.out.println(eval.crossValidate(rakel, dataset, setMeasures(numlabels),3));
 		
 	}
 	
@@ -223,14 +235,16 @@ public class Multi_Classifier {
 		MLkNN   mlknn=new MLkNN();
 		Evaluator eval=new Evaluator();
 		mlknn.build(dataset);
-		System.out.println(eval.evaluate(mlknn, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
+		//System.out.println(eval.evaluate(mlknn, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
+		System.out.println(eval.crossValidate(mlknn, dataset, setMeasures(numlabels),3));
+	
 	}
 
 	public void run_Ada() throws Exception {
 		System.out.println("------------------------run_ada-------------------------");
 		// J48(c4.5)
 		Classifier baseClassifier = new J48();
-		AdaBoostMH adb = new AdaBoostMH();
+		AdaBoostMH adb = new AdaBoostMH();        
 		System.out.println(adb.getBaseClassifier());
 
 		Evaluator eval = new Evaluator();
@@ -277,7 +291,8 @@ public class Multi_Classifier {
 			test = new Instances(new_dataset, 0);
 		Iterator<Instance> it = new_dataset.iterator();
 		while (testLen > 0 && it.hasNext()) {
-			test.add(it.next());
+			//test.add(it.next());
+			it.next();
 			it.remove();
 			testLen--;
 		}
@@ -350,12 +365,13 @@ public class Multi_Classifier {
 		ML_BBS.dobbs(dataset);
 		System.out.println("-----------------------采样后数据集统计-------------------------------");
 		statics();
+		split_arff(0.4);
 		//save_arff("training_simpleBBS_5.arff");
-	    br();
-	    run_Ada();
+	   // br();
+	    //run_Ada();
         run_RAKEL();
-        run_HOMER();
-        run_MLKNN();
+       // run_HOMER();
+        //run_MLKNN();
 	}
 
 	// -arff dataset_2.arff -xml output_2.xml
