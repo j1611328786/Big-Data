@@ -8,7 +8,6 @@ import weka.core.Instances;
 import weka.core.Utils;
 import weka.core.converters.ArffSaver;
 import weka.classifiers.functions.Logistic;
-import weka.classifiers.evaluation.Evaluation;
 import weka.classifiers.functions.LibSVM;
 import weka.filters.supervised.instance.SMOTE;
 import weka.classifiers.evaluation.ThresholdCurve;
@@ -36,11 +35,13 @@ import mulan.classifier.transformation.BinaryRelevance;
 import mulan.data.InvalidDataFormatException;
 import mulan.data.LabelSet;
 import mulan.data.MultiLabelInstances;
-import mulan.evaluation.Evaluator;
+import mulan.evaluation.*;
+import mulan.evaluation.GroundTruth;
 import mulan.evaluation.MultipleEvaluation;
 import mulan.evaluation.measure.*;
 import mulan.classifier.transformation.AdaBoostMH;
 import mulan.classifier.meta.HOMER;
+import mulan.classifier.meta.HierarchyBuilder;
 import mulan.classifier.meta.RAkEL;
 import mulan.classifier.lazy.MLkNN;
 import mulan.data.Statistics;
@@ -112,7 +113,7 @@ public class Multi_Classifier {
 		System.out.println("traning sample: " + stat);
 	}
 
-	// 单分类效果
+	/*单分类效果
 	public <Intances> void run_single() throws Exception {
 		BinaryRelevanceTransformation brt = new BinaryRelevanceTransformation(dataset);
 		BinaryRelevanceTransformation brt1 = new BinaryRelevanceTransformation(
@@ -139,7 +140,7 @@ public class Multi_Classifier {
 		brt = null;
 		brt1 = null;
 
-	}
+	}*/
 
 	// 评估方法
 	public List<Measure> setMeasures(int numOfLabels) {
@@ -213,7 +214,9 @@ public class Multi_Classifier {
 	
 	public void run_HOMER() throws Exception{
 		System.out.println("------------------------run_HOMER-------------------------");
-		HOMER homer=new HOMER();
+		//HOMER homer=new HOMER();//默认基分类器为 J48
+		HOMER homer=new HOMER(new BinaryRelevance(new Logistic()),3,HierarchyBuilder.Method.BalancedClustering);
+		//HOMER homer=new HOMER(new BinaryRelevance(new SMO()),3,HierarchyBuilder.Method.BalancedClustering);
 		Evaluator eval=new Evaluator();
 		homer.build(dataset);
 		System.out.println(eval.evaluate(homer, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
@@ -222,11 +225,13 @@ public class Multi_Classifier {
 	
 	public void run_RAKEL() throws Exception {
 		System.out.println("------------------------run_RAKEL-------------------------");
-		RAkEL rakel=new RAkEL();
+		//RAkEL rakel=new RAkEL();//默认基分类器为 J48
+		RAkEL rakel=new RAkEL(new BinaryRelevance(new Logistic()));
+		//RAkEL rakel=new RAkEL(new BinaryRelevance(new SMO()));
 		Evaluator eval=new Evaluator();
+		
 		rakel.build(dataset);
-		//System.out.println(eval.evaluate(rakel, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
-		System.out.println(eval.crossValidate(rakel, dataset, setMeasures(numlabels),3));
+		System.out.println(eval.evaluate(rakel, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
 		
 	}
 	
@@ -235,8 +240,7 @@ public class Multi_Classifier {
 		MLkNN   mlknn=new MLkNN();
 		Evaluator eval=new Evaluator();
 		mlknn.build(dataset);
-		//System.out.println(eval.evaluate(mlknn, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
-		System.out.println(eval.crossValidate(mlknn, dataset, setMeasures(numlabels),3));
+		System.out.println(eval.evaluate(mlknn, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
 	
 	}
 
@@ -249,36 +253,95 @@ public class Multi_Classifier {
 
 		Evaluator eval = new Evaluator();
 		MultipleEvaluation results;
+	
 		
-
 		adb.build(dataset);
 		System.out.println(eval.evaluate(adb, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
 
 	}
 
 	public void prediction() throws InvalidDataException, ModelInitializationException, Exception {
-		int numInstances = test.numInstances();
-		FileWriter fw = new FileWriter(new File("pre.csv"), true);
-		PrintWriter pw = new PrintWriter(fw);
-		int[] label_position = dataset.getLabelIndices();// ��ǩλ��
+		MLkNN   mlknn=new MLkNN();
+		mlknn.build(dataset);
+		
+		int numInstances = dataset.getNumInstances();
+		int[] label_position = dataset.getLabelIndices();
+		
+		
+		//FindSmallLabels fs=new FindSmallLabels(dataset);//获取小类样本的标签集合
+		//fs.between_labels();//获取小类样本的标签集合
+		//List<Integer> minlabels=fs.getsmalllabels();
+		
+		
+		//每个小类标签被误分类的次数及在整个训练集中被误分类的概率
+		int[] statisticEveryclassification=new int[label_position.length];
+		int[] misclassification=new int[label_position.length];
+		double[] misclassificationPro=new double[label_position.length];
+		/*double[] misclassificationPro={0.003166465621230398,
+				0.016535987133092078,
+				0.00914756735022115,
+				0.00859469240048251,
+				0.0024628065942903098,
+				3.0156815440289503E-4,
+				0.0671491757137113,
+				0.09303377563329313,
+				0.04503417772416566};
+		*/
 
+		Instances instances=dataset.getDataSet();
 		for (int instanceIndex = 0; instanceIndex < numInstances; instanceIndex++) {
-			Instance instance = test.instance(instanceIndex);
-			double[] labels = new double[label_position.length];
-			String str = "";
-			for (int j = 0; j < label_position.length; j++) {
-				labels[j] = instance.value(label_position[j]);// ���ݱ�ǩλ�û����Ӧ��ǩֵ
-				str += (String.valueOf(labels[j]) + ",");
-			}
-			MultiLabelOutput output = br.makePrediction(instance);
-			// do necessary operations with provided prediction output, here just print it
-			// out
-			pw.print(output);
-			pw.println("true labels: [" + str + "]");
+			Instance instance = instances.get(instanceIndex);
+			boolean[] predict=mlknn.makePrediction(instance).getBipartition();
+            for(int i=0;i<label_position.length;i++) {
+            	if(instance.value(label_position[i])==1) {
+            		statisticEveryclassification[i]++;
+            		if(!predict[i])
+            			misclassification[i]++;     
+            	} 
+            	/*else {
+            		if(predict[i])
+            			misclassification[i]++;   
+            	}*/
+            }
 		}
-		pw.flush();
-		pw.close();
-		fw.close();
+		for (int j = 0; j < label_position.length; j++) {
+			//if(minlabels.contains(label_position[j]))
+			misclassificationPro[j] =misclassification[j]*1.0/statisticEveryclassification[j];
+			//misclassificationPro[j] =misclassification[j]*1.0/numInstances;
+			System.out.println(misclassificationPro[j]);
+		}
+		
+	
+		//RAkEL rakel=new RAkEL(new BinaryRelevance(new J48()),6,3);
+		RAkEL rakel=new RAkEL(new BinaryRelevance(new SMO()),6,3);
+		//RAkEL rakel=new RAkEL(new BinaryRelevance(new Logistic()),6,8);
+		rakel.build(dataset);
+		
+		 List<Measure>  measures=setMeasures(numlabels);
+		
+		int numInstancesTest = test.numInstances();
+		double[] output=new double[label_position.length];//标签预测值
+		boolean[] truth=new boolean[label_position.length];//标签真实值
+		
+		for(int i=0;i<numInstancesTest;i++) {
+			Instance instance=test.get(i);
+
+			double[] output1 = mlknn.makePrediction(instance).getConfidences();
+			double[] output2 = rakel.makePrediction(instance).getConfidences();
+			
+			for(int j=0;j<output.length;j++) {
+				output[j]=(1-misclassificationPro[j])*output1[j]+misclassificationPro[j]*output2[j];
+				truth[j]=instance.value(label_position[j])==1? true:false;
+			}
+			
+			Iterator<Measure> it = measures.iterator();
+            while (it.hasNext()) {
+                Measure m = it.next();
+                m.update(new MultiLabelOutput(output, 0.5), new GroundTruth(truth));  
+            }	
+		}
+		
+		System.out.println(new Evaluation(measures, new MultiLabelInstances(test, xmlFilename)));
 	}
 
 	/*
@@ -354,24 +417,26 @@ public class Multi_Classifier {
 		//System.out.println("-----------------------采样后数据集统计-------------------------------");
 		statics();
 		//save_arff("training_simple0.05_mlsmote.arff");
-        br();
-        run_Ada();
+        //br();
+        //run_Ada();
         run_RAKEL();
         run_HOMER();
-        run_MLKNN();
+        //run_MLKNN();
 	}
 
 	public void resample_MLBBS() throws Exception {
-		ML_BBS.dobbs(dataset);
-		System.out.println("-----------------------采样后数据集统计-------------------------------");
-		statics();
-		split_arff(0.4);
+		//ML_BBS.dobbs(dataset);
+		//System.out.println("-----------------------采样后数据集统计-------------------------------");
+		//statics();
+	   // run_HOMER();
+		//split_arff(0.5);
 		//save_arff("training_simpleBBS_5.arff");
-	   // br();
+	    //br();
 	    //run_Ada();
-        run_RAKEL();
-       // run_HOMER();
+        //run_RAKEL();
         //run_MLKNN();
+        
+        prediction();
 	}
 
 	// -arff dataset_2.arff -xml output_2.xml
@@ -382,7 +447,7 @@ public class Multi_Classifier {
 		Multi_Classifier br = new Multi_Classifier(args);
 		System.out.println("-----------------------采样前数据集统计-------------------------------");
 		//br.split_arff(0.9); //按照70%比例划分训练集测试集
-		br.statics();
+		//br.statics();
 		//br.resample_RUS();
 		//br.resample_MLSMOTE();
 		br.resample_MLBBS();
