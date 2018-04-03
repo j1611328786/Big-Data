@@ -52,3 +52,43 @@ OneError: 0.1092
 IsError: 0.2336
 ErrorSetSize: 0.5103
 Ranking Loss: 0.0403
+
+
+
+RAkEL rakel=new RAkEL(new BinaryRelevance(new SMO()),6,3);
+-----------------------采样前数据集统计-------------------------------
+training: 13928, testing: 3682
+0.7964523281596453
+0.4946236559139785
+0.6203473945409429
+0.590728476821192
+0.9098116947472745
+0.9253450439146801
+0.3918621700879765
+0.03262539539087212
+0.2633659962179818
+Hamming Loss: 0.0720
+Subset Accuracy: 0.5464
+Example-Based Precision: 0.8528
+Example-Based Recall: 0.8035
+Example-Based F Measure: 0.7978
+Example-Based Accuracy: 0.7351
+Example-Based Specificity: 0.9681
+Micro-averaged Precision: 0.8151
+Micro-averaged Recall: 0.7260
+Micro-averaged F-Measure: 0.7680
+Micro-averaged Specificity: 0.9676
+Macro-averaged Precision: 0.4461
+cerebral_apoplexy: 0.3030 hf_ICD: 0.6667 cardiac_infarction: 0.0000 nephropathy: 0.3929 ischemia_myocardial: 0.4000 cardiac_function_lesion: 0.0000 coronary_heart_disease: 0.4941 gaoxueya: 0.8745 tangniao: 0.8838 
+Macro-averaged Recall: 0.2690
+cerebral_apoplexy: 0.0535 hf_ICD: 0.0588 cardiac_infarction: 0.0000 nephropathy: 0.2750 ischemia_myocardial: 0.0606 cardiac_function_lesion: 0.0000 coronary_heart_disease: 0.4373 gaoxueya: 0.9479 tangniao: 0.5881 
+Macro-averaged F-Measure: 0.3009
+cerebral_apoplexy: 0.0909 hf_ICD: 0.1081 cardiac_infarction: 0.0000 nephropathy: 0.3235 ischemia_myocardial: 0.1053 cardiac_function_lesion: 0.0000 coronary_heart_disease: 0.4640 gaoxueya: 0.9097 tangniao: 0.7062 
+Macro-averaged Specificity: 0.9169
+cerebral_apoplexy: 0.9934 hf_ICD: 0.9997 cardiac_infarction: 0.9992 nephropathy: 0.9953 ischemia_myocardial: 0.9992 cardiac_function_lesion: 1.0000 coronary_heart_disease: 0.8824 gaoxueya: 0.4255 tangniao: 0.9575 
+Average Precision: 0.9217
+Coverage: 0.9169
+OneError: 0.0899
+IsError: 0.2385
+ErrorSetSize: 0.4916
+Ranking Loss: 0.0384

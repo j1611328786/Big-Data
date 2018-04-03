@@ -179,16 +179,16 @@ public class Multi_Classifier {
 	}
 
 	public void run_br(Classifier baseClassifier) throws Exception {
-		/*br = new BinaryRelevance(baseClassifier);
+		br = new BinaryRelevance(baseClassifier);
 		Evaluator eval = new Evaluator();
 
 		br.build(dataset);
 		System.out.println(eval.evaluate(br, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
-		*/
-		LabelPowerset lp = new LabelPowerset(baseClassifier);
+		
+		/*LabelPowerset lp = new LabelPowerset(baseClassifier);
 		lp.build(dataset);
 		Evaluator eval = new Evaluator();
-		System.out.println(eval.evaluate(br, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
+		System.out.println(eval.evaluate(br, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));*/
 	}
 
 	public void br() throws Exception {
@@ -225,9 +225,9 @@ public class Multi_Classifier {
 	
 	public void run_RAKEL() throws Exception {
 		System.out.println("------------------------run_RAKEL-------------------------");
-		//RAkEL rakel=new RAkEL();//默认基分类器为 J48
-		RAkEL rakel=new RAkEL(new BinaryRelevance(new Logistic()));
-		//RAkEL rakel=new RAkEL(new BinaryRelevance(new SMO()));
+		//RAkEL rakel=new RAkEL(new BinaryRelevance(new J48()),9,3);//默认基分类器为 J48
+		//RAkEL rakel=new RAkEL(new BinaryRelevance(new Logistic()),9,3);
+		RAkEL rakel=new RAkEL(new BinaryRelevance(new SMO()));
 		Evaluator eval=new Evaluator();
 		
 		rakel.build(dataset);
@@ -277,16 +277,7 @@ public class Multi_Classifier {
 		int[] statisticEveryclassification=new int[label_position.length];
 		int[] misclassification=new int[label_position.length];
 		double[] misclassificationPro=new double[label_position.length];
-		/*double[] misclassificationPro={0.003166465621230398,
-				0.016535987133092078,
-				0.00914756735022115,
-				0.00859469240048251,
-				0.0024628065942903098,
-				3.0156815440289503E-4,
-				0.0671491757137113,
-				0.09303377563329313,
-				0.04503417772416566};
-		*/
+		
 
 		Instances instances=dataset.getDataSet();
 		for (int instanceIndex = 0; instanceIndex < numInstances; instanceIndex++) {
@@ -312,9 +303,9 @@ public class Multi_Classifier {
 		}
 		
 	
-		//RAkEL rakel=new RAkEL(new BinaryRelevance(new J48()),6,3);
-		RAkEL rakel=new RAkEL(new BinaryRelevance(new SMO()),6,3);
-		//RAkEL rakel=new RAkEL(new BinaryRelevance(new Logistic()),6,8);
+		//RAkEL rakel=new RAkEL(new BinaryRelevance(new J48()),9,3);
+		RAkEL rakel=new RAkEL(new BinaryRelevance(new SMO()));
+		//RAkEL rakel=new RAkEL(new BinaryRelevance(new Logistic()),9,3);
 		rakel.build(dataset);
 		
 		 List<Measure>  measures=setMeasures(numlabels);
@@ -429,11 +420,11 @@ public class Multi_Classifier {
 		//System.out.println("-----------------------采样后数据集统计-------------------------------");
 		//statics();
 	   // run_HOMER();
-		//split_arff(0.5);
+		split_arff(0.4);
 		//save_arff("training_simpleBBS_5.arff");
-	    //br();
+	    br();
 	    //run_Ada();
-        //run_RAKEL();
+      //  run_RAKEL();
         //run_MLKNN();
         
         prediction();
