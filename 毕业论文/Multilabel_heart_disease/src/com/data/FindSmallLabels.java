@@ -2,10 +2,14 @@ package com.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import mulan.data.LabelSet;
 import mulan.data.MultiLabelInstances;
 import mulan.data.Statistics;
+import weka.core.Instance;
+import weka.core.Instances;
 
 /*
  * 寻找小类别标签
@@ -21,6 +25,8 @@ public class FindSmallLabels {
 	private MultiLabelInstances dataset;//数据集
 	private ArrayList<Integer> smalllabels=new ArrayList<Integer>();
 	private ArrayList<Integer> maxlabels=new ArrayList<Integer>();
+	private Instances smallSample=null;//小类标签对应的样本集
+	private Instances maxSample=null;//大类标签对应的样本集
 	private int[] labelsFrequency;//标签出现的频度
 	private double[] imR;//每个标签在多标签内的不均衡度
 	private double[] irlb;//每个标签在多标签间的不均衡度
@@ -200,6 +206,46 @@ public class FindSmallLabels {
         return (int) (meanInstances/meanIR);
     }
     
+	// 取出出现小类标签所对应的样本集
+	private void splitSample() {
+		Instances sample=dataset.clone().getDataSet();
+		
+		if(maxSample==null) {
+			maxSample=new Instances(sample);
+			maxSample.clear();
+		}
+		    
+		
+		Iterator<Instance> it = sample.iterator();
+		while (it.hasNext()) {
+			Instance instance = it.next();
+			boolean flag=false;
+			for(Integer label:smalllabels) {
+				int v=(int) instance.value(label);
+				if (v== 1) {
+					flag=true;
+					break;
+				}
+			}
+			if(!flag) {
+				maxSample.add(instance);
+				it.remove();
+			}
+		}
+		smallSample=sample;
+	}
+	
+	public Instances getSmallSample() {
+		if(smallSample==null)
+		   splitSample();
+		return smallSample;
+	}
+	
+	public Instances getMaxSample() {
+		if(maxSample==null)
+			splitSample();
+		return maxSample;
+	}
         
 	public static void printDistribution(MultiLabelInstances dataset) {
 		System.out.println("----------------------标签集的均衡性分布--------------------------------------");

@@ -113,35 +113,6 @@ public class Multi_Classifier {
 		System.out.println("traning sample: " + stat);
 	}
 
-	/*单分类效果
-	public <Intances> void run_single() throws Exception {
-		BinaryRelevanceTransformation brt = new BinaryRelevanceTransformation(dataset);
-		BinaryRelevanceTransformation brt1 = new BinaryRelevanceTransformation(
-				new MultiLabelInstances(test, xmlFilename));// test
-		String[] labelNames = dataset.getLabelNames();
-		for (int i = 0; i < labelNames.length; i++) {
-
-			// 随机森林模型
-			RandomForest classifier = new RandomForest();
-			System.out.println("the label is : " + labelNames[i]);
-			Instances instrain = brt.transformInstances(i);
-			System.out.println(instrain.numAttributes());
-			classifier.buildClassifier(instrain);
-			System.out.println("gobalinfo: \n" + classifier.globalInfo());
-			System.out.println("classifier : \n" + classifier);
-			// 测试数据
-			Instances instest = brt1.transformInstances(i);
-			Evaluation ev = new Evaluation(instest);
-			ev.evaluateModel(classifier, instest);
-			System.out.println(ev.toSummaryString());
-			System.out.println("F-measure: " + ev.fMeasure(0) + "," + ev.fMeasure(1));
-
-		}
-		brt = null;
-		brt1 = null;
-
-	}*/
-
 	// 评估方法
 	public List<Measure> setMeasures(int numOfLabels) {
 		List<Measure> measures = new ArrayList<Measure>();
@@ -239,8 +210,13 @@ public class Multi_Classifier {
 		System.out.println("------------------------run_MLKNN-------------------------");
 		MLkNN   mlknn=new MLkNN();
 		Evaluator eval=new Evaluator();
-		mlknn.build(dataset);
-		System.out.println(eval.evaluate(mlknn, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
+		//mlknn.build(dataset);
+		//Evaluator eval = new Evaluator();
+        MultipleEvaluation results;
+
+        results = eval.crossValidate(mlknn, dataset, 5);
+        System.out.println(results);
+		//System.out.println(eval.evaluate(mlknn, new MultiLabelInstances(test, xmlFilename), setMeasures(numlabels)));
 	
 	}
 
@@ -260,80 +236,139 @@ public class Multi_Classifier {
 
 	}
 
-	public void prediction() throws InvalidDataException, ModelInitializationException, Exception {
-		MLkNN   mlknn=new MLkNN();
+	public void ensemblePrediction() throws InvalidDataException, ModelInitializationException, Exception {
+		MLkNN mlknn = new MLkNN();
 		mlknn.build(dataset);
+		
+		
+		
 		
 		int numInstances = dataset.getNumInstances();
 		int[] label_position = dataset.getLabelIndices();
-		
-		
-		//FindSmallLabels fs=new FindSmallLabels(dataset);//获取小类样本的标签集合
-		//fs.between_labels();//获取小类样本的标签集合
-		//List<Integer> minlabels=fs.getsmalllabels();
-		
-		
-		//每个小类标签被误分类的次数及在整个训练集中被误分类的概率
-		int[] statisticEveryclassification=new int[label_position.length];
-		int[] misclassification=new int[label_position.length];
-		double[] misclassificationPro=new double[label_position.length];
-		
 
-		Instances instances=dataset.getDataSet();
+		// 每个小类标签被误分类的次数及在整个训练集中被误分类的概率
+		int[] statisticEveryclassification = new int[label_position.length];
+		int[] misclassification = new int[label_position.length];
+		double[] misclassificationPro = new double[label_position.length];
+
+		Instances instances = dataset.getDataSet();
 		for (int instanceIndex = 0; instanceIndex < numInstances; instanceIndex++) {
 			Instance instance = instances.get(instanceIndex);
-			boolean[] predict=mlknn.makePrediction(instance).getBipartition();
-            for(int i=0;i<label_position.length;i++) {
-            	if(instance.value(label_position[i])==1) {
-            		statisticEveryclassification[i]++;
-            		if(!predict[i])
-            			misclassification[i]++;     
-            	} 
-            	/*else {
-            		if(predict[i])
-            			misclassification[i]++;   
-            	}*/
-            }
+			boolean[] predict = mlknn.makePrediction(instance).getBipartition();
+			for (int i = 0; i < label_position.length; i++) {
+				if (instance.value(label_position[i]) == 1) {
+					statisticEveryclassification[i]++;
+					if (!predict[i])
+						misclassification[i]++;
+				}
+			}
 		}
 		for (int j = 0; j < label_position.length; j++) {
-			//if(minlabels.contains(label_position[j]))
-			misclassificationPro[j] =misclassification[j]*1.0/statisticEveryclassification[j];
-			//misclassificationPro[j] =misclassification[j]*1.0/numInstances;
+			misclassificationPro[j] = misclassification[j] * 1.0 / statisticEveryclassification[j];
 			System.out.println(misclassificationPro[j]);
 		}
 		
-	
-		//RAkEL rakel=new RAkEL(new BinaryRelevance(new J48()),9,3);
-		RAkEL rakel=new RAkEL(new BinaryRelevance(new SMO()));
-		//RAkEL rakel=new RAkEL(new BinaryRelevance(new Logistic()),9,3);
-		rakel.build(dataset);
+		double[][] rakel=ensembleRAKEL();
 		
-		 List<Measure>  measures=setMeasures(numlabels);
-		
-		int numInstancesTest = test.numInstances();
-		double[] output=new double[label_position.length];//标签预测值
-		boolean[] truth=new boolean[label_position.length];//标签真实值
-		
-		for(int i=0;i<numInstancesTest;i++) {
-			Instance instance=test.get(i);
-
+		List<Measure> measures = setMeasures(numlabels);
+		int numInstancesTest = test.numInstances(); 
+		double[] output = new double[label_position.length];// 标签预测值 
+		boolean[] truth = new boolean[label_position.length];// 标签真实值
+		for (int i = 0; i < numInstancesTest; i++) {
+			Instance instance = test.get(i);
 			double[] output1 = mlknn.makePrediction(instance).getConfidences();
-			double[] output2 = rakel.makePrediction(instance).getConfidences();
-			
-			for(int j=0;j<output.length;j++) {
-				output[j]=(1-misclassificationPro[j])*output1[j]+misclassificationPro[j]*output2[j];
-				truth[j]=instance.value(label_position[j])==1? true:false;
+			double[] output2=rakel[i];
+			for (int j = 0; j < output.length; j++) {
+				output[j] = (1 - misclassificationPro[j]) * output1[j] + misclassificationPro[j] * output2[j];
+				truth[j] = instance.value(label_position[j]) == 1 ? true : false;
 			}
-			
 			Iterator<Measure> it = measures.iterator();
-            while (it.hasNext()) {
-                Measure m = it.next();
-                m.update(new MultiLabelOutput(output, 0.5), new GroundTruth(truth));  
-            }	
-		}
+			while (it.hasNext()) { 
+				Measure m= it.next();
+				m.update(new MultiLabelOutput(output, 0.5), new GroundTruth(truth)); 
+				}
+			}
+		 System.out.println(new Evaluation(measures, new MultiLabelInstances(test, xmlFilename)));
 		
-		System.out.println(new Evaluation(measures, new MultiLabelInstances(test, xmlFilename)));
 	}
+	
+	public double[][] ensembleRAKEL() throws InvalidDataFormatException,  Exception{
+		FindSmallLabels fs = new FindSmallLabels(dataset);// 获取小类样本的标签集合
+		fs.between_labels();// 获取小类样本的标签集合
+		Instances smallSample = fs.getSmallSample();
+		Instances maxSample = fs.getMaxSample();
+		
+		System.out.println("the number of small sample: "+smallSample.size()+" the number of max Sample:"+maxSample.size());
+		/**
+		 * 对现有的数据集统计大小类样本占的比例，小样本为8294 ，大样本为11602，为了使用RAKEL算法，需要将训练集数目控制在7000到7200之间
+		 * 同时为了加大小样本的数目，缓解数据不均衡，将划分后的大小样本比例设为约2:1，即子数据集中 小样本数目约需要4100左右，大样本约需要2300左右。
+		 * 由此，对现有的8294个小样本将其划分为2部分，而大样本11602则划分为5部分，划分后的子样本集进行混洗，得到10份数据集用于训练 
+		 * 
+		 */
+		Instances[] smallSampleSplit=new Instances[2];//小样本集划分
+		splitInstances(smallSample,smallSampleSplit,2);
+		Instances[] maxSampleSplit=new Instances[4];//大样本集划分
+		splitInstances(maxSample,maxSampleSplit,4);
+		for(int j=0;j<2;j++) {
+			System.out.print(smallSampleSplit[j].size()+"  ,");
+		}
+		System.out.println();
+		for(int j=0;j<4;j++) {
+			System.out.print(maxSampleSplit[j].size()+"  ,");
+		}
+		System.out.println();
+		//smallSample=null;
+		//maxSample=null;
+		
+		RAkEL rakel;
+		//HOMER homer;
+		double[][] val=new double[test.size()][numlabels];
+		for(int i=0;i<smallSampleSplit.length;i++)
+			for(int j=0;j<maxSampleSplit.length;j++) {
+				Instances small=new Instances(smallSampleSplit[i]);
+				small.addAll(maxSampleSplit[j]);
+				MultiLabelInstances trainingSet=new MultiLabelInstances(small,xmlFilename);
+				printStatics(trainingSet);
+				//rakel=new RAkEL(); 
+				//rakel = new RAkEL(new BinaryRelevance(new SMO())); 
+				rakel=new RAkEL(new LabelPowerset(new Logistic())); 
+			    rakel.build(trainingSet);
+				//homer=new HOMER(new BinaryRelevance(new Logistic()),3,HierarchyBuilder.Method.BalancedClustering);
+				//homer.build(trainingSet);
+			    for (int t = 0; t < test.size(); t++) {
+					Instance instance = test.get(t);
+					double[] output=rakel.makePrediction(instance).getConfidences();
+					for(int r=0;r<output.length;r++) {
+						val[t][r]+=output[r];
+					}
+			    }		
+			 }
+		for(int i=0;i<val.length;i++)
+			for(int j=0;j<val[i].length;j++)
+				val[i][j]=val[i][j]/(smallSampleSplit.length*maxSampleSplit.length);	
+		return val;
+
+	}
+	
+
+
+public void splitInstances(Instances instances, Instances[] sample,int k) {
+    //初始化
+	for(int i=0;i< k;i++) {
+      sample[i]=new Instances(instances);
+      sample[i].clear();			
+      }
+		 
+	int number=instances.size();
+	int eval=number/k;
+	for(int i=0;i<number;i++) {
+		int j=i/eval;
+		if(j>=k)
+			j=k-1;
+	    sample[j].add(instances.get(i));
+	}
+}
+	
 
 	/*
 	 * 划分测试集、训练集,参数为划分比例
@@ -420,14 +455,14 @@ public class Multi_Classifier {
 		//System.out.println("-----------------------采样后数据集统计-------------------------------");
 		//statics();
 	   // run_HOMER();
-		split_arff(0.4);
+		//split_arff(0.4);
 		//save_arff("training_simpleBBS_5.arff");
-	    br();
+	    //br();
 	    //run_Ada();
       //  run_RAKEL();
-        //run_MLKNN();
-        
-        prediction();
+          run_MLKNN();
+		//ensemblePrediction();
+        //prediction();
 	}
 
 	// -arff dataset_2.arff -xml output_2.xml
@@ -438,7 +473,7 @@ public class Multi_Classifier {
 		Multi_Classifier br = new Multi_Classifier(args);
 		System.out.println("-----------------------采样前数据集统计-------------------------------");
 		//br.split_arff(0.9); //按照70%比例划分训练集测试集
-		//br.statics();
+		br.statics();
 		//br.resample_RUS();
 		//br.resample_MLSMOTE();
 		br.resample_MLBBS();
