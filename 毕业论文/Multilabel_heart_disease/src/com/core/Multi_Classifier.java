@@ -10,6 +10,7 @@ import weka.core.converters.ArffSaver;
 import weka.classifiers.functions.Logistic;
 import weka.classifiers.functions.LibSVM;
 import weka.filters.supervised.instance.SMOTE;
+import weka.classifiers.evaluation.Evaluation;
 import weka.classifiers.evaluation.ThresholdCurve;
 import weka.classifiers.functions.SMO;
 
@@ -106,6 +107,34 @@ public class Multi_Classifier {
 		return stat;
 	}
 
+	 //单分类效果
+		public <Intances> void run_single() throws Exception {
+			
+			BinaryRelevanceTransformation brt=new BinaryRelevanceTransformation(dataset);
+			BinaryRelevanceTransformation brt1=new BinaryRelevanceTransformation(new MultiLabelInstances(test,xmlFilename));//test
+			String[] labelNames=dataset.getLabelNames();
+			for(int i=0;i<numlabels;i++) {
+				
+			    //随机森林模型
+				Logistic classifier=new Logistic();
+				System.out.println("the label is : "+ labelNames[i]);
+				Instances instrain=brt.transformInstances(i);
+				classifier.buildClassifier(instrain);
+				System.out.println("gobalinfo: \n"+classifier.globalInfo());
+				System.out.println("classifier : \n"+classifier);
+				//测试数据
+				Instances instest=brt1.transformInstances(i);
+				Evaluation ev=new Evaluation(instest);
+			    ev.evaluateModel(classifier, instest);
+				System.out.println("F-measure: "+ev.fMeasure(0)+","+ev.fMeasure(1));
+				System.out.println(classifier.coefficients());
+				
+			}
+			brt=null;
+			brt1=null;
+		
+		}
+		
 	public void printStatics(MultiLabelInstances d) throws InvalidDataFormatException {
 		// System.out.println(dataset.getLabelAttributes());
 		Statistics stat = new Statistics();
@@ -239,10 +268,7 @@ public class Multi_Classifier {
 	public void ensemblePrediction() throws InvalidDataException, ModelInitializationException, Exception {
 		MLkNN mlknn = new MLkNN();
 		mlknn.build(dataset);
-		
-		
-		
-		
+	
 		int numInstances = dataset.getNumInstances();
 		int[] label_position = dataset.getLabelIndices();
 
@@ -279,7 +305,7 @@ public class Multi_Classifier {
 			double[] output1 = mlknn.makePrediction(instance).getConfidences();
 			double[] output2=rakel[i];
 			for (int j = 0; j < output.length; j++) {
-				output[j] = (1 - misclassificationPro[j]) * output1[j] + misclassificationPro[j] * output2[j];
+				output[j] = (1 - misclassificationPro[j]) * output1[j] +(misclassificationPro[j]+0.08) * output2[j];
 				truth[j] = instance.value(label_position[j]) == 1 ? true : false;
 			}
 			Iterator<Measure> it = measures.iterator();
@@ -288,7 +314,7 @@ public class Multi_Classifier {
 				m.update(new MultiLabelOutput(output, 0.5), new GroundTruth(truth)); 
 				}
 			}
-		 System.out.println(new Evaluation(measures, new MultiLabelInstances(test, xmlFilename)));
+		 //System.out.println(new Evaluation(measures, new MultiLabelInstances(test, xmlFilename)));
 		
 	}
 	
@@ -298,7 +324,7 @@ public class Multi_Classifier {
 		Instances smallSample = fs.getSmallSample();
 		Instances maxSample = fs.getMaxSample();
 		
-		System.out.println("the number of small sample: "+smallSample.size()+" the number of max Sample:"+maxSample.size());
+		//System.out.println("the number of small sample: "+smallSample.size()+" the number of max Sample:"+maxSample.size());
 		/**
 		 * 对现有的数据集统计大小类样本占的比例，小样本为8294 ，大样本为11602，为了使用RAKEL算法，需要将训练集数目控制在7000到7200之间
 		 * 同时为了加大小样本的数目，缓解数据不均衡，将划分后的大小样本比例设为约2:1，即子数据集中 小样本数目约需要4100左右，大样本约需要2300左右。
@@ -309,29 +335,21 @@ public class Multi_Classifier {
 		splitInstances(smallSample,smallSampleSplit,2);
 		Instances[] maxSampleSplit=new Instances[4];//大样本集划分
 		splitInstances(maxSample,maxSampleSplit,4);
-		for(int j=0;j<2;j++) {
-			System.out.print(smallSampleSplit[j].size()+"  ,");
-		}
-		System.out.println();
-		for(int j=0;j<4;j++) {
-			System.out.print(maxSampleSplit[j].size()+"  ,");
-		}
-		System.out.println();
+		
 		//smallSample=null;
 		//maxSample=null;
 		
-		RAkEL rakel;
-		//HOMER homer;
+		RAkEL rakel;;
 		double[][] val=new double[test.size()][numlabels];
 		for(int i=0;i<smallSampleSplit.length;i++)
 			for(int j=0;j<maxSampleSplit.length;j++) {
 				Instances small=new Instances(smallSampleSplit[i]);
 				small.addAll(maxSampleSplit[j]);
 				MultiLabelInstances trainingSet=new MultiLabelInstances(small,xmlFilename);
-				printStatics(trainingSet);
-				//rakel=new RAkEL(); 
+				//printStatics(trainingSet);
+				rakel=new RAkEL(); 
 				//rakel = new RAkEL(new BinaryRelevance(new SMO())); 
-				rakel=new RAkEL(new LabelPowerset(new Logistic())); 
+				//rakel=new RAkEL(new BinaryRelevance(new Logistic())); 
 			    rakel.build(trainingSet);
 				//homer=new HOMER(new BinaryRelevance(new Logistic()),3,HierarchyBuilder.Method.BalancedClustering);
 				//homer.build(trainingSet);
@@ -460,9 +478,10 @@ public void splitInstances(Instances instances, Instances[] sample,int k) {
 	    //br();
 	    //run_Ada();
       //  run_RAKEL();
-          run_MLKNN();
-		//ensemblePrediction();
-        //prediction();
+         // run_MLKNN();
+	//	ensemblePrediction();
+		run_single();
+
 	}
 
 	// -arff dataset_2.arff -xml output_2.xml
