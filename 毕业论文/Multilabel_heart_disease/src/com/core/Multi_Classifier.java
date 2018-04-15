@@ -120,14 +120,14 @@ public class Multi_Classifier {
 				System.out.println("the label is : "+ labelNames[i]);
 				Instances instrain=brt.transformInstances(i);
 				classifier.buildClassifier(instrain);
-				System.out.println("gobalinfo: \n"+classifier.globalInfo());
+				//System.out.println("gobalinfo: \n"+classifier.globalInfo());
 				System.out.println("classifier : \n"+classifier);
 				//测试数据
 				Instances instest=brt1.transformInstances(i);
 				Evaluation ev=new Evaluation(instest);
 			    ev.evaluateModel(classifier, instest);
 				System.out.println("F-measure: "+ev.fMeasure(0)+","+ev.fMeasure(1));
-				System.out.println(classifier.coefficients());
+				//System.out.println(classifier.coefficients());
 				
 			}
 			brt=null;
@@ -492,7 +492,7 @@ public void splitInstances(Instances instances, Instances[] sample,int k) {
 		Multi_Classifier br = new Multi_Classifier(args);
 		System.out.println("-----------------------采样前数据集统计-------------------------------");
 		//br.split_arff(0.9); //按照70%比例划分训练集测试集
-		br.statics();
+		//br.statics();
 		//br.resample_RUS();
 		//br.resample_MLSMOTE();
 		br.resample_MLBBS();
