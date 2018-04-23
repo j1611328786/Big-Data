@@ -469,7 +469,7 @@ public void splitInstances(Instances instances, Instances[] sample,int k) {
 	}
 
 	public void resample_MLBBS() throws Exception {
-		//ML_BBS.dobbs(dataset);
+		ML_BBS.dobbs(dataset);
 		//System.out.println("-----------------------采样后数据集统计-------------------------------");
 		//statics();
 	   // run_HOMER();
@@ -480,7 +480,7 @@ public void splitInstances(Instances instances, Instances[] sample,int k) {
       //  run_RAKEL();
          // run_MLKNN();
 	//	ensemblePrediction();
-		run_single();
+		//run_single();
 
 	}
 
